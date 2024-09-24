@@ -1,0 +1,19 @@
+# dependencies
+node_modules
+
+# splits-kit
+packages/splits-kit/storybook-static/
+packages/splits-kit/.env
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build
+packages/*/dist
+packages/*/*.env
+.next/
+
+# env
+.env.local
