@@ -11,7 +11,7 @@ interface PopupProps {
 
   const Popup = ({ onClose }: PopupProps) => {
     return (
-      <div className="popup">
+      <div className="popup flex flex-col">
           <p>Self-publishing and self-distributing your music means that you, as an artist or as a part of a group of creatives, take full control over the song writing, production, release, and distribution of your work without relying on traditional publishers or music labels. Here's a technical breakdown of what that entails:</p>
 <ol>
     <li>
