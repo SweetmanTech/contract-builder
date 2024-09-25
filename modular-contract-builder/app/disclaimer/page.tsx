@@ -1,7 +1,11 @@
+'use client';
+
 import React from 'react';
-import Link from 'next/link'
+import {useRouter} from 'next/navigation'
 
 const Disclaimer = () => {
+  const router = useRouter();
+
   return (
     <div>
       <h1>Disclaimer</h1>
@@ -10,9 +14,7 @@ const Disclaimer = () => {
         If you don’t understand the terms or consequences of the draft we provide, or need legal advice for a specific problem, we encourage you to consult with a licensed attorney. The draft provided by this service is not a substitute for legal advice from a qualified attorney licensed to practice in an appropriate jurisdiction.
         <br /><br />
         This draft is limited to the general principles of copyright law. If you are interested in learning more about how the MESA system can help you, please get in touch at contact@mesawallet.io.</p>
-        <Link href="/question1">
-        <button className="float-right">Proceed -&gt;</button>
-        </Link>
+        <button onClick={() => router.push('/question1')} className="float-right">Proceed -&gt;</button>
     </div>
     
   );

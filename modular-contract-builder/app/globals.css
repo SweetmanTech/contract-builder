@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "tech";
-  src: url("fonts/ShareTechMono-Regular.ttf");
+  font-family: 'tech';
+  src: url('fonts/ShareTechMono-Regular.ttf');
 }
 
 :root {
@@ -27,18 +27,21 @@ html {
   font-style: normal;
   text-align: left;
 }
-  
-
 
 button {
-  outline:auto;
-  outline-color:brown;
-  color:white;
+  border: solid thin;
+  border-color: #e18583;
+  border-radius: 5px;
+  color: white;
+  width: 20%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 a {
   text-align: left;
-  color : blue;
+  color: blue;
 }
 
 .popup {
@@ -51,19 +54,18 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color:black;
-  color:white;
+  background-color: black;
+  color: white;
 }
 
 .popup_button {
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
-
 
 @layer utilities {
   .text-balance {
-    text-wrap: balance; 
+    text-wrap: balance;
   }
 }
