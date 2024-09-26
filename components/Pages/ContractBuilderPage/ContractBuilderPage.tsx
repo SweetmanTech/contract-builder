@@ -1,4 +1,5 @@
 import BuildSuccess from '@/components/BuildSuccess'
+import CollaboratorInput from '@/components/CollaboratorInput'
 import CollaboratorsAmount from '@/components/CollaboratorsAmount'
 import SongNameForm from '@/components/SongNameForm'
 import SplitsTypes from '@/components/SplitsTypes'
@@ -14,6 +15,9 @@ const ContractBuilderPage = () => {
       {tab === CONTRACT_BUILDER_STEP.SONG_NAME && <SongNameForm />}
       {tab === CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
         <CollaboratorsAmount />
+      )}
+      {tab === CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
+        <CollaboratorInput />
       )}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && <BuildSuccess />}
     </>
