@@ -16,7 +16,7 @@ const SubmitForm = () => {
 
   const handleSubmit = () => {
     if (collaborators.length === collaboratorsAmount) {
-      setTab(CONTRACT_BUILDER_STEP.SUCCESS)
+      setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)
       return
     }
     setCollaborator()

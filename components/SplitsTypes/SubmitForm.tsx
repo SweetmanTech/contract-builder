@@ -1,5 +1,5 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import SplitType from './SplitType'
+import CheckboxLabel from '../CheckboxLabel'
 import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
@@ -14,17 +14,17 @@ const SubmitForm = () => {
         would you like to create?
       </p>
       <fieldset className="flex flex-col gap-3 pl-6 pt-6">
-        <SplitType
+        <CheckboxLabel
           checked={splitType === SPLIT_TYPE.SONG_WRITING}
           onClick={() => setSplitType(SPLIT_TYPE.SONG_WRITING)}
           label="SongWriting"
         />
-        <SplitType
+        <CheckboxLabel
           checked={splitType === SPLIT_TYPE.MASTER_RECORDING}
           onClick={() => setSplitType(SPLIT_TYPE.MASTER_RECORDING)}
           label="Master Recording"
         />
-        <SplitType
+        <CheckboxLabel
           checked={splitType === SPLIT_TYPE.BOTH}
           onClick={() => setSplitType(SPLIT_TYPE.BOTH)}
           label="Both"

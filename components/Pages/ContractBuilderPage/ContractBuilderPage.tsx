@@ -1,6 +1,7 @@
 import BuildSuccess from '@/components/BuildSuccess'
 import CollaboratorInput from '@/components/CollaboratorInput'
 import CollaboratorsAmount from '@/components/CollaboratorsAmount'
+import GovernanceTypes from '@/components/GovernanceTypes'
 import SongNameForm from '@/components/SongNameForm'
 import SplitsTypes from '@/components/SplitsTypes'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
@@ -19,6 +20,7 @@ const ContractBuilderPage = () => {
       {tab === CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
         <CollaboratorInput />
       )}
+      {tab === CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE && <GovernanceTypes />}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && <BuildSuccess />}
     </>
   )

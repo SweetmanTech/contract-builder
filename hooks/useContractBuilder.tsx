@@ -6,6 +6,7 @@ export enum CONTRACT_BUILDER_STEP {
   SONG_NAME,
   COLLABORATORS_AMOUNT,
   COLLABORATOR_INPUT,
+  GOVERNANCE_TYPE,
   SUCCESS,
 }
 
@@ -15,9 +16,15 @@ export enum SPLIT_TYPE {
   BOTH,
 }
 
+export enum GOVERNANCE_TYPE {
+  VOTE,
+  DESIGNATE_ADMIN,
+}
+
 const useContractBuilder = () => {
   const [tab, setTab] = useState(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
   const [splitType, setSplitType] = useState(SPLIT_TYPE.SONG_WRITING)
+  const [governanceType, setGovernanceType] = useState(GOVERNANCE_TYPE.VOTE)
   const [songName, setSongName] = useState('')
   const collaborators = useCollaborators()
 
@@ -28,6 +35,8 @@ const useContractBuilder = () => {
     setSplitType,
     songName,
     setSongName,
+    governanceType,
+    setGovernanceType,
     ...collaborators,
   }
 }

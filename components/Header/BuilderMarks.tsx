@@ -29,6 +29,14 @@ const BuilderMarks = () => {
           height={77}
         />
       )}
+      {tab === CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE && (
+        <Image
+          src="/images/governance-type.svg"
+          alt=""
+          width={310}
+          height={77}
+        />
+      )}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && (
         <Image src="/images/success.svg" alt="" width={310} height={77} />
       )}
