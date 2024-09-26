@@ -6,9 +6,19 @@ module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   theme: {
     colors: {
+      grey: {
+        default: colors.grey,
+        dark: '#0E0E0E',
+      },
       white: {
         DEFAULT: '#ffffff',
         light: '#E0E0E0',
+      },
+      link: {
+        DEFAULT: '#3167B4',
+      },
+      danger: {
+        DEFAULT: '#E18583',
       },
     },
     extend: {
