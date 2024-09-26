@@ -8,17 +8,15 @@ import { useSearchParams } from 'next/navigation'
 const ContractBuilder3 = () => {
   const router = useRouter()
   const [pageCount, setPageCount] = useState<number | null>(null)
-  // const [selectedOptionSong, setSelectedOptionSong] = useState('')
-  // const [selectedOptionContributors, setSelectedOptionContributors] = useState('')
 
   const searchParams = useSearchParams()
-  const song = searchParams.get('song')
+  let song = searchParams.get('song')!
 
   const handleContributorsChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const contributors = Number(event.target.value)
-    setPageCount(contributors)
+    setPageCount(contributors)!
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -52,6 +50,7 @@ const ContractBuilder3 = () => {
               onChange={handleContributorsChange}
               min="1"
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
+              required
             />
           </form>
         </div>

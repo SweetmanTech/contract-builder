@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -10,10 +10,16 @@ const DynamicPage = () => {
   const searchParams = useSearchParams()
   const pageNumber = Number(params.page)
   const pageCount = Number(searchParams.get('pageCount'))
+  const lastSplit = Number(searchParams.get('split'))
+
   const [legalName, setLegalName] = useState('')
   const [email, setEmail] = useState('')
   const [contributorType, setcontributorType] = useState('')
-  const [split, setSplit] = useState('')
+  const [split, setSplit] = useState<number>()
+
+  //for splits of other pages
+  const [splitTotal, setSplitTotal] = useState<number>()
+  let newSplit = 0
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLegalName(event.target.value)
@@ -22,25 +28,32 @@ const DynamicPage = () => {
     setEmail(event.target.value)
   }
   const handleContributorChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setcontributorType(event.target.value)
   }
   const handleSplitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (Number(event.target.value) < 101) {
-      setSplit(event.target.value)
+    if (Number(event.target.value) < 101 && Number(event.target.value) > 0) {
+      setSplit(Number(event.target.value))
     } else {
-      setSplit('100')
+      setSplit(100)
     }
+    newSplit = Number(event.target.value)
+    setSplitTotal(newSplit + lastSplit)
   }
 
   const handleNextPage = () => {
-    // If the current page exceeds pageCount, redirect to the final page (e.g., /thank-you)
-    if (pageNumber >= pageCount) {
-      router.push(`/question4?pageCount=${pageCount}`)
+    if (pageNumber >= pageCount && splitTotal != 100) {
+      document.getElementById('wrongSplits')!.innerHTML =
+        'Splits need to add to 100% to be valid'
+      router.refresh()
     } else {
-      const nextPage = pageNumber + 1
-      router.push(`/${nextPage}?pageCount=${pageCount}`)
+      if (pageNumber >= pageCount) {
+        router.push(`/question4`)
+      } else {
+        const nextPage = pageNumber + 1
+        router.push(`/${nextPage}?pageCount=${pageCount}&split=${splitTotal}`)
+      }
     }
   }
 
@@ -57,7 +70,8 @@ const DynamicPage = () => {
               onClick={() => router.push('/question1')}
               className="text-xs text-gray-500 w-full border-0 relative text-start"
             >
-              What type of splits contract would you like to create?
+              What type of splits contract would you like to create?{' '}
+              {splitTotal}
             </button>
             <button
               onClick={() => router.push('/question2')}
@@ -89,6 +103,7 @@ const DynamicPage = () => {
               type="text"
               onChange={handleNameChange}
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
+              required
             />
 
             <label className="text-xs pt-2 pb-2">
@@ -98,6 +113,7 @@ const DynamicPage = () => {
               type="email"
               onChange={handleEmailChange}
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
+              required
             />
 
             <label className="text-xs pt-2 pb-2">Type of contributor</label>
@@ -105,7 +121,8 @@ const DynamicPage = () => {
               name="type"
               id="cont"
               className="bg-black w-1/2"
-              onChange={handleContributorChange} //gives error but works?
+              onChange={handleContributorChange}
+              required
             >
               <option value="blank"></option>
               <option value="LYRIC">Lyrics</option>
@@ -117,6 +134,7 @@ const DynamicPage = () => {
               max="100"
               onChange={handleSplitChange}
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
+              required
             />
           </form>
         </div>
@@ -144,9 +162,6 @@ const DynamicPage = () => {
             Contribution:
             <span className="text-red-500">{contributorType}</span>
           </p>
-
-          {/* Need to  ensure splits add to 100*/}
-
           <p>
             Split (%):
             <span className="text-red-500">{split}</span>
@@ -154,6 +169,7 @@ const DynamicPage = () => {
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
+        <p id="wrongSplits" className="text-red-500 text-lg"></p>
         <button onClick={handleNextPage} className="border border-red">
           SUBMIT
         </button>

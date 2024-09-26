@@ -10,17 +10,28 @@ interface PopupProps {
 }
 
 const Popup = ({ onClose }: PopupProps) => {
+  const router = useRouter()
   return (
     <div className="popup flex-col">
       <p>
-        Specifying the name of a song or musical work in contracts, particularly
-        when a master recording is also involved, is crucial for ensuring
-        clarity and preventing confusion. Multiple versions of a song, such as
-        remixes, live performances, or covers, can exist, and without clear
-        identification, it may lead to disputes over royalties, rights, and
-        ownership. By defining the exact version, the contract ensures proper
-        royalty allocation and protects the rights of creators and performers.
+        Voting ensures that each business decision is consulted with all of the
+        copyright owners. Designating an administrator ensures faster decision
+        making, but less consultation with copyright owners. However,
+        administrators also have responsibilities and a duty to properly
+        represent the interests of the copyright owners.
       </p>
+      <a
+        className="items-center gap-2 hover:underline hover:underline-offset-4"
+        onClick={() => router.push('/moreInfoVoting')}
+      >
+        Still not clear about voting? read here.
+      </a>
+      <a
+        className="items-center gap-2 hover:underline hover:underline-offset-4"
+        onClick={() => router.push('/moreInfoAdmin')}
+      >
+        Still not clear about designating an admin? read here.
+      </a>
       <button onClick={onClose} className="popup_button">
         x
       </button>
@@ -33,6 +44,7 @@ const ContractBuilder4 = () => {
   const [showPopup, setShowPopup] = useState(false)
   const searchParams = useSearchParams()
   const pageCount = Number(searchParams.get('pageCount'))
+  const [selectedOption, setSelectedOption] = useState('')
 
   const goToPage = (page: number) => {
     router.push(`/${page}`)
@@ -40,6 +52,18 @@ const ContractBuilder4 = () => {
 
   const togglePopup = () => {
     setShowPopup(!showPopup)
+  }
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value)
+  }
+
+  const findNextPage = () => {
+    if (selectedOption == 'VOTE') {
+      router.push('/question5vote')
+    } else {
+      router.push('question5admin')
+    }
   }
 
   return (
@@ -81,11 +105,25 @@ const ContractBuilder4 = () => {
           </h4>
           <form className="flex flex-col p-7">
             <label className="p-2">
-              <input type="radio" name="type" className="radio" />
+              <input
+                type="radio"
+                name="type"
+                className="radio"
+                value="VOTE"
+                onChange={handleRadioChange}
+                required
+              />
               VOTE
             </label>
             <label className="p-2">
-              <input type="radio" name="type" className="radio" />
+              <input
+                type="radio"
+                name="type"
+                className="radio"
+                value="ADMIN"
+                onChange={handleRadioChange}
+                required
+              />
               DESIGNATE ADMIN
             </label>
           </form>
@@ -105,10 +143,7 @@ const ContractBuilder4 = () => {
         >
           Confused with this bit too? read here.
         </a>
-        <button
-          onClick={() => router.push('/question4')}
-          className="border border-red"
-        >
+        <button onClick={findNextPage} className="border border-red">
           SUBMIT
         </button>
         {showPopup && <Popup onClose={() => setShowPopup(false)} />}

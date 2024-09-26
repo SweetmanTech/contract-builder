@@ -30,19 +30,15 @@ const Popup = ({ onClose }: PopupProps) => {
 const ContractBuilder2 = () => {
   const router = useRouter()
   const [showPopup, setShowPopup] = useState(false)
-  const [selectedOptionSong, setSelectedOptionSong] = useState('')
-  const [selectedOptionMaster, setSelectedOptionMaster] = useState('')
+  const [song, setSelectedOptionSong] = useState('')
 
   const handleSongChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOptionSong(event.target.value)
   }
-  // const handleMasterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSelectedOptionMaster(event.target.value)
-  // }
 
-  // const togglePopup = () => {
-  //   setShowPopup(!showPopup)
-  // }
+  const query = new URLSearchParams({
+    song,
+  }).toString()
 
   return (
     <div className="float-root text-start min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -56,21 +52,13 @@ const ContractBuilder2 = () => {
           </button>
           <p>What is the name of the song?</p>
           <form className="flex flex-col">
-            {/* <label>Song composition</label> */}
             <input
               type="text"
               name="type"
               onChange={handleSongChange}
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
+              required
             />
-
-            {/* <label>Recorded version</label>
-            <input
-              type="text"
-              name="type"
-              onChange={handleMasterChange}
-              className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
-            /> */}
           </form>
         </div>
         <div className=" p-8 py-1">
@@ -82,31 +70,13 @@ const ContractBuilder2 = () => {
           <p>
             The contracting parties have collaborated in the authorship and
             composition of the musical work titled{' '}
-            <span className="text-red-500">
-              {selectedOptionSong ? selectedOptionSong : ' '}
-            </span>
+            <span className="text-red-500">{song ? song : ' '}</span>
           </p>
-          <br></br>
-          {/* <h3>1.0 Master Recording Identification</h3>
-          <p>
-            The contracting parties have collaborated in the recording and
-            production of the sound recording titled{' '}
-            <span className="text-red-500">
-              {selectedOptionMaster ? selectedOptionMaster : ' '}
-            </span>
-          </p> */}
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
-        {/* <a
-          className="items-center gap-2 hover:underline hover:underline-offset-4"
-          href="#"
-          onClick={togglePopup}
-        >
-          Confused with this bit too? read here.
-        </a> */}
         <button
-          onClick={() => router.push(`/question3?song=${selectedOptionSong}`)}
+          onClick={() => router.push(`/question3?${query}`)}
           className="border border-red"
         >
           SUBMIT

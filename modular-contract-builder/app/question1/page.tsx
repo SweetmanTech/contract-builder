@@ -80,6 +80,7 @@ const ContractBuilder1 = () => {
                 name="type"
                 onChange={handleRadioChange}
                 className="radio"
+                required
               />
               SONG WRITING
             </label>
