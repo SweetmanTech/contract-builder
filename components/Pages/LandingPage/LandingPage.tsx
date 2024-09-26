@@ -1,8 +1,11 @@
+import { useRouter } from 'next/navigation'
 import Question from './Question'
 import { questions } from './questions'
 import ReadHereLink from '@/components/ReadHereLink'
 
 const LandingPage = () => {
+  const { push } = useRouter()
+
   return (
     <>
       <section className="max-w-[776px] flex flex-col gap-5">
@@ -28,6 +31,7 @@ const LandingPage = () => {
       <button
         type="button"
         className="bg-grey-dark border-2 border-danger font-rubik text-lg rounded-lg py-2 px-6 mt-10"
+        onClick={() => push('/contract-builder')}
       >
         GET STARTED
       </button>
