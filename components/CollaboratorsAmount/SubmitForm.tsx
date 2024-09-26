@@ -28,7 +28,7 @@ const SubmitForm = () => {
       </div>
       <Button
         className="mt-10 relative z-[2]"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)}
         disabled={Boolean(!collaboratorsAmount)}
       >
         SUBMIT

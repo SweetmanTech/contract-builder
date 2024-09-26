@@ -21,6 +21,14 @@ const BuilderMarks = () => {
           height={77}
         />
       )}
+      {tab === CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
+        <Image
+          src="/images/collaborator-input.svg"
+          alt=""
+          width={310}
+          height={77}
+        />
+      )}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && (
         <Image src="/images/success.svg" alt="" width={310} height={77} />
       )}
