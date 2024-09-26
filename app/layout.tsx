@@ -19,7 +19,7 @@ export default function RootLayout({
           height={928}
           className="absolute right-[-200px] bottom-[-320px] z-[1] pointer-events-none"
         />
-        <main className="pt-[180px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20">
+        <main className="pt-[180px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 relative z-[1000]">
           <Providers>
             <Header />
             {children}
