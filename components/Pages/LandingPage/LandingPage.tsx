@@ -1,10 +1,10 @@
-import Link from 'next/link'
 import Question from './Question'
 import { questions } from './questions'
+import ReadHereLink from '@/components/ReadHereLink'
 
 const LandingPage = () => {
   return (
-    <main className="pt-[110px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden">
+    <>
       <section className="max-w-[776px] flex flex-col gap-5">
         <p className="text-[32px] font-share tracking-[-0.05rem]">
           Welcome to the <span className="font-rubik">MESA</span> music contract
@@ -24,16 +24,14 @@ const LandingPage = () => {
           ))}
         </div>
       </section>
-      <Link href="/" className="font-share text-2xl text-link underline">
-        <p className="pt-10">If confused, read here.</p>
-      </Link>
+      <ReadHereLink link="/" />
       <button
         type="button"
         className="bg-grey-dark border-2 border-danger font-rubik text-lg rounded-lg py-2 px-6 mt-10"
       >
         GET STARTED
       </button>
-    </main>
+    </>
   )
 }
 

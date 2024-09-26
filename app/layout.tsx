@@ -17,14 +17,14 @@ export default function RootLayout({
           alt=""
           width={928}
           height={928}
-          className="absolute right-[-200px] bottom-[-320px] z-[1]"
+          className="absolute right-[-200px] bottom-[-320px] z-[1] pointer-events-none"
         />
-        <div className="relative z-[2]">
+        <main className="pt-[110px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20">
           <Providers>
             <Header />
             {children}
           </Providers>
-        </div>
+        </main>
       </body>
     </html>
   )
