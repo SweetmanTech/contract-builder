@@ -49,7 +49,7 @@ const SubmitForm = () => {
       <ReadHereLink link="/" label="Confused? read here." />
       <Button
         className="mt-10"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.VOTE)}
       >
         SUBMIT
       </Button>
