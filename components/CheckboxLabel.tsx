@@ -1,6 +1,6 @@
 import { twMerge as cn } from 'tailwind-merge'
 
-const SplitType = ({
+const CheckboxLabel = ({
   checked,
   onClick,
   label,
@@ -17,4 +17,4 @@ const SplitType = ({
   </button>
 )
 
-export default SplitType
+export default CheckboxLabel
