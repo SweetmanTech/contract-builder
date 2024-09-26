@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Providers from '@/providers/Providers'
 import React from 'react'
+import '@/styles/global.css'
 
 export default function RootLayout({
   children,
@@ -9,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="px-2 bg">
+      <body>
         <Providers>
           <Header />
           {children}

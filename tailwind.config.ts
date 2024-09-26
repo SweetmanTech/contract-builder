@@ -3,28 +3,19 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   darkMode: 'class',
-  content: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx}',
-    './app/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: 'rgba(32, 32, 32)',
-      white: colors.white,
-      gray: colors.gray,
-      red: colors.rose,
-      yellow: colors.yellow,
-      green: colors.emerald,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      purple: colors.violet,
-      pink: colors.pink,
-      sky: colors.sky,
+      white: {
+        DEFAULT: '#ffffff',
+        light: '#E0E0E0',
+      },
     },
     extend: {
+      fontFamily: {
+        rubik: ['RubikMonoOne', 'sans-serif'],
+        share: ['ShareTechMono', 'sans-serif'],
+      },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
       },
