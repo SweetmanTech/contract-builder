@@ -6,3 +6,23 @@
     font-family: "ShareTechMono";
     src: url("/fonts/ShareTechMono.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Roboto Medium";
+    src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Roboto Light";
+    src: url("/fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Roboto Thin";
+    src: url("/fonts/Roboto-Thin.ttf") format("truetype");
+}

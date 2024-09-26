@@ -19,12 +19,18 @@ module.exports = {
       },
       danger: {
         DEFAULT: '#E18583',
+        dark: '#AC4444',
       },
     },
     extend: {
       fontFamily: {
         rubik: ['RubikMonoOne', 'sans-serif'],
         share: ['ShareTechMono', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+        roboto_medium: ['Roboto Medium', 'sans-serif'],
+        roboto_bold: ['Roboto Bold', 'sans-serif'],
+        roboto_light: ['Roboto Light', 'sans-serif'],
+        roboto_thin: ['Roboto Thin', 'sans-serif'],
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
