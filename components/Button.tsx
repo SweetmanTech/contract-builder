@@ -3,9 +3,11 @@ import { twMerge } from 'tailwind-merge'
 const Button = ({
   className,
   onClick,
+  disabled = false,
   children,
 }: {
   className: string
+  disabled?: boolean
   onClick: () => void
   children: any
 }) => {
@@ -16,6 +18,7 @@ const Button = ({
         className,
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

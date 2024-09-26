@@ -33,7 +33,7 @@ const SubmitForm = () => {
       <ReadHereLink link="/" />
       <Button
         className="mt-10"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
       >
         SUBMIT
       </Button>
