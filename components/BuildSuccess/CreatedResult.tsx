@@ -1,6 +1,9 @@
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 
 const CreatedResult = () => {
+  const { downloadUnsignedVersion } = useContractBuilderProvider()
+
   const intoClass =
     'text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]'
 
@@ -28,7 +31,10 @@ const CreatedResult = () => {
         <Button className="py-1 text-md min-w-[540px]" onClick={() => {}}>
           View Contract
         </Button>
-        <Button className="py-1 text-md min-w-[540px]" onClick={() => {}}>
+        <Button
+          className="py-1 text-md min-w-[540px]"
+          onClick={downloadUnsignedVersion}
+        >
           Download unsigned version
         </Button>
         <Button className="py-1 text-md min-w-[540px]" onClick={() => {}}>
