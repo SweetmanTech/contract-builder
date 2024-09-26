@@ -23,7 +23,10 @@ const SubmitForm = () => {
         How many collaborators contributed to writing the song?
       </p>
       {collaborators.map((_, i) => (
-        <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
+        <p
+          className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]"
+          key={i}
+        >
           Collaborator {i + 1}
         </p>
       ))}
@@ -46,7 +49,7 @@ const SubmitForm = () => {
       <ReadHereLink link="/" label="Confused? read here." />
       <Button
         className="mt-10"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
       >
         SUBMIT
       </Button>
