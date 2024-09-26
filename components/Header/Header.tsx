@@ -3,6 +3,7 @@
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const Header = () => {
@@ -12,7 +13,9 @@ const Header = () => {
 
   return (
     <header className="fixed w-full px-6 py-3 flex justify-between items-center left-0 top-0 border-b border-white-light">
-      <Image src="/images/logo-dark.svg" alt="" width={190} height={63} />
+      <Link href={'/'}>
+        <Image src="/images/logo-dark.svg" alt="" width={190} height={63} />
+      </Link>
       {isBuiler && (
         <>
           {tab === CONTRACT_BUILDER_STEP.SPLITS_TYPE && (
