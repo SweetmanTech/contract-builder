@@ -27,6 +27,7 @@ const useContractBuilder = () => {
   const [tab, setTab] = useState(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
   const [splitType, setSplitType] = useState(SPLIT_TYPE.SONG_WRITING)
   const [governanceType, setGovernanceType] = useState(GOVERNANCE_TYPE.VOTE)
+  const [adminName, setAdminName] = useState('')
   const [votePercentage, setVotePercentage] = useState(0)
   const [songName, setSongName] = useState('')
   const collaborators = useCollaborators()
@@ -42,6 +43,8 @@ const useContractBuilder = () => {
     setGovernanceType,
     votePercentage,
     setVotePercentage,
+    adminName,
+    setAdminName,
     ...collaborators,
   }
 }

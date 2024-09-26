@@ -11,6 +11,15 @@ const SubmitForm = () => {
   const { setTab, collaborators, governanceType, setGovernanceType } =
     useContractBuilderProvider()
 
+  const handleSubmit = () => {
+    if (governanceType === GOVERNANCE_TYPE.VOTE) {
+      setTab(CONTRACT_BUILDER_STEP.VOTE)
+      return
+    }
+
+    setTab(CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN)
+  }
+
   return (
     <>
       <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
@@ -47,10 +56,7 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink link="/" label="Confused? read here." />
-      <Button
-        className="mt-10"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.VOTE)}
-      >
+      <Button className="mt-10" onClick={handleSubmit}>
         SUBMIT
       </Button>
     </>
