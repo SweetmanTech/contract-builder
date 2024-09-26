@@ -1,10 +1,10 @@
 import { createConfig, http } from 'wagmi'
 import { coinbaseWallet } from 'wagmi/connectors'
-import { base, baseSepolia } from 'viem/chains'
+import { CHAIN, CHAIN_ID } from '../consts'
 
 const wagmiConfig = createConfig({
   ssr: true,
-  chains: [base, baseSepolia],
+  chains: [CHAIN],
   connectors: [
     coinbaseWallet({
       appName: 'mesa',
@@ -12,8 +12,7 @@ const wagmiConfig = createConfig({
     }),
   ],
   transports: {
-    [base.id]: http(),
-    [baseSepolia.id]: http(),
+    [CHAIN_ID]: http(),
   } as any,
 })
 
