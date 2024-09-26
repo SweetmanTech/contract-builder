@@ -36,13 +36,13 @@ const ContractBuilder2 = () => {
   const handleSongChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOptionSong(event.target.value)
   }
-  const handleMasterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionMaster(event.target.value)
-  }
+  // const handleMasterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSelectedOptionMaster(event.target.value)
+  // }
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup)
-  }
+  // const togglePopup = () => {
+  //   setShowPopup(!showPopup)
+  // }
 
   return (
     <div className="float-root text-start min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -54,7 +54,7 @@ const ContractBuilder2 = () => {
           >
             What type of splits contract would you like to create?
           </button>
-          <p>What is the name of your song?</p>
+          <p>What is the name of the song?</p>
           <form className="flex flex-col">
             {/* <label>Song composition</label> */}
             <input
@@ -106,7 +106,7 @@ const ContractBuilder2 = () => {
           Confused with this bit too? read here.
         </a> */}
         <button
-          onClick={() => router.push('/question3')}
+          onClick={() => router.push(`/question3?song=${selectedOptionSong}`)}
           className="border border-red"
         >
           SUBMIT

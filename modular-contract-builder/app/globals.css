@@ -34,14 +34,32 @@ button {
   border-radius: 5px;
   color: white;
   width: 20%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
+  left: 5%;
+  bottom: 5%;
 }
 
 a {
   text-align: left;
   color: blue;
+}
+
+.radio {
+  appearance: none;
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input:checked {
+  border: 8px solid white;
 }
 
 .popup {
@@ -60,6 +78,8 @@ a {
 
 .popup_button {
   position: fixed;
+  width: 4%;
+  height: 4%;
   top: 0;
   left: 0;
 }

@@ -69,21 +69,36 @@ const ContractBuilder1 = () => {
   let date = new Date().toLocaleDateString()
 
   return (
-    <div className="float-root text-start min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="grid grid-cols-2 ">
-        <div className="w-3/4 p-8">
+    <div className="text-start py-10 gap-y-16  px-10">
+      <main className="grid grid-cols-2 leading-10">
+        <div className="w-3/4 py-10">
           <p>What type of splits contract would you like to create?</p>
           <form className="flex flex-col">
             <label>
-              <input type="radio" name="type" onChange={handleRadioChange} />
+              <input
+                type="radio"
+                name="type"
+                onChange={handleRadioChange}
+                className="radio"
+              />
               SONG WRITING
             </label>
             <label>
-              <input type="radio" name="type" onChange={handleRadioChange} />
+              <input
+                type="radio"
+                name="type"
+                onChange={handleRadioChange}
+                className="radio"
+              />
               MASTER RECORDING
             </label>
             <label>
-              <input type="radio" name="type" onChange={handleRadioChange} />
+              <input
+                type="radio"
+                name="type"
+                onChange={handleRadioChange}
+                className="radio"
+              />
               BOTH
             </label>
           </form>

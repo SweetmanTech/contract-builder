@@ -3,45 +3,29 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
-interface PopupProps {
-  onClose: () => void
-}
-
-const Popup = ({ onClose }: PopupProps) => {
-  return (
-    <div className="popup flex-col">
-      <p>
-        Specifying the name of a song or musical work in contracts, particularly
-        when a master recording is also involved, is crucial for ensuring
-        clarity and preventing confusion. Multiple versions of a song, such as
-        remixes, live performances, or covers, can exist, and without clear
-        identification, it may lead to disputes over royalties, rights, and
-        ownership. By defining the exact version, the contract ensures proper
-        royalty allocation and protects the rights of creators and performers.
-      </p>
-      <button onClick={onClose} className="popup_button">
-        x
-      </button>
-    </div>
-  )
-}
-
-const ContractBuilder2 = () => {
+const ContractBuilder3 = () => {
   const router = useRouter()
-  const [showPopup, setShowPopup] = useState(false)
-  const [selectedOptionSong, setSelectedOptionSong] = useState('')
-  const [selectedOptionMaster, setSelectedOptionMaster] = useState('')
+  const [pageCount, setPageCount] = useState<number | null>(null)
+  // const [selectedOptionSong, setSelectedOptionSong] = useState('')
+  // const [selectedOptionContributors, setSelectedOptionContributors] = useState('')
 
-  const handleSongChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionSong(event.target.value)
-  }
-  const handleMasterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionMaster(event.target.value)
+  const searchParams = useSearchParams()
+  const song = searchParams.get('song')
+
+  const handleContributorsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const contributors = Number(event.target.value)
+    setPageCount(contributors)
   }
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup)
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (pageCount && pageCount > 0) {
+      router.push(`/1?pageCount=${pageCount}`)
+    }
   }
 
   return (
@@ -63,9 +47,10 @@ const ContractBuilder2 = () => {
           <p>How many collaborators contributed to writing the song?</p>
           <form className="flex flex-col">
             <input
-              type="text"
+              type="number"
               name="type"
-              onChange={handleSongChange}
+              onChange={handleContributorsChange}
+              min="1"
               className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-1/2"
             />
           </form>
@@ -79,23 +64,17 @@ const ContractBuilder2 = () => {
           <p>
             The contracting parties have collaborated in the authorship and
             composition of the musical work titled{' '}
-            <span className="text-red-500">
-              {selectedOptionSong ? selectedOptionSong : ' '}
-            </span>
+            <span className="text-red-500">{song}</span>
           </p>
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
-        <button
-          onClick={() => router.push('/question3')}
-          className="border border-red"
-        >
+        <button onClick={handleSubmit} className="border border-red">
           SUBMIT
         </button>
-        {showPopup && <Popup onClose={() => setShowPopup(false)} />}
       </footer>
     </div>
   )
 }
 
-export default ContractBuilder2
+export default ContractBuilder3
