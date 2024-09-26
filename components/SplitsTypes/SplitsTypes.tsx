@@ -1,3 +1,4 @@
+import Descriptions from './Descriptions'
 import SubmitForm from './SubmitForm'
 
 const SplitsTypes = () => {
@@ -6,7 +7,9 @@ const SplitsTypes = () => {
       <div className="col-span-6 flex flex-col justify-end">
         <SubmitForm />
       </div>
-      <div className="col-span-6"></div>
+      <div className="col-span-6 flex flex-col justify-center gap-3">
+        <Descriptions />
+      </div>
     </div>
   )
 }
