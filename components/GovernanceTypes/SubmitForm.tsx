@@ -6,9 +6,10 @@ import {
 } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
+import PassedQuestions from '../PassedQuestions'
 
 const SubmitForm = () => {
-  const { setTab, collaborators, governanceType, setGovernanceType } =
+  const { setTab, governanceType, setGovernanceType } =
     useContractBuilderProvider()
 
   const handleSubmit = () => {
@@ -22,23 +23,7 @@ const SubmitForm = () => {
 
   return (
     <>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        What type of splits contract would you like to create?
-      </p>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        What is the name of the song?
-      </p>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        How many collaborators contributed to writing the song?
-      </p>
-      {collaborators.map((_, i) => (
-        <p
-          className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]"
-          key={i}
-        >
-          Collaborator {i + 1}
-        </p>
-      ))}
+      <PassedQuestions />
       <p className="font-share text-3xl tracking-[-0.05rem] pt-4">
         Would you like to vote when making business decisions or designate an
         administrator?

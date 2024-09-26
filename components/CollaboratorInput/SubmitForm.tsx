@@ -2,6 +2,7 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import CollaboratorValues from './CollaboratorValues'
+import PassedQuestions from '../PassedQuestions'
 
 const SubmitForm = () => {
   const {
@@ -24,15 +25,7 @@ const SubmitForm = () => {
 
   return (
     <>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        What type of splits contract would you like to create?
-      </p>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        What is the name of the song?
-      </p>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        How many collaborators contributed to writing the song?
-      </p>
+      <PassedQuestions />
       <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
         Collaborator {currentCollaborator + 1}:
       </p>

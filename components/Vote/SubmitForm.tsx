@@ -3,35 +3,15 @@ import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import getSplitTypeText from '@/lib/getSplitTypeText'
+import PassedQuestions from '../PassedQuestions'
 
 const SubmitForm = () => {
-  const {
-    setTab,
-    setVotePercentage,
-    votePercentage,
-    collaborators,
-    splitType,
-  } = useContractBuilderProvider()
+  const { setTab, setVotePercentage, votePercentage, splitType } =
+    useContractBuilderProvider()
 
   return (
     <>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        What is the name of the song?
-      </p>
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        How many collaborators contributed to writing the song?
-      </p>
-      {collaborators.map((_, i) => (
-        <p
-          className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]"
-          key={i}
-        >
-          Collaborator {i + 1}
-        </p>
-      ))}
-      <p className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]">
-        Vote or designate admin?
-      </p>
+      <PassedQuestions />
       <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
         What percentage of ownership of the {getSplitTypeText(splitType)}{' '}
         agreement is necessary to make business decisions about the song
