@@ -1,11 +1,11 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import SplitType from './SplitType'
-import { SPLIT_TYPE } from '@/hooks/useContractBuilder'
+import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
-import SubmitButton from '../SubmitButton'
+import Button from '../Button'
 
 const SubmitForm = () => {
-  const { splitType, setSplitType } = useContractBuilderProvider()
+  const { splitType, setSplitType, setTab } = useContractBuilderProvider()
 
   return (
     <>
@@ -31,7 +31,12 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink link="/" />
-      <SubmitButton className="mt-10" onClick={() => {}} />
+      <Button
+        className="mt-10"
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
+      >
+        SUBMIT
+      </Button>
     </>
   )
 }

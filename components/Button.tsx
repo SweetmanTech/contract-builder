@@ -1,23 +1,25 @@
 import { twMerge } from 'tailwind-merge'
 
-const SubmitButton = ({
+const Button = ({
   className,
   onClick,
+  children,
 }: {
   className: string
   onClick: () => void
+  children: any
 }) => {
   return (
     <button
       className={twMerge(
-        'font-rubik text-md border-danger rounded-md w-[200px] py-2 border-[1px] mt-10',
+        'font-rubik text-md border-danger rounded-md w-[200px] py-2 border-[1px] uppercase transiton duration-[200ms] hover:scale-[1.05]',
         className,
       )}
       onClick={onClick}
     >
-      SUBMIT
+      {children}
     </button>
   )
 }
 
-export default SubmitButton
+export default Button
