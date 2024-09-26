@@ -37,6 +37,17 @@ const BuilderMarks = () => {
           height={77}
         />
       )}
+      {tab === CONTRACT_BUILDER_STEP.VOTE && (
+        <Image src="/images/vote.svg" alt="" width={310} height={77} />
+      )}
+      {tab === CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN && (
+        <Image
+          src="/images/designate-admin.svg"
+          alt=""
+          width={310}
+          height={77}
+        />
+      )}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && (
         <Image src="/images/success.svg" alt="" width={310} height={77} />
       )}
