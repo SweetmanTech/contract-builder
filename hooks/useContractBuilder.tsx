@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 export enum CONTRACT_BUILDER_STEP {
   SPLITS_TYPE,
+  SUCCESS,
 }
 
 export enum SPLIT_TYPE {
