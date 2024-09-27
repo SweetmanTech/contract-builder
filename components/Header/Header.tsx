@@ -10,14 +10,22 @@ const Header = () => {
   const isBuiler = pathname.includes('/contract-builder')
 
   return (
-    <header className="fixed w-full px-6 min-h-[145px] flex justify-between items-center left-0 top-0 border-b border-white-light">
-      <Link href={'/'}>
-        <Image src="/images/logo-dark.svg" alt="" width={190} height={63} />
+    <header className={`pt-4 pb-2 fixed top-0 inset-x-0 flex border-b border-white-light bg-black sm:pr-6 ${isBuiler ? "pr-4 justify-between items-center" : "flex-col-reverse items-center sm:flex-row sm:justify-between"}`}>
+      <Link href='/'>
+        <Image
+          className='sm:w-[190px] sm:h-[63px]'
+          src="/images/logo-dark.svg"
+          alt=""
+          width={129}
+          height={27}
+        />
       </Link>
-      {isBuiler && <BuilderMarks />}
-      <div>
-        <p className="uppercase font-rubik text-2xl">Music Splits</p>
-        <p className="font-share text-center">Contract Builder</p>
+      {isBuiler && <div className='hidden sm:block'><BuilderMarks /></div>}
+      <div className='text-center'>
+        <p className={`uppercase font-rubik ${isBuiler ? "text-base/4 sm:text-2xl/6" : "text-2xl/6"}`}>
+          Music Splits
+        </p>
+        <p className="font-share">Contract Builder</p>
       </div>
     </header>
   )

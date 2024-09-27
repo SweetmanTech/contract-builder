@@ -2,7 +2,6 @@ import Header from '@/components/Header'
 import Providers from '@/providers/Providers'
 import React from 'react'
 import '@/styles/global.css'
-import Image from 'next/image'
 
 export default function RootLayout({
   children,
@@ -11,15 +10,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="overflow-hidden relative">
-        <Image
-          src="/images/background.png"
-          alt=""
-          width={928}
-          height={928}
-          className="absolute right-[-200px] bottom-[-320px] z-[1] pointer-events-none"
-        />
-        <main className="pt-[180px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 relative z-[1000]">
+      <body className="overflow-x-hidden">
+        <main className="relative w-screen min-h-max h-screen pt-[140px] px-14 pb-20 bg-[url('/images/background.png')] bg-[length:580px] bg-[-200px_125%] bg-no-repeat sm:pt-[180px] sm:bg-[length:608px] sm:bg-[calc(100%+50px)_calc(100%+100px)]">
           <Providers>
             <Header />
             {children}
