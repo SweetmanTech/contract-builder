@@ -9,9 +9,8 @@ const SubmitForm = () => {
 
   return (
     <>
-      <p className="font-share text-3xl tracking-[-0.05rem]">
-        What type of splits contract <br />
-        would you like to create?
+      <p className="font-share text-xl tracking-[-0.05rem] sm:text-3xl">
+        What type of splits contract <br /> would you like to create?
       </p>
       <fieldset className="flex flex-col gap-3 pl-6 pt-6">
         <CheckboxLabel
@@ -30,11 +29,10 @@ const SubmitForm = () => {
           label="Both"
         />
       </fieldset>
-      <ReadHereLink link="/" />
+      <ReadHereLink link="#" />
       <Button
-        className="mt-10"
-        onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
-      >
+        className="mt-24 mx-auto sm:mt-10 sm:mx-0"
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}>
         SUBMIT
       </Button>
     </>
