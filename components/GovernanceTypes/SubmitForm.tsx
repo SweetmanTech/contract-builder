@@ -9,8 +9,7 @@ import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
 
 const SubmitForm = () => {
-  const { setTab, governanceType, setGovernanceType } =
-    useContractBuilderProvider()
+  const { setTab, governanceType, setGovernanceType } = useContractBuilderProvider()
 
   const handleSubmit = () => {
     if (governanceType === GOVERNANCE_TYPE.VOTE) {
@@ -23,8 +22,8 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="font-share text-3xl tracking-[-0.05rem] pt-4">
+      <PassedQuestions className='hidden sm:block' />
+      <p className="font-share tracking-[-0.05rem] pt-4 sm:text-3xl">
         Would you like to vote when making business decisions or designate an
         administrator?
       </p>
@@ -40,10 +39,11 @@ const SubmitForm = () => {
           label="Designate admin"
         />
       </fieldset>
-      <ReadHereLink link="/" label="Confused? read here." />
-      <Button className="mt-10" onClick={handleSubmit}>
+      <ReadHereLink link="#" label="Confused? read here." />
+      <Button className="mt-24 mx-auto sm:mt-10 sm:mx-0" onClick={handleSubmit}>
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }
