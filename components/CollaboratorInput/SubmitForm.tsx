@@ -25,23 +25,23 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <PassedQuestions className='hidden sm:block' />
+      <p className="text-white text-xl tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
         Collaborator {currentCollaborator + 1}:
       </p>
       <CollaboratorValues />
       <Button
-        className="mt-12"
+        className="mt-12 mx-auto sm:mx-0"
         onClick={handleSubmit}
         disabled={
           Boolean(!legalName) ||
           Boolean(!email) ||
           Boolean(!typeOfcontribution) ||
           Boolean(!split)
-        }
-      >
+        }>
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }
