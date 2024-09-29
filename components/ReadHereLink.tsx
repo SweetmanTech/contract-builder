@@ -10,7 +10,7 @@ const ReadHereLink = ({
   label?: string
   className?: string
 }) => (
-  <Link href={link} className="font-share text-2xl text-link underline">
+  <Link href={link} className="font-share text-link underline sm:text-2xl">
     <p className={twMerge(`pt-10`, className)}>{label}</p>
   </Link>
 )
