@@ -12,6 +12,8 @@ const PassedQuestions = ({ className = '' }) => {
     switch (tab) {
       case CONTRACT_BUILDER_STEP.SONG_NAME:
         return setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
+      case CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT:
+        return setTab(CONTRACT_BUILDER_STEP.SONG_NAME)
     }
   }
   return (
@@ -23,7 +25,9 @@ const PassedQuestions = ({ className = '' }) => {
         </button>
       )}
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
-        <p className={intoClass}>What is the name of the song?</p>
+        <button onClick={handleClick(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)} className={intoClass}>
+          What is the name of the song?
+        </button>
       )}
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
         <p className={intoClass}>
