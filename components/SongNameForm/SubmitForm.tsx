@@ -10,12 +10,12 @@ const SubmitForm = () => {
     <>
       <div className="flex flex-col justify-center z-[1] sm:absolute sm:size-full">
         <PassedQuestions className='hidden sm:block' />
-        <p className="tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
+        <p className="text-xl tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
           What is the name of the song?
         </p>
         <input
           type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 sm:mt-6 sm:max-w-[350px]"
+          className="!outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 sm:max-w-[350px]"
           placeholder="The One"
           onChange={(e) => setSongName(e.target.value)}
           value={songName}
