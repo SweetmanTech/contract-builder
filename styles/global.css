@@ -43,3 +43,10 @@ input[type='number'] {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.text-outline {
+  word-spacing: -30px;
+  -webkit-text-stroke: 1px #AC4444;
+  color: transparent;
+  font-size: 2.6875rem;
+}
