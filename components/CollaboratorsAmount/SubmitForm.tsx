@@ -9,9 +9,9 @@ const SubmitForm = () => {
 
   return (
     <>
-      <div className="absolute size-full flex flex-col justify-center z-[1]">
-        <PassedQuestions />
-        <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <div className="flex flex-col justify-center z-[1] sm:absolute sm:size-full">
+        <PassedQuestions className='hidden sm:block' />
+        <p className="text-white text-xl tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
           How many collaborators contributed to writing the song?
         </p>
         <input
@@ -23,12 +23,13 @@ const SubmitForm = () => {
         />
       </div>
       <Button
-        className="mt-10 relative z-[2]"
+        className="mt-24 mx-auto relative z-[2] sm:mx-0 sm:mt-10"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)}
         disabled={Boolean(!collaboratorsAmount)}
       >
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }
