@@ -5,45 +5,64 @@ import {
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const PassedQuestions = ({ className = '' }) => {
-  const { tab, collaborators, governanceType, setTab } = useContractBuilderProvider()
+  const {
+    tab,
+    collaborators,
+    governanceType,
+    setTab,
+    setCurrentCollaborator,
+    setCollaborators,
+    currentCollaborator
+  } = useContractBuilderProvider()
   const intoClass = 'block text-left text-grey tracking-[-0.05rem] font-share sm:text-xl sm:leading-[33px]'
 
-  const handleClick = (tab: CONTRACT_BUILDER_STEP) => () => {
+  const handleTab = (tab: CONTRACT_BUILDER_STEP) => () => {
     switch (tab) {
       case CONTRACT_BUILDER_STEP.SONG_NAME:
         return setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
       case CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT:
         return setTab(CONTRACT_BUILDER_STEP.SONG_NAME)
+      case CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT:
+        return setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)
     }
+  }
+  const handleCollaborator = (index: number) => () => {
+    setCurrentCollaborator(index)
+    setCollaborators(items => items.slice(0, index + 1))
+    setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)
   }
   return (
     <div className={className}>
       <h3 className="font-rubik text-xs sm:hidden">Tap Question to Return:</h3>
       {tab >= CONTRACT_BUILDER_STEP.SONG_NAME && (
-        <button onClick={handleClick(CONTRACT_BUILDER_STEP.SONG_NAME)} className={intoClass}>
+        <button onClick={handleTab(CONTRACT_BUILDER_STEP.SONG_NAME)} className={intoClass}>
           What type of splits contract would you like to create?
         </button>
       )}
+
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
-        <button onClick={handleClick(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)} className={intoClass}>
+        <button onClick={handleTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)} className={intoClass}>
           What is the name of the song?
         </button>
       )}
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
-        <p className={intoClass}>
-          How many collaborators contributed to writing the song?
-        </p>
-      )}
-      {tab >= CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE && (
         <>
-          {collaborators.map((_, i) => (
-            <p
-              className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]"
-              key={i}
-            >
-              Collaborator {i + 1}
-            </p>
-          ))}
+          <button onClick={handleTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)} className={intoClass}>
+            How many collaborators contributed to writing the song?
+          </button>
+
+          {collaborators.map((_, i) => {
+            if (tab >= CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE || i < currentCollaborator) {
+              return (
+                <button
+                  key={`collaborator-${i}`}
+                  onClick={handleCollaborator(i)}
+                  className={intoClass}>
+                  Collaborator {i + 1}
+                </button>
+              )
+            }
+          })}
         </>
       )}
       {tab >= CONTRACT_BUILDER_STEP.VOTE && (
