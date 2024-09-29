@@ -44,13 +44,9 @@ const LandingPage = () => {
       </Link>
 
       <div className='mt-14 space-y-4 text-center sm:hidden'>
-        <Link href='#' className="text-link font-share underline">
-          whose this made for?
-        </Link>
+        <ReadHereLink link="#" label='whose this made for?' className='pt-0' />
         <h1 className='text-sm font-rubik'>or</h1>
-        <Link href='#' className=" text-link font-share underline">
-          need more info?
-        </Link>
+        <ReadHereLink link="#" label='need more info?' className='pt-0' />
       </div>
     </>
   )
