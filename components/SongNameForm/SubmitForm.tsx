@@ -8,26 +8,26 @@ const SubmitForm = () => {
 
   return (
     <>
-      <div className="absolute size-full flex flex-col justify-center z-[1]">
-        <PassedQuestions />
-        <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <div className="flex flex-col justify-center z-[1] sm:absolute sm:size-full">
+        <PassedQuestions className='hidden sm:block' />
+        <p className="tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
           What is the name of the song?
         </p>
         <input
           type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[350px]"
+          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 sm:mt-6 sm:max-w-[350px]"
           placeholder="The One"
           onChange={(e) => setSongName(e.target.value)}
           value={songName}
         />
       </div>
       <Button
-        className="mt-10 relative z-[2]"
+        className="mt-24 mx-auto relative z-[2] sm:mx-0 sm:mt-10"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)}
-        disabled={Boolean(!songName)}
-      >
+        disabled={Boolean(!songName)}>
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }
