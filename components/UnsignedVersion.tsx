@@ -1,7 +1,7 @@
 const UnsignedVersion = () => {
   return (
     <div
-      className="fixed w-screen h-screen left-0 top-0 z-[-1] p-10 text-black text-lg flex flex-col justify-center pointer-events-none"
+      className="invisible fixed w-screen h-screen left-0 top-0 z-[-1] p-10 text-black text-lg flex flex-col justify-center pointer-events-none"
       id="unsigned-version"
     >
       <p className="font-rubik text-6xl text-center">Unsigned Version</p>

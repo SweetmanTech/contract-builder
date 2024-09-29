@@ -3,11 +3,11 @@ import SubmitForm from './SubmitForm'
 
 const Vote = () => {
   return (
-    <div className="size-full grid grid-cols-12 gap-6">
-      <div className="col-span-6 flex flex-col justify-end relative">
+    <div className="size-full grid grid-cols-12 sm:gap-6">
+      <div className="col-span-12 relative flex flex-col sm:col-span-6 sm:justify-end">
         <SubmitForm />
       </div>
-      <div className="col-span-6 flex flex-col justify-center gap-3">
+      <div className="col-span-6 hidden flex-col justify-center gap-3 sm:flex">
         <Descriptions />
       </div>
     </div>
