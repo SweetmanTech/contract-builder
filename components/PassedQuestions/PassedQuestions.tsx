@@ -24,6 +24,9 @@ const PassedQuestions = ({ className = '' }) => {
         return setTab(CONTRACT_BUILDER_STEP.SONG_NAME)
       case CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT:
         return setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)
+      case CONTRACT_BUILDER_STEP.VOTE:
+      case CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN:
+        return setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)
     }
   }
   const handleCollaborator = (index: number) => () => {
@@ -39,7 +42,6 @@ const PassedQuestions = ({ className = '' }) => {
           What type of splits contract would you like to create?
         </button>
       )}
-
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
         <button onClick={handleTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)} className={intoClass}>
           What is the name of the song?
@@ -65,15 +67,22 @@ const PassedQuestions = ({ className = '' }) => {
           })}
         </>
       )}
-      {tab >= CONTRACT_BUILDER_STEP.VOTE && (
+      {(tab >= CONTRACT_BUILDER_STEP.VOTE || tab >= CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN) && (
+        <button onClick={handleTab(CONTRACT_BUILDER_STEP.VOTE)} className={intoClass}>
+          Vote or designate admin?
+        </button>
+      )}
+      {tab >= CONTRACT_BUILDER_STEP.SUCCESS && (
         <>
           {governanceType === GOVERNANCE_TYPE.VOTE && (
-            <p className={intoClass}>Vote or designate admin?</p>
+            <button onClick={() => setTab(CONTRACT_BUILDER_STEP.VOTE)} className={intoClass}>
+              What percentage of ownership...?
+            </button>
           )}
           {governanceType === GOVERNANCE_TYPE.DESIGNATE_ADMIN && (
-            <p className={intoClass}>
+            <button onClick={() => setTab(CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN)} className={intoClass}>
               Do you want to designate an administrator?
-            </p>
+            </button>
           )}
         </>
       )}
