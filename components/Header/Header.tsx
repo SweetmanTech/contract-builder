@@ -10,7 +10,7 @@ const Header = () => {
   const isBuiler = pathname.includes('/contract-builder')
 
   return (
-    <header className={`pt-4 pb-2 fixed top-0 inset-x-0 flex border-b border-white-light bg-black sm:pr-6 ${isBuiler ? "pr-4 justify-between items-center" : "flex-col-reverse items-center sm:flex-row sm:justify-between"}`}>
+    <header className={`sticky z-10 pt-4 pb-2 top-0 inset-x-0 flex border-b border-white-light bg-black sm:pr-6 ${isBuiler ? "pr-4 justify-between items-center" : "flex-col-reverse items-center sm:flex-row sm:justify-between"}`}>
       <Link href='/'>
         <Image
           className='sm:w-[190px] sm:h-[63px]'

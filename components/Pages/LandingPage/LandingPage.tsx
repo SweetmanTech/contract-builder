@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Question from './Question'
 import { questions } from './questions'
 import ReadHereLink from '@/components/ReadHereLink'
-import Image from 'next/image'
 
 const LandingPage = () => {
 
@@ -53,16 +52,6 @@ const LandingPage = () => {
           need more info?
         </Link>
       </div>
-
-      {/* <span >mesa</span> */}
-      <Image
-        src='/images/logo-text.svg'
-        alt='mesa logo'
-        aria-hidden
-        width={52}
-        height={26}
-        className='absolute bottom-0 left-1/2 -translate-x-1/2 sm:hidden'
-      />
     </>
   )
 }
