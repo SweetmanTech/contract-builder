@@ -9,32 +9,32 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <PassedQuestions className='hidden sm:block' />
+      <p className="text-white tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
         {`What is the name(s) of the designated administrator?`}
       </p>
       <fieldset className="mt-6">
         <p className="font-share text-base/4 pb-2">{`Legal Name (First Last) | Separate names by commas`}</p>
         <input
           type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2"
+          className="w-full max-w-[500px] !outline-none font-rubik rounded-md border-white border !bg-transparent p-2"
           placeholder="NATE REID"
           onChange={(e) => setAdminName(e.target.value)}
           value={adminName}
         />
       </fieldset>
       <ReadHereLink
-        link="/"
+        link="#"
         label="Still not clear about designating an admin? read here."
-        className="pt-10"
+        className="pt-5 sm:pt-10"
       />
       <Button
-        className="mt-10 relative z-[2]"
+        className="mt-10 mx-auto sm:mx-0"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
-        disabled={Boolean(!adminName)}
-      >
+        disabled={Boolean(!adminName)}>
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }

@@ -11,50 +11,50 @@ const CollaboratorValues = () => {
   } = useContractBuilderProvider()
 
   return (
-    <section className="flex mt-6 flex-col gap-4">
-      <fieldset>
-        <p className="font-share text-base/4 pb-1">{`Legal Name (First Last)`}</p>
+    <fieldset className="mt-6 max-w-[550px] space-y-4">
+      <label className='block'>
+        <span className="block pb-1 font-share text-base/4">Legal Name (First Last)</span>
         <input
           type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2"
+          className="w-full rounded-md border border-white !bg-transparent p-2 font-rubik !outline-none"
           placeholder="Patrick Kielb"
           onChange={(e) => setLegalName(e.target.value)}
           value={collaborators[currentCollaborator].legalName}
         />
-      </fieldset>
-      <fieldset>
-        <p className="font-share text-base/4 pb-1">{`Email (example@mesawallet.io)`}</p>
+      </label>
+      <label className='block'>
+        <span className="block pb-1 font-share text-base/4">Email (example@mesawallet.io)</span>
         <input
           type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2"
+          className="w-full rounded-md border border-white !bg-transparent p-2 font-rubik !outline-none"
           placeholder="MANAGEMENT@PICERECORDS.COM"
           onChange={(e) => setEmail(e.target.value)}
           value={collaborators[currentCollaborator].email}
         />
-      </fieldset>
-      <div className="flex gap-2">
-        <fieldset>
-          <p className="font-share text-base/4 pb-1">{`Type of contribution`}</p>
+      </label>
+      <div className="flex items-end gap-2">
+        <label className='block'>
+          <span className="block pb-1 font-share text-base/4">Type of contribution</span>
           <input
             type="text"
-            className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[200px]"
-            placeholder="MANAGEMENT@PICERECORDS.COM"
+            className="w-full max-w-[240px] rounded-md border border-white !bg-transparent p-2 font-rubik !outline-none"
+            placeholder="MUSIC"
             onChange={(e) => setTypeOfContribution(e.target.value)}
             value={collaborators[currentCollaborator].typeOfcontribution}
           />
-        </fieldset>
-        <fieldset>
-          <p className="font-share text-base/4 pb-1">{`Split (%)`}</p>
+        </label>
+        <label className='block'>
+          <span className="block pb-1 font-share text-base/4">Split (%)</span>
           <input
             type="number"
-            className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[100px]"
-            placeholder="MANAGEMENT@PICERECORDS.COM"
+            className="max-w-[100px] rounded-md border border-white !bg-transparent p-2 font-rubik !outline-none"
+            placeholder="0"
             onChange={(e) => setSplit(parseInt(e.target.value, 10))}
             value={collaborators[currentCollaborator].split}
           />
-        </fieldset>
+        </label>
       </div>
-    </section>
+    </fieldset>
   )
 }
 

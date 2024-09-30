@@ -11,8 +11,8 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <PassedQuestions className='hidden sm:block' />
+      <p className="text-white tracking-[-0.05rem] font-share sm:pt-6 sm:text-3xl">
         What percentage of ownership of the {getSplitTypeText(splitType)}{' '}
         agreement is necessary to make business decisions about the song
         composition?
@@ -28,17 +28,18 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink
-        link="/"
+        link="#"
         label="Still not clear about voting? read here."
         className="pt-3"
       />
       <Button
-        className="mt-10 relative z-[2]"
+        className="mt-10 mx-auto sm:mx-0"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
         disabled={Boolean(!votePercentage)}
       >
         SUBMIT
       </Button>
+      <PassedQuestions className='mt-8 sm:hidden' />
     </>
   )
 }
