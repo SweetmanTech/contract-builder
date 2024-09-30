@@ -98,7 +98,7 @@ const ContractBuilder5Admin = () => {
       <footer className="flex flex-col gap-6 row-start-3">
         <a
           className="items-center gap-2 hover:underline hover:underline-offset-4"
-          href="moreInfoAdmin"
+          href="/help/moreInfoAdmin"
         >
           Still not clear about designating an admin? read here.
         </a>

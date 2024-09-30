@@ -69,7 +69,7 @@ const ContractBuilder1 = () => {
       <footer className="flex flex-col gap-6 row-start-3">
         <a
           className="items-center gap-2 hover:underline hover:underline-offset-4"
-          href="moreInfoQ1"
+          href="/help/moreInfoQ1"
         >
           If confused, read here
         </a>

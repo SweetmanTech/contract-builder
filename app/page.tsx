@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function Home() {
@@ -31,11 +30,13 @@ export default function Home() {
       <footer className="flex flex-col gap-6 row-start-3">
         <a
           className="items-center gap-2 hover:underline hover:underline-offset-4"
-          href="/moreInfoLanding"
+          href="/help/moreInfoLanding"
         >
           If confused, read here
         </a>
-        <button onClick={() => router.push('/disclaimer')}>GET STARTED</button>
+        <button onClick={() => router.push('/help/disclaimer')}>
+          GET STARTED
+        </button>
       </footer>
     </div>
   )

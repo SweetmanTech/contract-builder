@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 
@@ -100,7 +99,7 @@ const ContractBuilder5Vote = () => {
       <footer className="flex flex-col gap-6 row-start-3">
         <a
           className="items-center gap-2 hover:underline hover:underline-offset-4"
-          href="moreInfoVoting"
+          href="/help/moreInfoVoting"
         >
           Still not clear about voting? read here.
         </a>

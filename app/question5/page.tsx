@@ -4,7 +4,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
-import MoreInfoQ5 from '../moreInfoQ6/page'
 
 const ContractBuilder4 = () => {
   const router = useRouter()
@@ -101,7 +100,7 @@ const ContractBuilder4 = () => {
         <a
           className="items-center gap-2 hover:underline hover:underline-offset-4"
           href="#"
-          onClick={() => router.push('/moreInfoQ6')}
+          onClick={() => router.push('/help/moreInfoQ6')}
         >
           Confused with this bit too? read here.
         </a>
