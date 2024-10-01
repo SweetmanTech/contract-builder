@@ -4,7 +4,18 @@
 
 @import url("./fonts.css");
 
+:root {
+  --base_size: calc(12vw / 3.75);
+}
+
+@media screen and (min-width: 640px) {
+  :root {
+    --base_size: 1rem;
+  }
+}
+
 html {
+  font-size: var(--base_size);
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility;
   font-weight: 400;
@@ -45,7 +56,7 @@ input[type='number'] {
 }
 
 .text-outline {
-  word-spacing: -30px;
+  word-spacing: -1.875rem;
   -webkit-text-stroke: 1px #AC4444;
   color: transparent;
   font-size: 2.6875rem;
