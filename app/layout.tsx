@@ -11,20 +11,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="overflow-hidden relative">
+      <body className="flex flex-col min-h-max h-screen overflow-x-hidden bg-[url('/images/background.png')] bg-[length:580px] bg-[-200px_125%] bg-no-repeat sm:bg-[length:608px] sm:bg-[calc(100%+50px)_calc(100%+100px)]">
+        <Providers>
+          <Header />
+          <main className="grow relative mt-7 px-14">{children}</main>
+        </Providers>
         <Image
-          src="/images/background.png"
-          alt=""
-          width={928}
-          height={928}
-          className="absolute right-[-200px] bottom-[-320px] z-[1] pointer-events-none"
+          src='/images/logo-text.svg'
+          alt='mesa logo'
+          aria-hidden
+          width={52}
+          height={26}
+          className='mt-4 mx-auto sm:hidden'
         />
-        <main className="pt-[180px] px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 relative z-[1000]">
-          <Providers>
-            <Header />
-            {children}
-          </Providers>
-        </main>
       </body>
     </html>
   )
