@@ -19,7 +19,7 @@ const Disclaimer = () => {
         your usage, or apply the law to the facts of your situation.
         <br />
         <br />
-        If you don’t understand the terms or consequences of the draft we
+        If you don`&apos`t understand the terms or consequences of the draft we
         provide, or need legal advice for a specific problem, we encourage you
         to consult with a licensed attorney. The draft provided by this service
         is not a substitute for legal advice from a qualified attorney licensed
@@ -30,7 +30,7 @@ const Disclaimer = () => {
         are interested in learning more about how the MESA system can help you,
         please get in touch at contact@mesawallet.io.
       </p>
-      <button onClick={() => push('/question1')} className="float-right">
+      <button onClick={() => push('/SplitTypes')} className="float-right">
         Proceed -&gt;
       </button>
     </div>

@@ -16,17 +16,17 @@ const MoreInfoQ5 = () => {
       </p>
       <a
         className="items-center gap-2 hover:underline hover:underline-offset-4"
-        onClick={() => push('/moreInfoVoting')}
+        onClick={() => push('/MoreInfoVoting')}
       >
         Still not clear about voting? read here.
       </a>
       <a
         className="items-center gap-2 hover:underline hover:underline-offset-4"
-        onClick={() => push('/moreInfoAdmin')}
+        onClick={() => push('/MoreInfoAdmin')}
       >
         Still not clear about designating an admin? read here.
       </a>
-      <button onClick={() => push('/question4')} className="popup_button">
+      <button onClick={() => push('/GovernanceTypes')} className="popup_button">
         x
       </button>
     </div>

@@ -40,9 +40,9 @@ const MoreInfoQ1 = () => {
       <p>
         Both rights are crucial for monetizing and legally protecting music. The
         copyright controls the use of a specific recording, while publishing
-        rights control the use of the song's composition.
+        rights control the use of the song`&apos`s composition.
       </p>
-      <button onClick={() => push('/question1')} className="popup_button">
+      <button onClick={() => push('/SplitTypes')} className="popup_button">
         x
       </button>
     </div>

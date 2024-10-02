@@ -11,8 +11,8 @@ const MoreInfoLanding = () => {
         Self-publishing and self-distributing your music means that you, as an
         artist or as a part of a group of creatives, take full control over the
         song writing, production, release, and distribution of your work without
-        relying on traditional publishers or music labels. Here's a technical
-        breakdown of what that entails:
+        relying on traditional publishers or music labels. Here`&apos`s a
+        technical breakdown of what that entails:
       </p>
       <ol>
         <li>
