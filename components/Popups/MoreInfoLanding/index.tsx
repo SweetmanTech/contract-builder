@@ -7,6 +7,9 @@ const MoreInfoLanding = () => {
   const { push } = useRouter()
   return (
     <div className="popup flex flex-col">
+      <button onClick={() => push('/')} className="popup_button text-start">
+        x
+      </button>
       <p>
         Self-publishing and self-distributing your music means that you, as an
         artist or as a part of a group of creatives, take full control over the
@@ -59,9 +62,6 @@ const MoreInfoLanding = () => {
         how to handle these aspects, hire professionals or use online tools to
         assist you.
       </p>
-      <button onClick={() => push('/')} className="popup_button">
-        x
-      </button>
     </div>
   )
 }

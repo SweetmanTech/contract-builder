@@ -7,6 +7,12 @@ const MoreInfoQ1 = () => {
   const { push } = useRouter()
   return (
     <div className="popup flex-col">
+      <button
+        onClick={() => push('/contract-builder')}
+        className="popup_button"
+      >
+        x
+      </button>
       <p>
         In music industry, there are two primary types of works: Musical
         Compositions and Sound Recordings These two kinds of works have their
@@ -42,9 +48,6 @@ const MoreInfoQ1 = () => {
         copyright controls the use of a specific recording, while publishing
         rights control the use of the song`&apos`s composition.
       </p>
-      <button onClick={() => push('/SplitTypes')} className="popup_button">
-        x
-      </button>
     </div>
   )
 }

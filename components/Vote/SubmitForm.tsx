@@ -28,7 +28,7 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink
-        link="/"
+        link="/popups/moreInfoVoting"
         label="Still not clear about voting? read here."
         className="pt-3"
       />

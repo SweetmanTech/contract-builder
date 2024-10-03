@@ -30,7 +30,7 @@ const Disclaimer = () => {
         are interested in learning more about how the MESA system can help you,
         please get in touch at contact@mesawallet.io.
       </p>
-      <button onClick={() => push('/SplitTypes')} className="float-right">
+      <button onClick={() => push('/contract-builder')} className="float-right">
         Proceed -&gt;
       </button>
     </div>

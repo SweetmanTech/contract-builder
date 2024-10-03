@@ -30,7 +30,7 @@ const SubmitForm = () => {
           label="Both"
         />
       </fieldset>
-      <ReadHereLink link="/" />
+      <ReadHereLink link="/popups/moreInfoQ1" />
       <Button
         className="mt-10"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}

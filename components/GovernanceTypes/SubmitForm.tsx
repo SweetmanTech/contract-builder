@@ -40,7 +40,7 @@ const SubmitForm = () => {
           label="Designate admin"
         />
       </fieldset>
-      <ReadHereLink link="/" label="Confused? read here." />
+      <ReadHereLink link="/popups/moreInfoQ6" label="Confused? read here." />
       <Button className="mt-10" onClick={handleSubmit}>
         SUBMIT
       </Button>

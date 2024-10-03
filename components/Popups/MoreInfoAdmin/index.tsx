@@ -8,7 +8,7 @@ export const AdminInfo = () => {
 
   return (
     <div>
-      <button onClick={() => push(`/GovernanceTypes`)}>x</button>
+      <button onClick={() => push(`/contract-builder`)}>x</button>
       <p>
         In the context of music intellectual property (IP), an administrator is
         responsible for managing the rights and revenues associated with a

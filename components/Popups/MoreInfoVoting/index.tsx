@@ -8,7 +8,7 @@ export const VotingInfo = () => {
 
   return (
     <div>
-      <button onClick={() => push(`/GovernanceTypes`)}>x</button>
+      <button onClick={() => push(`/contract-builder`)}>x</button>
       <p>
         When multiple people own a piece of intellectual property (IP), such as
         a song, the governance of that IP—meaning how decisions are made and
