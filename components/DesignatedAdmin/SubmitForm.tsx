@@ -24,7 +24,7 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink
-        link="/"
+        link="/popups/moreInfoAdmin"
         label="Still not clear about designating an admin? read here."
         className="pt-10"
       />

@@ -27,11 +27,11 @@ const LandingPage = () => {
           ))}
         </div>
       </section>
-      <ReadHereLink link="/" />
+      <ReadHereLink link="/popups/moreInfoLanding" />
       <button
         type="button"
         className="bg-grey-dark border-2 border-danger font-rubik text-lg rounded-lg py-2 px-6 mt-10"
-        onClick={() => push('/contract-builder')}
+        onClick={() => push('/popups/disclaimer')}
       >
         GET STARTED
       </button>
