@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import url("./fonts.css");
-
 html {
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility;
@@ -42,4 +41,9 @@ input[type='number'] {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.OwnMusic
+{
+  -webkit-text-stroke: 1px #AC4444;
 }
