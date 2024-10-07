@@ -1,38 +1,35 @@
-"use client"
-import Header from '@/components/Header'
-import Providers from '@/providers/Providers'
-import React from 'react'
-import '@/styles/global.css'
-import Image from 'next/image'
-import { checkWidth } from '@/components/WindowWidthComponent'
-
-
+"use client";
+import Header from '@/components/Header';
+import Providers from '@/providers/Providers';
+import '@/styles/global.css';
+import Image from 'next/image';
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
-  const windowWidth = checkWidth()
   return (
     <html lang="en">
       <body className="overflow-hidden relative">
+        {/* Background Images */}
         <Image
           src="/images/background.png"
           alt=""
           width={928}
           height={100}
-          className=" hidden md:block absolute md:right-[-200px] sm:bottom-[-320px] z-[1] right-[10px] bottom-[-100px] pointer-events-none"
+          className="hidden md:block absolute right-[10px] md:right-[-200px] bottom-[-100px] sm:bottom-[-320px] z-[1] pointer-events-none"
         />
-         <Image
+        <Image
           src="/images/mesa vectorized logo-10 22.png"
           alt=""
-          width={928}
+          width={600}
           height={100}
-          className="block md:hidden absolute md:left-[0px] sm:bottom-[0px] z-[1] left-[-40px] bottom-[0px] pointer-events-none "
+          className="block md:hidden absolute left-[-40px] bottom-0 md:left-0 z-[1] pointer-events-none"
         />
-        <main className={`pt-[180px] ${windowWidth !== null && windowWidth < 402 ? "px-8" :"px-14"} h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 relative z-[1000]`}>
+
+        {/* Main Content */}
+        <main className="pt-[180px] px-8 md:px-14 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 relative z-[1000]">
           <Providers>
             <Header />
             {children}
@@ -40,5 +37,5 @@ export default function RootLayout({
         </main>
       </body>
     </html>
-  )
+  );
 }

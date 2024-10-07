@@ -1,46 +1,34 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import BuilderMarks from './BuilderMarks'
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import BuilderMarks from './BuilderMarks';
 
 const Header = () => {
-  const pathname = usePathname()
-  const isBuilder = pathname.includes('/contract-builder')
+  const isBuilder = usePathname().includes('/contract-builder');
 
   return (
-    <>
- {/* Mobile Header */}
-<header className="block bg-black md:hidden fixed w-full px-6   pb-2 pt-8 flex items-center flex-col justify-center items-center left-0 top-0 border-b border-white-light">
-  
-  <div className='flex flex-col gap-2'>
-    <div>
-    <p className="uppercase font-rubik text-2xl">Music Splits</p>
-    <p className="font-share text-center">Contract Builder</p>
-    </div>
-  {/* {isBuilder && <BuilderMarks />} */}
-    <Link href={'/'} className='flex items-center justify-center ' >
-    <Image src="/images/logo-dark.svg" alt="Logo" width={129} height={27} />
-  </Link>
-  </div>
-</header>
+    <header className="fixed w-full px-6 min-h-[87px] pt-8 md:pt-0 flex flex-col md:flex-row md:justify-between items-center top-0 left-0 border-b border-white-light bg-black z-50">
+      {/* Logo Section */}
+      <Link href="/" className="md:order-1 order-3">
+        <Image src="/images/logo-dark.svg" alt="Logo" width={190} height={63} />
+      </Link>
 
-{/* Desktop Header */}
-<header className="hidden md:flex fixed w-full px-6 min-h-[145px] justify-between items-center left-0 top-0 border-b border-white-light">
-  <Link href={'/'}>
-    <Image src="/images/logo-dark.svg" alt="Logo" width={190} height={63} />
-  </Link>
-  {isBuilder && <BuilderMarks />}
-  <div>
-    <p className="uppercase font-rubik text-2xl text-[24px]">Music Splits</p>
-    <p className="font-share text-center text-[15px]">Contract Builder</p>
-  </div>
-</header>
+      {/* Text Section */}
+      <div className="order-1 md:order-3 text-center mb-1 md:mb-0">
+        <p className="uppercase font-rubik text-2xl md:text-3xl">Music Splits</p>
+        <p className="font-share text-base md:text-lg tracking-wider">Contract Builder</p>
+      </div>
 
+      {/* Conditional Rendering of BuilderMarks */}
+      {isBuilder && (
+        <div className="order-2 hidden md:block">
+          <BuilderMarks />
+        </div>
+      )}
+    </header>
+  );
+};
 
-    </>
-  )
-}
-
-export default Header
+export default Header;

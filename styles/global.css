@@ -46,4 +46,8 @@ input[type='number'] {
 .OwnMusic
 {
   -webkit-text-stroke: 1px #AC4444;
+  color: transparent;
+}
+.lineHeight-1{
+line-height: 1;
 }
