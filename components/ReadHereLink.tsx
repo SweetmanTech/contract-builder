@@ -53,9 +53,9 @@ const ReadHereLink = ({
 
         <div className="fixed inset-0 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
-            <Dialog.Panel className="rounded border bg-black max-w-2xl p-4 md:p-16 font-roboto relative">
+            <Dialog.Panel className="rounded border bg-black max-w-2xl p-4 sm:p-16 font-roboto relative">
               <Cross
-                className="absolute top-6 left-6 cursor-pointer"
+                className="block mb-4 sm:mb-0 sm:absolute top-6 left-6 cursor-pointer"
                 onClick={() => setIsOpen(false)}
               />
               <Dialog.Description>
