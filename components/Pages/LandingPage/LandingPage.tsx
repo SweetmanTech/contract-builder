@@ -73,6 +73,7 @@ const LandingPage = () => {
         <ReadHereLink className="text-[15px] text-center" link="/" />
       </div>
     </div>
+
   )
 }
 
