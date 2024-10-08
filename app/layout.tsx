@@ -23,6 +23,7 @@ export default function RootLayout({
         />
 
         <main className="relative z-10 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 px-8 md:px-14 pt-[180px]">
+
           <Providers>
             <Header />
             {children}
