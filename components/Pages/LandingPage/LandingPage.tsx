@@ -55,13 +55,6 @@ const LandingPage = () => {
             <Question key={question} question={question} />
           ))}
         </div>
-
-        <div className="md:flex hidden mt-6">
-          <ReadHereLink
-            className="text-[15px] md:text-[24px] text-center"
-            link="/"
-          />
-        </div>
       </section>
       <ReadHereLink open={() => setIsInfoOpen(true)} />
       <button
