@@ -3,7 +3,6 @@ import CheckboxLabel from '../CheckboxLabel'
 import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
-import { useEffect } from 'react'
 
 const SubmitForm = () => {
   const { splitType, setSplitType, setTab } = useContractBuilderProvider();
