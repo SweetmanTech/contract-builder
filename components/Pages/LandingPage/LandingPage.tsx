@@ -160,7 +160,7 @@ const LandingPage = () => {
           <span>Proceed</span> <ArrowRightIcon className="size-4 ml-2" />
         </button>
       </InfoDialog>
-    </>
+    </div>
   )
 }
 
