@@ -1,4 +1,8 @@
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
+
 const Descriptions = () => {
+  const { songName } = useContractBuilderProvider()
+
   return (
     <>
       <p className="font-roboto_thin text-2xl">
@@ -11,7 +15,9 @@ const Descriptions = () => {
       <p className="font-roboto text-2xl">
         The contracting parties have collaborated in the authorship and
         composition of the musical work titled{' '}
-        <span className="text-danger-dark font-roboto_bold">The One.</span>
+        <span className="text-danger-dark font-roboto_bold">
+          {songName || 'The One'}.
+        </span>
       </p>
     </>
   )
