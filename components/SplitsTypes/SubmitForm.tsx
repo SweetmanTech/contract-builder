@@ -3,13 +3,14 @@ import CheckboxLabel from '../CheckboxLabel'
 import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
+import { useEffect } from 'react'
 
 const SubmitForm = () => {
-  const { splitType, setSplitType, setTab } = useContractBuilderProvider()
+  const { splitType, setSplitType, setTab } = useContractBuilderProvider();
 
   return (
     <>
-      <p className="font-share text-3xl tracking-[-0.05rem]">
+      <p className="font-share md:text-3xl tracking-[-0.05rem] text-[20px]">
         What type of splits contract <br />
         would you like to create?
       </p>
@@ -30,12 +31,12 @@ const SubmitForm = () => {
           label="Both"
         />
       </fieldset>
-      <ReadHereLink link="/" />
+      <ReadHereLink link="/" className="text-[15px] md:text-[24px]" />
       <Button
-        className="mt-10"
+        className="mt-20 mb-0 mx-auto md:mx-[unset] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475]  border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
       >
-        SUBMIT
+       Next
       </Button>
     </>
   )

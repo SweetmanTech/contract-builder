@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header';
 import Providers from '@/providers/Providers';
 import '@/styles/global.css';
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Providers>
             <Header />
             {children}
+            <Footer/>
           </Providers>
         </main>
       </body>
