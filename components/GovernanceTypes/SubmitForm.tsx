@@ -7,8 +7,12 @@ import {
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
+import { useState } from 'react'
+import InfoDialog from '../InfoDialog'
+import { GovernanceTypesInfo } from '../InfoDialogsContent'
 
 const SubmitForm = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { setTab, governanceType, setGovernanceType } =
     useContractBuilderProvider()
 
@@ -40,10 +44,13 @@ const SubmitForm = () => {
           label="Designate admin"
         />
       </fieldset>
-      <ReadHereLink link="/" label="Confused? read here." />
+      <ReadHereLink label="Confused? read here." open={() => setIsOpen(true)} />
       <Button className="mt-10" onClick={handleSubmit}>
         SUBMIT
       </Button>
+      <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
+        <GovernanceTypesInfo />
+      </InfoDialog>
     </>
   )
 }
