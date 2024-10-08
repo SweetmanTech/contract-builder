@@ -1,4 +1,5 @@
 const Descriptions = () => {
+  const date = new Date()
   return (
     <>
       <p className="font-roboto_thin text-2xl">
@@ -10,7 +11,9 @@ const Descriptions = () => {
       </p>
       <p className="font-roboto text-2xl pt-6">
         This agreement is entered into on{' '}
-        <span className="font-rubik text-danger-dark">09/17/2024</span>
+        <span className="font-rubik text-danger-dark">
+          {date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}
+        </span>
       </p>
     </>
   )
