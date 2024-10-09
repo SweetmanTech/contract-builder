@@ -7,7 +7,7 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 const PassedQuestions = () => {
   const { tab, collaborators, governanceType } = useContractBuilderProvider()
   const intoClass =
-    'text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]'
+    'text-grey md:text-xl text-[20px] tracking-[-0.05rem] font-share leading-[33px]'
 
   return (
     <>

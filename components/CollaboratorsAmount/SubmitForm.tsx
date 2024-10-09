@@ -9,24 +9,30 @@ const SubmitForm = () => {
 
   return (
     <>
-      <div className="absolute size-full flex flex-col justify-center z-[1]">
-        <PassedQuestions />
-        <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <div className=" size-full flex flex-col md:justify-center justify-start z-[1]">
+      <div className="hidden md:block">
+          <PassedQuestions />
+        </div>
+        <p className="text-white md:text-3xl tracking-[-0.05rem] font-share pt-6 text-[20px]">
           How many collaborators contributed to writing the song?
         </p>
-        <input
-          type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
+      
+         <label htmlFor="#songName" className="mt-6 text-[#696969] text-[15px] ">
+          <input
+            id="songName"
+            type="text"
+            className="  !outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
           placeholder="2"
-          onChange={(e) => setCollaboratorsAmount(parseInt(e.target.value, 10))}
-          value={collaboratorsAmount}
-        />
+            onChange={(e) =>  setCollaboratorsAmount(parseInt(e.target.value, 10))}
+            value={collaboratorsAmount}
+          />
+        </label>
       </div>
+
       <Button
-        className="mt-10 relative z-[2]"
+        className="mb-25 mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)}
-        disabled={Boolean(!collaboratorsAmount)}
-      >
+        disabled={Boolean(!collaboratorsAmount)}>
         SUBMIT
       </Button>
     </>

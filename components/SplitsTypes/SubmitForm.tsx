@@ -8,12 +8,14 @@ import InfoDialog from '../InfoDialog'
 import { SplitsTypesInfo } from '../InfoDialogsContent'
 
 const SubmitForm = () => {
+
   const { splitType, setSplitType, setTab } = useContractBuilderProvider()
   const [isOpen, setIsOpen] = useState(false)
 
+
   return (
     <>
-      <p className="font-share text-3xl tracking-[-0.05rem]">
+      <p className="font-share md:text-3xl tracking-[-0.05rem] text-[20px]">
         What type of splits contract <br />
         would you like to create?
       </p>
@@ -34,12 +36,14 @@ const SubmitForm = () => {
           label="Both"
         />
       </fieldset>
-      <ReadHereLink open={() => setIsOpen(true)} />
+
+      <ReadHereLink className="text-[15px] md:text-[24px]" open={() => setIsOpen(true)} />
+
       <Button
-        className="mt-10"
+        className="mt-20 mb-0 mx-auto md:mx-[unset] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475]  border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
       >
-        SUBMIT
+       Next
       </Button>
       <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
         <SplitsTypesInfo />

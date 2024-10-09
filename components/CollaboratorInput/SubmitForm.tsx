@@ -26,12 +26,12 @@ const SubmitForm = () => {
   return (
     <>
       <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6  hidden md:block">
         Collaborator {currentCollaborator + 1}:
       </p>
       <CollaboratorValues />
       <Button
-        className="mt-12"
+        className="mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
         onClick={handleSubmit}
         disabled={
           Boolean(!legalName) ||
