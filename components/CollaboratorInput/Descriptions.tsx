@@ -22,25 +22,25 @@ const Descriptions = () => {
       </p>
       <p className="font-roboto text-2xl">
         Legal Name:{' '}
-        <span className="text-danger-dark">
+        <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].legalName}
         </span>
       </p>
       <p className="font-roboto text-2xl">
         Email Address:{' '}
-        <span className="text-danger-dark">
+        <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].email}
         </span>
       </p>
       <p className="font-roboto text-2xl">
         Contribution:{' '}
-        <span className="text-danger-dark">
+        <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfcontribution}
         </span>
       </p>
       <p className="font-roboto text-2xl">
         Ownership percentage:{' '}
-        <span className="text-danger-dark">
+        <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].split}
         </span>
       </p>

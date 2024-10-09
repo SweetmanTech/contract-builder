@@ -1,10 +1,13 @@
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import Question from './Question'
 import { questions } from './questions'
 import ReadHereLink from '@/components/ReadHereLink'
+import LandingPageInfo from './Info'
+import Disclaimer from './Disclaimer'
 
 const LandingPage = () => {
-  const { push } = useRouter()
+  const [isInfoOpen, setIsInfoOpen] = useState(false)
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false)
 
   return (
     <div className="flex flex-col items-center md:items-start">
@@ -50,30 +53,22 @@ const LandingPage = () => {
             <Question key={question} question={question} />
           ))}
         </div>
-
-        <div className="md:flex hidden mt-6">
-          <ReadHereLink
-            className="text-[15px] md:text-[24px] text-center"
-            link="/"
-          />
-        </div>
       </section>
+      <ReadHereLink open={() => setIsInfoOpen(true)} />
+      <button
+        type="button"
+        className="block bg-grey-dark border-2 border-danger font-rubik text-lg rounded-lg py-2 px-6 mt-10"
+        onClick={() => setIsDisclaimerOpen(true)}
+      >
+        GET STARTED
+      </button>
+      <LandingPageInfo isOpen={isInfoOpen} close={() => setIsInfoOpen(false)} />
 
-      <div className="mt-10 w-full flex md:justify-start justify-center">
-        <button
-          type="button"
-          className="bg-grey-dark border-2 border-danger font-rubik text-lg rounded-lg py-2 px-6 md:w-auto h-24 md:h-14 w-72"
-          onClick={() => push('/contract-builder')}
-        >
-          GET STARTED
-        </button>
-      </div>
-
-      <div className="md:hidden mt-6">
-        <ReadHereLink className="text-[15px] text-center" link="/" />
-      </div>
+      <Disclaimer
+        isOpen={isDisclaimerOpen}
+        close={() => setIsDisclaimerOpen(false)}
+      />
     </div>
-
   )
 }
 
