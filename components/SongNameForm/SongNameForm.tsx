@@ -4,7 +4,7 @@ import SubmitForm from './SubmitForm'
 const SongNameForm = () => {
   return (
     <div className="size-full grid grid-cols-12 gap-6">
-      <div className="md:col-span-6 col-span-12 flex flex-col justify-end relative">
+      <div className="md:col-span-6 col-span-12 flex flex-col md:justify-end justify-start relative">
         <SubmitForm />
       </div>
       <div className="col-span-6  flex-col justify-center gap-3 hidden md:flex">

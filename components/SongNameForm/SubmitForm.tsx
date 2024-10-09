@@ -9,7 +9,7 @@ const SubmitForm = () => {
 
   return (
     <>
-      <div className=" size-full flex flex-col md:justify-center justify-start ">
+      <div className=" md:size-full flex flex-col md:justify-center justify-start ">
         <div className="hidden md:block">
           {' '}
           <PassedQuestions />
