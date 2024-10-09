@@ -1,4 +1,4 @@
-import Descriptions from './Descriptions'
+import Descriptions from '../Descriptions'
 import SubmitForm from './SubmitForm'
 
 const CollaboratorsAmount = () => {
