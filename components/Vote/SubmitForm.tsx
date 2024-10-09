@@ -4,8 +4,12 @@ import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import getSplitTypeText from '@/lib/getSplitTypeText'
 import PassedQuestions from '../PassedQuestions'
+import { useState } from 'react'
+import InfoDialog from '../InfoDialog'
+import VoteInfo from './Info'
 
 const SubmitForm = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { setTab, setVotePercentage, votePercentage, splitType } =
     useContractBuilderProvider()
 
@@ -28,9 +32,9 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink
-        link="/"
         label="Still not clear about voting? read here."
         className="pt-3"
+        open={() => setIsOpen(true)}
       />
       <Button
         className="mt-10 relative z-[2]"
@@ -39,6 +43,9 @@ const SubmitForm = () => {
       >
         SUBMIT
       </Button>
+      <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
+        <VoteInfo />
+      </InfoDialog>
     </>
   )
 }
