@@ -8,7 +8,7 @@ const SubmitForm = () => {
   const { setTab, collaboratorsAmount, setCollaboratorsAmount } =
     useContractBuilderProvider()
 
-  const handleCollaoratorsAmount = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleCollaboratorsChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
 
     if (value === '') {
