@@ -15,8 +15,10 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+     <div className="hidden md:block">
+          <PassedQuestions />
+        </div>
+      <p className="text-white md:text-3xl text-[16px] tracking-[-0.05rem] font-share pt-6">
         What percentage of ownership of the {getSplitTypeText(splitType)}{' '}
         agreement is necessary to make business decisions about the song
         composition?
@@ -33,7 +35,7 @@ const SubmitForm = () => {
       </fieldset>
       <ReadHereLink
         label="Still not clear about voting? read here."
-        className="pt-3"
+        className="pt-3 md:text-[24px] text-[16px] text-left"
         open={() => setIsOpen(true)}
       />
       <Button
@@ -43,6 +45,12 @@ const SubmitForm = () => {
       >
         SUBMIT
       </Button>
+
+      <div className='md:hidden  block '>
+      <h4 className='font-rubik text-[13px] mt-5 '>Tap Question to Return:</h4>
+      <PassedQuestions />
+      </div>
+
       <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
         <VoteInfo />
       </InfoDialog>
