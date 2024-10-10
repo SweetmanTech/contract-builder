@@ -3,8 +3,12 @@ import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import PassedQuestions from '../PassedQuestions'
+import InfoDialog from '../InfoDialog'
+import Info from './Info'
+import { useState } from 'react'
 
 const SubmitForm = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { setTab, adminName, setAdminName } = useContractBuilderProvider()
 
   return (
@@ -26,9 +30,9 @@ const SubmitForm = () => {
         />
       </fieldset>
       <ReadHereLink
-        link="/"
         label="Still not clear about designating an admin? read here."
         className="pt-10 text-[16px] md:text-[24px]"
+        open={() => setIsOpen(true)}
       />
       <Button
  className="mb-25 mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
@@ -37,6 +41,9 @@ const SubmitForm = () => {
       >
         SUBMIT
       </Button>
+      <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
+        <Info />
+      </InfoDialog>
     </>
   )
 }
