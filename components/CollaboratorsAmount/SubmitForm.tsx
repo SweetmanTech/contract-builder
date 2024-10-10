@@ -17,7 +17,11 @@ const SubmitForm = () => {
       return
     }
 
-    if (isNaN(parseInt(e.target.value, 10))) return
+    if (isNaN(parseInt(e.target.value, 10))) {
+      setCollaboratorsAmount(0)
+
+      return
+    }
 
     setCollaboratorsAmount(parseInt(e.target.value, 10))
   }
@@ -38,7 +42,7 @@ const SubmitForm = () => {
             type="text"
             className="  !outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
             placeholder="2"
-            onChange={handleCollaoratorsAmount}
+            onChange={handleCollaboratorsChange}
             value={collaboratorsAmount}
           />
         </label>
