@@ -22,7 +22,7 @@ export default function RootLayout({
             md:left-[unset] md:right-[-200px] bottom-[-100px] md:bottom-[-400px] z-0 pointer-events-none"
         />
 
-        <main className="relative z-10 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 px-8 md:px-14 pt-[180px]">
+        <main className="relative z-10 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 px-7 md:px-14 pt-[180px]">
 
           <Providers>
             <Header />
