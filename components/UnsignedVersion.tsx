@@ -1,11 +1,14 @@
-
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const UnsignedVersion = () => {
-  const { splitType, governanceType, adminName, votePercentage, songName, collaborators  } = useContractBuilderProvider()
-  
-  console.log("governanceType", governanceType);
-  console.log("adminName", adminName);
+  const {
+    splitType,
+    governanceType,
+    adminName,
+    votePercentage,
+    songName,
+    collaborators,
+  } = useContractBuilderProvider()
 
   return (
     <div
@@ -22,25 +25,26 @@ const UnsignedVersion = () => {
       <p className="font-share pt-2">
         3. How many collaborators contributed to writing the song?
       </p>
-    
+
       {collaborators.map((collaborator, index) => (
-          <p key={index} className="font-share pt-2 pl-7">
-            Collaborator {index + 1}: <br />
-            Legal Name: {collaborator.legalName} <br />
-            Email address: {collaborator.email} <br />
-            Contribution : {collaborator.typeOfcontribution} <br />
-            Ownership percentage: {collaborator.split} <br />
-          </p>
-        ))}
+        <p key={index} className="font-share pt-2 pl-7">
+          Collaborator {index + 1}: <br />
+          Legal Name: {collaborator.legalName} <br />
+          Email address: {collaborator.email} <br />
+          Contribution : {collaborator.typeOfcontribution} <br />
+          Ownership percentage: {collaborator.split} <br />
+        </p>
+      ))}
       <p className="font-share pt-2">
         4. Would you like to vote when making business decisions or designate an
         administrator?
       </p>
       <p className="font-share pt-2 pl-7">
-        {governanceType === 'Vote' && (<span>Vote : {votePercentage} </span>)}
-       {governanceType === 'Designate Administrator' && (<span>Designate Administrator : {adminName&&adminName} </span>)}
-
-        </p>
+        {governanceType === 'Vote' && <span>Vote : {votePercentage} </span>}
+        {governanceType === 'Designate Administrator' && (
+          <span>Designate Administrator : {adminName && adminName} </span>
+        )}
+      </p>
     </div>
   )
 }
