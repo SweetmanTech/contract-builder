@@ -4,7 +4,7 @@ import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import getSplitTypeText from '@/lib/getSplitTypeText'
 import PassedQuestions from '../PassedQuestions'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import InfoDialog from '../InfoDialog'
 import VoteInfo from './Info'
 
@@ -12,6 +12,18 @@ const SubmitForm = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { setTab, setVotePercentage, votePercentage, splitType } =
     useContractBuilderProvider()
+
+  const handleVotes = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+
+    if (value === '') {
+      setVotePercentage(value)
+    }
+
+    if (isNaN(parseInt(e.target.value, 10))) return
+
+    setVotePercentage(value)
+  }
 
   return (
     <>
@@ -27,7 +39,7 @@ const SubmitForm = () => {
           type="text"
           className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[90px]"
           placeholder="2"
-          onChange={(e) => setVotePercentage(parseInt(e.target.value, 10))}
+          onChange={handleVotes}
           value={votePercentage}
         />
       </fieldset>
