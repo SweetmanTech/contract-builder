@@ -13,23 +13,24 @@ const SubmitForm = () => {
   const { setTab, setVotePercentage, votePercentage, splitType } =
     useContractBuilderProvider()
 
-  const handleVotes = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleVotesChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
+    const intValue = parseInt(value, 10)
 
-    if (value === '') {
-      setVotePercentage(value)
+    if (value === '' || isNaN(intValue)) {
+      setVotePercentage(0)
+
+      return
     }
 
-    if (isNaN(parseInt(e.target.value, 10))) return
-
-    setVotePercentage(value)
+    setVotePercentage(intValue)
   }
 
   return (
     <>
-     <div className="hidden md:block">
-          <PassedQuestions />
-        </div>
+      <div className="hidden md:block">
+        <PassedQuestions />
+      </div>
       <p className="text-white md:text-3xl text-[16px] tracking-[-0.05rem] font-share pt-6">
         What percentage of ownership of the {getSplitTypeText(splitType)}{' '}
         agreement is necessary to make business decisions about the song
@@ -41,7 +42,7 @@ const SubmitForm = () => {
           type="text"
           className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[90px]"
           placeholder="2"
-          onChange={handleVotes}
+          onChange={handleVotesChange}
           value={votePercentage}
         />
       </fieldset>
@@ -58,9 +59,11 @@ const SubmitForm = () => {
         SUBMIT
       </Button>
 
-      <div className='md:hidden  block '>
-      <h4 className='font-rubik text-[13px] mt-5 '>Tap Question to Return:</h4>
-      <PassedQuestions />
+      <div className="md:hidden  block ">
+        <h4 className="font-rubik text-[13px] mt-5 ">
+          Tap Question to Return:
+        </h4>
+        <PassedQuestions />
       </div>
 
       <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
