@@ -1,6 +1,7 @@
 export type COLLABORATOR = {
   legalName: string
   email: string
-  typeOfcontribution: string
+  typeOfSongwritingcontribution: string
+  typeOfMastercontribution: string
   split: number
 }

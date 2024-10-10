@@ -33,9 +33,15 @@ const Descriptions = () => {
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        Contribution:{' '}
+        SonrWriting Contribution:{' '}
         <span className="text-danger-dark font-extrabold font-rubik">
-          {collaborators[currentCollaborator].typeOfcontribution}
+          {collaborators[currentCollaborator].typeOfSongwritingcontribution}
+        </span>
+      </p>
+      <p className="font-roboto text-2xl">
+      Master Contribution:{' '}
+        <span className="text-danger-dark font-extrabold font-rubik">
+          {collaborators[currentCollaborator].typeOfMastercontribution}
         </span>
       </p>
       <p className="font-roboto text-2xl">
