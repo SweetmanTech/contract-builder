@@ -12,12 +12,14 @@ const SubmitForm = () => {
     const value = e.target.value
 
     if (value === '') {
-      setCollaboratorsAmount(value)
+      setCollaboratorsAmount(0)
+
+      return
     }
 
     if (isNaN(parseInt(e.target.value, 10))) return
 
-    setCollaboratorsAmount(value)
+    setCollaboratorsAmount(parseInt(e.target.value, 10))
   }
 
   return (
