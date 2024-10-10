@@ -16,7 +16,7 @@ const SubmitForm = () => {
   const { legalName, email, typeOfcontribution, split } = collaborator
 
   const handleSubmit = () => {
-    if (collaborators.length === collaboratorsAmount) {
+    if (collaborators.length === +collaboratorsAmount) {
       setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)
       return
     }
