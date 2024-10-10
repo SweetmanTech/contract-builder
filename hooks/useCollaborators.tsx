@@ -2,7 +2,7 @@ import { COLLABORATOR } from '@/types/collaborator'
 import { useState } from 'react'
 
 const useCollaborators = () => {
-  const [collaboratorsAmount, setCollaboratorsAmount] = useState(0)
+  const [collaboratorsAmount, setCollaboratorsAmount] = useState('')
   const [collaborators, setCollaborators] = useState<COLLABORATOR[]>([
     {
       legalName: '',
