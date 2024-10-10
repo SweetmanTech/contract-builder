@@ -9,8 +9,10 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="text-white text-3xl tracking-[-0.05rem] font-share pt-6">
+    <div className="hidden md:block">
+        <PassedQuestions />
+        </div>
+      <p className="text-white md:text-3xl text-[16px] tracking-[-0.05rem] font-share pt-6">
         {`What is the name(s) of the designated administrator?`}
       </p>
       <fieldset className="mt-6">
@@ -26,10 +28,10 @@ const SubmitForm = () => {
       <ReadHereLink
         link="/"
         label="Still not clear about designating an admin? read here."
-        className="pt-10"
+        className="pt-10 text-[16px] md:text-[24px]"
       />
       <Button
-        className="mt-10 relative z-[2]"
+ className="mb-25 mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
         disabled={Boolean(!adminName)}
       >
