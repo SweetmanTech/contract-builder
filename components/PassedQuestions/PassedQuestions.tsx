@@ -5,7 +5,7 @@ import {
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 interface PassedQuestionsProps {
-  textSize?: string; // Optional prop
+  textSize?: string; 
 }
 
 const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
