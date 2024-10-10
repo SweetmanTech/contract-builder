@@ -10,14 +10,15 @@ const SubmitForm = () => {
 
   const handleCollaboratorsChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
+    const intValue = parseInt(value, 10)
 
-    if (value === '' || isNaN(parseInt(e.target.value, 10))) {
+    if (value === '' || isNaN(intValue)) {
       setCollaboratorsAmount(0)
 
       return
     }
 
-    setCollaboratorsAmount(parseInt(e.target.value, 10))
+    setCollaboratorsAmount(intValue)
   }
 
   return (
