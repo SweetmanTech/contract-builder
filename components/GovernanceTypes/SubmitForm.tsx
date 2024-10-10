@@ -6,10 +6,10 @@ import {
 } from '@/hooks/useContractBuilder'
 import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
-import PassedQuestions from '../PassedQuestions'
 import { useState } from 'react'
 import InfoDialog from '../InfoDialog'
 import { GovernanceTypesInfo } from '../InfoDialogsContent'
+import PassedQuestions from '../PassedQuestions'
 
 const SubmitForm = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,8 +27,10 @@ const SubmitForm = () => {
 
   return (
     <>
-      <PassedQuestions />
-      <p className="font-share text-3xl tracking-[-0.05rem] pt-4">
+    <div className='md:block hidden'>
+    <PassedQuestions />
+    </div>
+      <p className="font-share md:text-3xl text-[19px] tracking-[-0.05rem] pt-4">
         Would you like to vote when making business decisions or designate an
         administrator?
       </p>
@@ -44,13 +46,17 @@ const SubmitForm = () => {
           label="Designate admin"
         />
       </fieldset>
-      <ReadHereLink label="Confused? read here." open={() => setIsOpen(true)} />
+      <ReadHereLink className='text-[16px]' label="Confused? read here." open={() => setIsOpen(true)} />
       <Button className="mt-10" onClick={handleSubmit}>
         SUBMIT
       </Button>
       <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
         <GovernanceTypesInfo />
       </InfoDialog>
+      <div className='md:hidden  block '>
+      <h4 className='font-rubik text-[13px] mt-5'>Tap Question to Return:</h4>
+      <PassedQuestions  textSize="16px"/>
+    </div>
     </>
   )
 }
