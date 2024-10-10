@@ -1,5 +1,5 @@
+import { splitTypes } from '@/lib/constants/splitTypes'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import { splitTypes } from './constants'
 
 const Descriptions = () => {
   const { splitType } = useContractBuilderProvider()

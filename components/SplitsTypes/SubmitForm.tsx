@@ -6,7 +6,7 @@ import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
 import InfoDialog from '../InfoDialog'
 import { SplitsTypesInfo } from '../InfoDialogsContent'
-import { splitTypes } from './constants'
+import { splitTypes } from '@/lib/constants/splitTypes'
 
 const SubmitForm = () => {
   const { splitType, setSplitType, setTab } = useContractBuilderProvider()

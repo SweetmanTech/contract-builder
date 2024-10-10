@@ -14,9 +14,7 @@ const Descriptions = () => {
       <p className="font-roboto text-2xl">
         None of the parties may perform legally relevant acts on the musical
         work without the written authorization of the{' '}
-        <span className="text-danger-dark font-rubik">
-          {votePercentage || '51'}%
-        </span>{' '}
+        <span className="text-danger-dark font-rubik">{votePercentage}%</span>{' '}
         of the ownership, such as but not limited to the following:
       </p>
       <ul className="list-decimal pl-5 space-y-2 font-roboto text-lg ml-4">
