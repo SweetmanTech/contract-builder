@@ -39,7 +39,7 @@ const Descriptions = () => {
         </span>
       </p>
       <p className="font-roboto text-2xl">
-      Master Contribution:{' '}
+        Master Contribution:{' '}
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfMastercontribution}
         </span>
