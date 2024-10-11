@@ -22,7 +22,6 @@ const SubmitForm = () => {
         <input
           type="text"
           className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2"
-          placeholder="NATE REID"
           onChange={(e) => setAdminName(e.target.value)}
           value={adminName}
         />

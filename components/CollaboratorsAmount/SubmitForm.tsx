@@ -21,8 +21,7 @@ const SubmitForm = () => {
           <input
             id="songName"
             type="text"
-            className="  !outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
-          placeholder="2"
+            className="!outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
             onChange={(e) =>  setCollaboratorsAmount(parseInt(e.target.value, 10))}
             value={collaboratorsAmount}
           />
