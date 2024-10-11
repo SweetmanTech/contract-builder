@@ -4,10 +4,13 @@ import {
 } from '@/hooks/useContractBuilder'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
-const PassedQuestions = () => {
+interface PassedQuestionsProps {
+  textSize?: string; 
+}
+
+const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
   const { tab, collaborators, governanceType } = useContractBuilderProvider()
-  const intoClass =
-    'text-grey md:text-xl text-[20px] tracking-[-0.05rem] font-share leading-[33px]'
+  const intoClass = `text-grey md:text-xl text-[${textSize ? textSize:"20px"}] tracking-[-0.05rem] font-share leading-[33px]`
 
   return (
     <>
