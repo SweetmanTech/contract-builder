@@ -21,31 +21,31 @@ const Descriptions = () => {
         Collaborator {currentCollaborator + 1}:
       </p>
       <p className="font-roboto text-2xl">
-        Legal Name:{' '}
+        Legal Name:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].legalName}
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        Email Address:{' '}
+        Email Address:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].email}
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        SonrWriting Contribution:{' '}
+        SonrWriting Contribution:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfSongWritingContribution}
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        Master Contribution:{' '}
+        Master Contribution:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfMasterContribution}
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        Ownership percentage:{' '}
+        Ownership percentage:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].split}
         </span>
