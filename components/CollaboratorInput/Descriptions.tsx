@@ -33,7 +33,7 @@ const Descriptions = () => {
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        SonrWriting Contribution:
+        SongWriting Contribution:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfSongWritingContribution}
         </span>
