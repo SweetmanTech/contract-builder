@@ -13,7 +13,13 @@ const SubmitForm = () => {
     setCollaborator,
   } = useContractBuilderProvider()
   const collaborator = collaborators[currentCollaborator]
-  const { legalName, email, typeOfSongwritingcontribution, typeOfMastercontribution, split } = collaborator
+  const {
+    legalName,
+    email,
+    typeOfSongWritingContribution,
+    typeOfMasterContribution,
+    split,
+  } = collaborator
 
   const handleSubmit = () => {
     if (collaborators.length === collaboratorsAmount) {
@@ -36,8 +42,8 @@ const SubmitForm = () => {
         disabled={
           Boolean(!legalName) ||
           Boolean(!email) ||
-          Boolean(!typeOfSongwritingcontribution) ||
-          Boolean(!typeOfMastercontribution) ||
+          Boolean(!typeOfSongWritingContribution) ||
+          Boolean(!typeOfMasterContribution) ||
           Boolean(!split)
         }
       >

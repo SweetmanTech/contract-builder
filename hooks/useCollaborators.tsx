@@ -7,8 +7,8 @@ const useCollaborators = () => {
     {
       legalName: '',
       email: '',
-      typeOfSongwritingcontribution: '',
-      typeOfMastercontribution: '',
+      typeOfSongWritingContribution: '',
+      typeOfMasterContribution: '',
       split: 0,
     },
   ])
@@ -19,8 +19,8 @@ const useCollaborators = () => {
     temp.push({
       legalName: '',
       email: '',
-      typeOfSongwritingcontribution: '',
-      typeOfMastercontribution: '',
+      typeOfSongWritingContribution: '',
+      typeOfMasterContribution: '',
       split: 0,
     })
     setCollaborators(temp)
@@ -41,13 +41,13 @@ const useCollaborators = () => {
 
   const setTypeOfSongWritingContribution = (value: string) => {
     const temp = [...collaborators]
-    temp[currentCollaborator].typeOfSongwritingcontribution = value
+    temp[currentCollaborator].typeOfSongWritingContribution = value
     setCollaborators(temp)
   }
 
   const setTypeOfMasterContribution = (value: string) => {
     const temp = [...collaborators]
-    temp[currentCollaborator].typeOfMastercontribution = value
+    temp[currentCollaborator].typeOfMasterContribution = value
     setCollaborators(temp)
   }
 
