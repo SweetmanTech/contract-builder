@@ -42,6 +42,7 @@ const SubmitForm = () => {
           type="text"
           className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[90px]"
           placeholder="2"
+          maxLength={3}
           onChange={handleVotesChange}
           value={votePercentage}
         />
