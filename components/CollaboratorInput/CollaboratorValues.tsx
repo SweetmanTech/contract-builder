@@ -1,11 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import { useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import {CollaboratorTypeDropdown} from "./CollaboratorTypeDropdown"
 
 const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-[#696969]'
-const masterOptions = ['Artist', 'Producer', 'Executive producer', 'Engineer']
-const songWritingOptions = ['Lyrics', 'Music', 'Both']
 
 const CollaboratorValues = () => {
   const {
@@ -14,30 +10,7 @@ const CollaboratorValues = () => {
     currentCollaborator,
     setEmail,
     setSplit,
-    setTypeOfMasterContribution,
-    setTypeOfSongWritingContribution
   } = useContractBuilderProvider()
-
-  const [isOpen, setIsOpen] = useState(false)
-  const [songwritingContribution, setSongwritingContribution] =
-    useState('Select an option')
-
-  const handleSongWritingClick = (option: string) => {
-    setSongwritingContribution(option)
-    setIsOpen(false)
-    setTypeOfSongWritingContribution(option)
-  }
-
-  const [isOpen2, setIsOpen2] = useState(false)
-  const [masterContribution, setMasterContribution] =
-    useState('Select an option')
-
-  const handleMasterClick = (option: string) => {
-    setMasterContribution(option)
-    setIsOpen2(false)
-    setTypeOfMasterContribution(option)
-  }
-
   return (
     <section className="flex mt-6 flex-col gap-4">
       <div className="flex gap-2">
@@ -72,11 +45,7 @@ const CollaboratorValues = () => {
           value={collaborators[currentCollaborator].email}
         />
       </fieldset>
-     
-
-<CollaboratorTypeDropdown/>
-
-     
+<CollaboratorTypeDropdown/>     
     </section>
   )
 }
