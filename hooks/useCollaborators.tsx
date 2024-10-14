@@ -51,8 +51,6 @@ const useCollaborators = () => {
     setCollaborators(temp)
   }
 
-
-
   const setSplit = (value: number) => {
     const temp = [...collaborators]
     temp[currentCollaborator].split = value
