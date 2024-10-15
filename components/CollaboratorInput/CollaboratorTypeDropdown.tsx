@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { DropdownList } from './DropdownList'; // Import the reusable component
-import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider';
+import React, { useState } from 'react'
+import { DropdownList } from './DropdownList' // Import the reusable component
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
-const masterOptions = ['Artist', 'Producer', 'Executive producer', 'Engineer'];
-const songWritingOptions = ['Lyrics', 'Music', 'Both'];
+const masterOptions = ['Artist', 'Producer', 'Executive producer', 'Engineer']
+const songWritingOptions = ['Lyrics', 'Music', 'Both']
 
 
 export function CollaboratorTypeDropdown() {
@@ -13,7 +13,6 @@ export function CollaboratorTypeDropdown() {
     splitType
   } = useContractBuilderProvider();
 
-  console.log("splitType at dropdown", splitType);
   const [songwritingContribution, setSongwritingContribution] = useState('Select an option');
   const [masterContribution, setMasterContribution] = useState('Select an option');
 
@@ -70,5 +69,5 @@ export function CollaboratorTypeDropdown() {
       )}
      
     </div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header';
-import Providers from '@/providers/Providers';
-import '@/styles/global.css';
-import Image from 'next/image';
+import Footer from '@/components/Footer/Footer'
+import Header from '@/components/Header'
+import Providers from '@/providers/Providers'
+import '@/styles/global.css'
+import Image from 'next/image'
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -23,14 +23,13 @@ export default function RootLayout({
         />
 
         <main className="relative z-10 h-screen w-screen overflow-y-auto overflow-x-hidden pb-20 px-7 md:px-14 pt-[180px]">
-
           <Providers>
             <Header />
             {children}
-            <Footer/>
+            <Footer />
           </Providers>
         </main>
       </body>
     </html>
-  );
+  )
 }

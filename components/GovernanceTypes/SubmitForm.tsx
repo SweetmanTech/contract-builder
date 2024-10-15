@@ -27,9 +27,9 @@ const SubmitForm = () => {
 
   return (
     <>
-    <div className='md:block hidden'>
-    <PassedQuestions />
-    </div>
+      <div className="md:block hidden">
+        <PassedQuestions />
+      </div>
       <p className="font-share md:text-3xl text-[19px] tracking-[-0.05rem] pt-4">
         Would you like to vote when making business decisions or designate an
         administrator?
@@ -46,17 +46,21 @@ const SubmitForm = () => {
           label="Designate admin"
         />
       </fieldset>
-      <ReadHereLink className='text-[16px]' label="Confused? read here." open={() => setIsOpen(true)} />
+      <ReadHereLink
+        className="text-[16px]"
+        label="Confused? read here."
+        open={() => setIsOpen(true)}
+      />
       <Button className="mt-10" onClick={handleSubmit}>
         SUBMIT
       </Button>
       <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
         <GovernanceTypesInfo />
       </InfoDialog>
-      <div className='md:hidden  block '>
-      <h4 className='font-rubik text-[13px] mt-5'>Tap Question to Return:</h4>
-      <PassedQuestions  textSize="16px"/>
-    </div>
+      <div className="md:hidden  block ">
+        <h4 className="font-rubik text-[13px] mt-5">Tap Question to Return:</h4>
+        <PassedQuestions textSize="16px" />
+      </div>
     </>
   )
 }

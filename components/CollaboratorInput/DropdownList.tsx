@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import React, { useState } from 'react'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 interface DropdownListProps {
-  label: string;
-  options: string[];
-  selectedOption: string;
-  onOptionSelect: (option: string) => void;
+  label: string
+  options: string[]
+  selectedOption: string
+  onOptionSelect: (option: string) => void
 }
 
 export const DropdownList: React.FC<DropdownListProps> = ({
@@ -14,18 +14,20 @@ export const DropdownList: React.FC<DropdownListProps> = ({
   selectedOption,
   onOptionSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <fieldset className='w-6/12'>
-      <p className="font-share text-base/4 pb-1 text-[15px] text-[#696969]">{label}</p>
+    <fieldset className="w-6/12">
+      <p className="font-share text-base/4 pb-1 text-[15px] text-[#696969]">
+        {label}
+      </p>
       <div className="relative inline-block w-full">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex justify-between items-center w-full text-left bg-black text-[#9ca3af] font-rubik rounded-md border-white border p-2 cursor-pointer"
         >
           {selectedOption}
-          <ChevronDownIcon className="h-5 w-5 text-white" />
+          <ChevronDownIcon className="size-5 text-white" />
         </button>
 
         {isOpen && (
@@ -34,8 +36,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
               <li
                 key={index}
                 onClick={() => {
-                  onOptionSelect(option);
-                  setIsOpen(false);
+                  onOptionSelect(option)
+                  setIsOpen(false)
                 }}
                 className="p-2 hover:bg-white hover:text-[#ac4444] text-[#9ca3af] cursor-pointer transition-colors duration-200 !outline-none font-rubik rounded-md !bg-black"
               >
@@ -46,5 +48,5 @@ export const DropdownList: React.FC<DropdownListProps> = ({
         )}
       </div>
     </fieldset>
-  );
-};
+  )
+}

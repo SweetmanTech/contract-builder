@@ -1,5 +1,5 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import {CollaboratorTypeDropdown} from "./CollaboratorTypeDropdown"
+import { CollaboratorTypeDropdown } from './CollaboratorTypeDropdown'
 
 const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-[#696969]'
 
@@ -45,7 +45,7 @@ const CollaboratorValues = () => {
           value={collaborators[currentCollaborator].email}
         />
       </fieldset>
-<CollaboratorTypeDropdown/>     
+      <CollaboratorTypeDropdown />
     </section>
   )
 }

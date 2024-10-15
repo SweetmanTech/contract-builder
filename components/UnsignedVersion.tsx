@@ -27,15 +27,16 @@ const UnsignedVersion = () => {
       </p>
 
       {collaborators.map((collaborator, index) => (
-          <p key={index} className="font-share pt-2 pl-7">
-            Collaborator {index + 1}: <br />
-            Legal Name: {collaborator.legalName} <br />
-            Email address: {collaborator.email} <br />
-            Songwriting Contribution : {collaborator.typeOfSongWritingContribution} <br />
-            Master Contribution : {collaborator.typeOfMasterContribution} <br />
-            Ownership percentage: {collaborator.split} <br />
-          </p>
-        ))}
+        <p key={index} className="font-share pt-2 pl-7">
+          Collaborator {index + 1}: <br />
+          Legal Name: {collaborator.legalName} <br />
+          Email address: {collaborator.email} <br />
+          Songwriting Contribution :{' '}
+          {collaborator.typeOfSongWritingContribution} <br />
+          Master Contribution : {collaborator.typeOfMasterContribution} <br />
+          Ownership percentage: {collaborator.split} <br />
+        </p>
+      ))}
       <p className="font-share pt-2">
         4. Would you like to vote when making business decisions or designate an
         administrator?
