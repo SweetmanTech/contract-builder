@@ -1,7 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import { CollaboratorTypeDropdown } from './CollaboratorTypeDropdown'
 
-const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-[#696969]'
+const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-grey'
 
 const CollaboratorValues = () => {
   const {
