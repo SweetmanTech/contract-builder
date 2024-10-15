@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
-interface DropdownListProps {
+export interface DropdownListProps {
   label: string
   options: string[]
-  selectedOption: string
+  selectedOptions: string[]
   onOptionSelect: (option: string) => void
+  onOptionDeselect: (option: string) => void
 }
 
 export const DropdownList: React.FC<DropdownListProps> = ({
   label,
   options,
-  selectedOption,
+  selectedOptions,
   onOptionSelect,
+  onOptionDeselect,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -26,7 +28,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
           onClick={() => setIsOpen(!isOpen)}
           className="flex justify-between items-center w-full text-left bg-black text-[#9ca3af] font-rubik rounded-md border-white border p-2 cursor-pointer"
         >
-          {selectedOption}
+          {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'Select options'}
           <ChevronDownIcon className="size-5 text-white" />
         </button>
 
@@ -36,10 +38,16 @@ export const DropdownList: React.FC<DropdownListProps> = ({
               <li
                 key={index}
                 onClick={() => {
-                  onOptionSelect(option)
-                  setIsOpen(false)
+                  if (selectedOptions.includes(option)) {
+                    onOptionDeselect(option); // Deselect option if already selected
+                  } else {
+                    onOptionSelect(option); // Select option if not selected
+                  }
+                  setIsOpen(false); // Close the dropdown after selection
                 }}
-                className="p-2 hover:bg-white hover:text-[#ac4444] text-[#9ca3af] cursor-pointer transition-colors duration-200 !outline-none font-rubik rounded-md !bg-black"
+                className={`p-2 cursor-pointer transition-colors duration-200 !outline-none font-rubik rounded-md !bg-black ${
+                  selectedOptions.includes(option) ? 'bg-white text-[#ac4444]' : 'text-[#9ca3af]'
+                }`}
               >
                 {option}
               </li>

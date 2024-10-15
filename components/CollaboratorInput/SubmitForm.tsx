@@ -42,8 +42,6 @@ const SubmitForm = () => {
         disabled={
           Boolean(!legalName) ||
           Boolean(!email) ||
-          Boolean(!typeOfSongWritingContribution) ||
-          Boolean(!typeOfMasterContribution) ||
           Boolean(!split)
         }
       >

@@ -1,5 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
+
+import {DropdownListProps} from "./DropdownList"
 const Descriptions = () => {
   const { collaborators, currentCollaborator } = useContractBuilderProvider()
 
@@ -33,17 +35,17 @@ const Descriptions = () => {
         </span>
       </p>
       <p className="font-roboto text-2xl">
-        SongWriting Contribution:
+        Contribution:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfSongWritingContribution}
         </span>
       </p>
-      <p className="font-roboto text-2xl">
+      {/* <p className="font-roboto text-2xl">
         Master Contribution:
         <span className="text-danger-dark font-extrabold font-rubik">
           {collaborators[currentCollaborator].typeOfMasterContribution}
         </span>
-      </p>
+      </p> */}
       <p className="font-roboto text-2xl">
         Ownership percentage:
         <span className="text-danger-dark font-extrabold font-rubik">
