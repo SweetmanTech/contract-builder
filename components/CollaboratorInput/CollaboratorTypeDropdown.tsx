@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DropdownList } from './DropdownList' // Import the reusable component
+import { DropdownList } from './DropdownList'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const masterOptions = ['Artist', 'Producer', 'Executive producer', 'Engineer']
@@ -9,8 +9,8 @@ export function CollaboratorTypeDropdown() {
   const {
     setTypeOfMasterContribution,
     setTypeOfSongWritingContribution,
-    splitType
-  } = useContractBuilderProvider();
+    splitType,
+  } = useContractBuilderProvider()
 
   const [selectedSongwritingContributions, setSelectedSongwritingContributions] = useState<string[]>([]);
   const [selectedMasterContributions, setSelectedMasterContributions] = useState<string[]>([]);
@@ -25,11 +25,11 @@ export function CollaboratorTypeDropdown() {
          selectedOptions={selectedMasterContributions}
          onOptionSelect={(option) => {
            setSelectedMasterContributions([...selectedMasterContributions, option]);
-           setTypeOfMasterContribution(option); // Adjust this if you want to store multiple values
+           setTypeOfMasterContribution(option);
          }}
          onOptionDeselect={(option) => {
            setSelectedMasterContributions(selectedMasterContributions.filter(o => o !== option));
-           // Adjust this if you want to store multiple values
+          
          }}
        />
       )}
@@ -41,11 +41,11 @@ export function CollaboratorTypeDropdown() {
        selectedOptions={selectedSongwritingContributions}
        onOptionSelect={(option) => {
          setSelectedSongwritingContributions([...selectedSongwritingContributions, option]);
-         setTypeOfSongWritingContribution(option); // Adjust this if you want to store multiple values
+         setTypeOfSongWritingContribution(option);
        }}
        onOptionDeselect={(option) => {
          setSelectedSongwritingContributions(selectedSongwritingContributions.filter(o => o !== option));
-         // Adjust this if you want to store multiple values
+        
        }}
      />
       )}
@@ -58,11 +58,11 @@ export function CollaboratorTypeDropdown() {
        selectedOptions={selectedSongwritingContributions}
        onOptionSelect={(option) => {
          setSelectedSongwritingContributions([...selectedSongwritingContributions, option]);
-         setTypeOfSongWritingContribution(option); // Adjust this if you want to store multiple values
+         setTypeOfSongWritingContribution(option);
        }}
        onOptionDeselect={(option) => {
          setSelectedSongwritingContributions(selectedSongwritingContributions.filter(o => o !== option));
-         // Adjust this if you want to store multiple values
+        
        }}
      />
 
@@ -72,11 +72,11 @@ export function CollaboratorTypeDropdown() {
          selectedOptions={selectedMasterContributions}
          onOptionSelect={(option) => {
            setSelectedMasterContributions([...selectedMasterContributions, option]);
-           setTypeOfMasterContribution(option); // Adjust this if you want to store multiple values
+           setTypeOfMasterContribution(option);
          }}
          onOptionDeselect={(option) => {
            setSelectedMasterContributions(selectedMasterContributions.filter(o => o !== option));
-           // Adjust this if you want to store multiple values
+          
          }}
        />
      </>
