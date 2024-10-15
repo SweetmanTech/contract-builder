@@ -12,14 +12,7 @@ const SubmitForm = () => {
     collaboratorsAmount,
     setCollaborator,
   } = useContractBuilderProvider()
-  const collaborator = collaborators[currentCollaborator]
-  const {
-    legalName,
-    email,
-    typeOfSongWritingContribution,
-    typeOfMasterContribution,
-    split,
-  } = collaborator
+  const { legalName, email, split } = collaborators[currentCollaborator]
 
   const handleSubmit = () => {
     if (collaborators.length === collaboratorsAmount) {
@@ -39,11 +32,7 @@ const SubmitForm = () => {
       <Button
         className="mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
         onClick={handleSubmit}
-        disabled={
-          Boolean(!legalName) ||
-          Boolean(!email) ||
-          Boolean(!split)
-        }
+        disabled={Boolean(!legalName) || Boolean(!email) || Boolean(!split)}
       >
         SUBMIT
       </Button>
