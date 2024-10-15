@@ -11,7 +11,6 @@ export function CollaboratorTypeDropdown() {
     setTypeOfSongWritingContribution,
     splitType,
   } = useContractBuilderProvider()
-
   const [
     selectedSongwritingContributions,
     setSelectedSongwritingContributions,
@@ -21,9 +20,9 @@ export function CollaboratorTypeDropdown() {
 
   return (
     <div className="flex gap-2">
-      {splitType === 'Master Recording' && (
+      {(splitType === 'Master Recording' || splitType === 'Both') && (
         <DropdownList
-          label="Type of contribution"
+          label={`${splitType === 'Both' ? 'Master' : 'Type of'} contribution`}
           options={masterOptions}
           selectedOptions={selectedMasterContributions}
           onOptionSelect={(option) => {
@@ -41,9 +40,9 @@ export function CollaboratorTypeDropdown() {
         />
       )}
 
-      {splitType === 'Song Writing' && (
+      {(splitType === 'Song Writing' || splitType === 'Both') && (
         <DropdownList
-          label="Type of contribution"
+          label={`${splitType === 'Both' ? 'Songwriting' : 'Type of'} contribution`}
           options={songWritingOptions}
           selectedOptions={selectedSongwritingContributions}
           onOptionSelect={(option) => {
@@ -59,46 +58,6 @@ export function CollaboratorTypeDropdown() {
             )
           }}
         />
-      )}
-
-      {splitType === 'Both' && (
-        <>
-          <DropdownList
-            label="Songwriting Contribution"
-            options={songWritingOptions}
-            selectedOptions={selectedSongwritingContributions}
-            onOptionSelect={(option) => {
-              setSelectedSongwritingContributions([
-                ...selectedSongwritingContributions,
-                option,
-              ])
-              setTypeOfSongWritingContribution(option)
-            }}
-            onOptionDeselect={(option) => {
-              setSelectedSongwritingContributions(
-                selectedSongwritingContributions.filter((o) => o !== option),
-              )
-            }}
-          />
-
-          <DropdownList
-            label="Master Contribution"
-            options={masterOptions}
-            selectedOptions={selectedMasterContributions}
-            onOptionSelect={(option) => {
-              setSelectedMasterContributions([
-                ...selectedMasterContributions,
-                option,
-              ])
-              setTypeOfMasterContribution(option)
-            }}
-            onOptionDeselect={(option) => {
-              setSelectedMasterContributions(
-                selectedMasterContributions.filter((o) => o !== option),
-              )
-            }}
-          />
-        </>
       )}
     </div>
   )
