@@ -4,9 +4,8 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid'
 export interface DropdownListProps {
   label: string
   options: string[]
-  selectedOptions: string[]
+  selectedOptions: string
   onOptionSelect: (option: string) => void
-  onOptionDeselect: (option: string) => void
 }
 
 export const DropdownList: React.FC<DropdownListProps> = ({
@@ -14,7 +13,6 @@ export const DropdownList: React.FC<DropdownListProps> = ({
   options,
   selectedOptions,
   onOptionSelect,
-  onOptionDeselect,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,7 +26,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
           onClick={() => setIsOpen(!isOpen)}
           className="flex justify-between items-center w-full text-left bg-black text-[#9ca3af] font-rubik rounded-md border-white border p-2 cursor-pointer"
         >
-          {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'Select options'}
+          {selectedOptions ? selectedOptions : 'Select options'}
           <ChevronDownIcon className="size-5 text-white" />
         </button>
 
@@ -38,15 +36,12 @@ export const DropdownList: React.FC<DropdownListProps> = ({
               <li
                 key={index}
                 onClick={() => {
-                  if (selectedOptions.includes(option)) {
-                    onOptionDeselect(option); // Deselect option if already selected
-                  } else {
-                    onOptionSelect(option); // Select option if not selected
-                  }
-                  setIsOpen(false); // Close the dropdown after selection
+                  onOptionSelect(option)
                 }}
                 className={`p-2 cursor-pointer transition-colors duration-200 !outline-none font-rubik rounded-md !bg-black ${
-                  selectedOptions.includes(option) ? 'bg-white text-[#ac4444]' : 'text-[#9ca3af]'
+                  selectedOptions.includes(option)
+                    ? 'bg-white text-[#ac4444]'
+                    : 'text-[#9ca3af]'
                 }`}
               >
                 {option}

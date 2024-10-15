@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DropdownList } from './DropdownList'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
@@ -10,13 +10,11 @@ export function CollaboratorTypeDropdown() {
     setTypeOfMasterContribution,
     setTypeOfSongWritingContribution,
     splitType,
+    collaborators,
+    currentCollaborator,
   } = useContractBuilderProvider()
-  const [
-    selectedSongwritingContributions,
-    setSelectedSongwritingContributions,
-  ] = useState<string[]>([])
-  const [selectedMasterContributions, setSelectedMasterContributions] =
-    useState<string[]>([])
+  const { typeOfMasterContribution, typeOfSongWritingContribution } =
+    collaborators[currentCollaborator]
 
   return (
     <div className="flex gap-2">
@@ -24,18 +22,9 @@ export function CollaboratorTypeDropdown() {
         <DropdownList
           label={`${splitType === 'Both' ? 'Master' : 'Type of'} contribution`}
           options={masterOptions}
-          selectedOptions={selectedMasterContributions}
+          selectedOptions={typeOfMasterContribution}
           onOptionSelect={(option) => {
-            setSelectedMasterContributions([
-              ...selectedMasterContributions,
-              option,
-            ])
             setTypeOfMasterContribution(option)
-          }}
-          onOptionDeselect={(option) => {
-            setSelectedMasterContributions(
-              selectedMasterContributions.filter((o) => o !== option),
-            )
           }}
         />
       )}
@@ -44,18 +33,9 @@ export function CollaboratorTypeDropdown() {
         <DropdownList
           label={`${splitType === 'Both' ? 'Songwriting' : 'Type of'} contribution`}
           options={songWritingOptions}
-          selectedOptions={selectedSongwritingContributions}
+          selectedOptions={typeOfSongWritingContribution}
           onOptionSelect={(option) => {
-            setSelectedSongwritingContributions([
-              ...selectedSongwritingContributions,
-              option,
-            ])
             setTypeOfSongWritingContribution(option)
-          }}
-          onOptionDeselect={(option) => {
-            setSelectedSongwritingContributions(
-              selectedSongwritingContributions.filter((o) => o !== option),
-            )
           }}
         />
       )}
