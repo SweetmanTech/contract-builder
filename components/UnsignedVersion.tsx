@@ -31,7 +31,9 @@ const UnsignedVersion = () => {
           Collaborator {index + 1}: <br />
           Legal Name: {collaborator.legalName} <br />
           Email address: {collaborator.email} <br />
-          Contribution : {collaborator.typeOfcontribution} <br />
+          Songwriting Contribution :{' '}
+          {collaborator.typeOfSongWritingContribution} <br />
+          Master Contribution : {collaborator.typeOfMasterContribution} <br />
           Ownership percentage: {collaborator.split} <br />
         </p>
       ))}
