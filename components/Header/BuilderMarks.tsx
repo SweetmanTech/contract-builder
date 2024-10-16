@@ -58,7 +58,7 @@ const BuilderMarks = () => {
         <Dot
           image="/images/success.svg"
           className="left-[234px] top-[10px]"
-          onClick={() => setTab(CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN)}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)}
         />
       )}
     </>

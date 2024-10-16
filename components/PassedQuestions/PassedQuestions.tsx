@@ -9,21 +9,33 @@ interface PassedQuestionsProps {
 }
 
 const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
-  const { tab, collaborators, governanceType } = useContractBuilderProvider()
-  const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px]`
+  const { tab, collaborators, governanceType, setTab, setCurrentCollaborator } =
+    useContractBuilderProvider()
+  const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px] cursor-pointer`
 
   return (
     <>
       {tab >= CONTRACT_BUILDER_STEP.SONG_NAME && (
-        <p className={intoClass}>
+        <p
+          className={intoClass}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)}
+        >
           What type of splits contract would you like to create?
         </p>
       )}
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
-        <p className={intoClass}>What is the name of the song?</p>
+        <p
+          className={intoClass}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
+        >
+          What is the name of the song?
+        </p>
       )}
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
-        <p className={intoClass}>
+        <p
+          className={intoClass}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)}
+        >
           How many collaborators contributed to writing the song?
         </p>
       )}
@@ -31,8 +43,12 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
         <>
           {collaborators.map((_, i) => (
             <p
-              className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px]"
+              className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px] cursor-pointer"
               key={i}
+              onClick={() => {
+                setCurrentCollaborator(i)
+                setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)
+              }}
             >
               Collaborator {i + 1}
             </p>
@@ -42,10 +58,18 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.VOTE && (
         <>
           {governanceType === GOVERNANCE_TYPE.VOTE && (
-            <p className={intoClass}>Vote or designate admin?</p>
+            <p
+              className={intoClass}
+              onClick={() => setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)}
+            >
+              Vote or designate admin?
+            </p>
           )}
           {governanceType === GOVERNANCE_TYPE.DESIGNATE_ADMIN && (
-            <p className={intoClass}>
+            <p
+              className={intoClass}
+              onClick={() => setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)}
+            >
               Do you want to designate an administrator?
             </p>
           )}
