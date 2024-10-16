@@ -1,4 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
+import CollaboratorTypeDropdown from './CollaboratorTypeDropdown'
+
+const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-grey'
 
 const CollaboratorValues = () => {
   const {
@@ -7,23 +10,20 @@ const CollaboratorValues = () => {
     currentCollaborator,
     setEmail,
     setSplit,
-    setTypeOfContribution,
   } = useContractBuilderProvider()
-  const intoClass = 'font-share text-base/4 pb-1 text-[15px] text-[#696969]'
-
   return (
     <section className="flex mt-6 flex-col gap-4">
       <div className="flex gap-2">
-      <fieldset className='w-8/12'>
-        <p className={intoClass}>{`Legal Name (First Last)`}</p>
-        <input
-          type="text"
-          className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2  w-full"
-          onChange={(e) => setLegalName(e.target.value)}
-          value={collaborators[currentCollaborator].legalName}
-        />
-      </fieldset>
-      <fieldset className='w-4/12'>
+        <fieldset className="w-8/12">
+          <p className={intoClass}>{`Legal Name (First Last)`}</p>
+          <input
+            type="text"
+            className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2  w-full"
+            onChange={(e) => setLegalName(e.target.value)}
+            value={collaborators[currentCollaborator].legalName}
+          />
+        </fieldset>
+        <fieldset className="w-4/12">
           <p className={intoClass}>{`Split (%)`}</p>
           <input
             type="number"
@@ -32,8 +32,8 @@ const CollaboratorValues = () => {
             value={collaborators[currentCollaborator].split}
           />
         </fieldset>
-        </div>
-      <fieldset className='w-full'>
+      </div>
+      <fieldset className="w-full">
         <p className={intoClass}>{`Email (example@mesawallet.io)`}</p>
         <input
           type="text"
@@ -42,19 +42,7 @@ const CollaboratorValues = () => {
           value={collaborators[currentCollaborator].email}
         />
       </fieldset>
-      <div className="flex gap-2 ">
-        <fieldset className='w-full'>
-          <p className={intoClass}>{`Type of contribution`}</p>
-          <input
-            type="text"
-            className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 w-full"
-            placeholder="MANAGEMENT@PICERECORDS.COM"
-            onChange={(e) => setTypeOfContribution(e.target.value)}
-            value={collaborators[currentCollaborator].typeOfcontribution}
-          />
-        </fieldset>
-        
-      </div>
+      <CollaboratorTypeDropdown />
     </section>
   )
 }

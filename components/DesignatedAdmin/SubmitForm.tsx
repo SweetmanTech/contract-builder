@@ -13,9 +13,9 @@ const SubmitForm = () => {
 
   return (
     <>
-    <div className="hidden md:block">
+      <div className="hidden md:block">
         <PassedQuestions />
-        </div>
+      </div>
       <p className="text-white md:text-3xl text-[16px] tracking-[-0.05rem] font-share pt-6">
         {`What is the name(s) of the designated administrator?`}
       </p>
@@ -34,7 +34,7 @@ const SubmitForm = () => {
         open={() => setIsOpen(true)}
       />
       <Button
- className="mb-25 mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
+        className="mb-25 mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SUCCESS)}
         disabled={Boolean(!adminName)}
       >

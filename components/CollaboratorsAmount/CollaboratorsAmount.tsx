@@ -11,8 +11,10 @@ const CollaboratorsAmount = () => {
         <Descriptions />
       </div>
       <div className="col-span-12  flex-col justify-center gap-3 flex md:hidden mb-24">
-          <h3 className='font-rubik text-[13px]'> Tap Question to Return:</h3>
-          <p className='text-[16px] text-[#A3A3A3]'>What type of splits contract would you like to create?</p>
+        <h3 className="font-rubik text-[13px]"> Tap Question to Return:</h3>
+        <p className="text-[16px] text-[#A3A3A3]">
+          What type of splits contract would you like to create?
+        </p>
       </div>
     </div>
   )
