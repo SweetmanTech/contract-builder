@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Providers from '@/providers/Providers'
 import '@/styles/global.css'
 import Image from 'next/image'
+import Script from 'next/script'
 
 export default function RootLayout({
   children,
@@ -11,9 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    
-    <head>
-        <script
+      <head>
+        <Script
+          id="google-analytic"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -26,8 +27,8 @@ export default function RootLayout({
         />
       </head>
       <body className="relative overflow-hidden">
-      <noscript>
-          <iframe 
+        <noscript>
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-T7ZGQBC8"
             height="0"
             width="0"
