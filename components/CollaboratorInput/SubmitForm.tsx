@@ -11,9 +11,27 @@ const SubmitForm = () => {
     currentCollaborator,
     collaboratorsAmount,
     setCollaborator,
+    splitType,
   } = useContractBuilderProvider()
-  const collaborator = collaborators[currentCollaborator]
-  const { legalName, email, typeOfcontribution, split } = collaborator
+  const {
+    legalName,
+    email,
+    split,
+    typeOfMasterContribution,
+    typeOfSongWritingContribution,
+  } = collaborators[currentCollaborator]
+
+  let isContributor = false
+
+  if (splitType === 'Master Recording') {
+    isContributor = Boolean(!typeOfMasterContribution)
+  } else if (splitType === 'Song Writing') {
+    isContributor = Boolean(!typeOfSongWritingContribution)
+  } else if (splitType === 'Both') {
+    isContributor =
+      Boolean(!typeOfMasterContribution) ||
+      Boolean(!typeOfSongWritingContribution)
+  }
 
   const handleSubmit = () => {
     if (collaborators.length === collaboratorsAmount) {
@@ -36,8 +54,8 @@ const SubmitForm = () => {
         disabled={
           Boolean(!legalName) ||
           Boolean(!email) ||
-          Boolean(!typeOfcontribution) ||
-          Boolean(!split)
+          Boolean(!split) ||
+          isContributor
         }
       >
         SUBMIT
