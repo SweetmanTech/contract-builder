@@ -16,7 +16,7 @@ const Descriptions = () => {
         The contracting parties have collaborated in the authorship and
         composition of the musical work titled{' '}
         <span className="text-danger-dark font-roboto_bold">
-          {songName || 'The Onew'}.
+          {songName || 'The One'}.
         </span>
       </p>
     </>
