@@ -19,7 +19,6 @@ const CollaboratorValues = () => {
           <input
             type="text"
             className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2  w-full"
-            placeholder="Patrick Kielb"
             onChange={(e) => setLegalName(e.target.value)}
             value={collaborators[currentCollaborator].legalName}
           />
@@ -29,7 +28,6 @@ const CollaboratorValues = () => {
           <input
             type="number"
             className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 w-full"
-            placeholder="MANAGEMENT@PICERECORDS.COM"
             onChange={(e) => setSplit(parseInt(e.target.value, 10))}
             value={collaborators[currentCollaborator].split}
           />
@@ -40,7 +38,6 @@ const CollaboratorValues = () => {
         <input
           type="text"
           className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 w-full"
-          placeholder="MANAGEMENT@PICERECORDS.COM"
           onChange={(e) => setEmail(e.target.value)}
           value={collaborators[currentCollaborator].email}
         />

@@ -26,7 +26,6 @@ const SubmitForm = () => {
             id="songName"
             type="text"
             className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[350px]"
-            placeholder="The One"
             onChange={(e) => setSongName(e.target.value)}
             value={songName}
           />
