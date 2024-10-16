@@ -41,6 +41,13 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 3s linear infinite',
       },
+      listStyleType: {
+        'lower-roman': 'lower-roman', // Added lower roman style
+        'upper-roman': 'upper-roman', // Added upper roman style
+      },
+      spacing: {
+        '160': '160px', // Custom spacing for 160 pixels
+      },
     },
   },
   plugins: [],

@@ -13,14 +13,11 @@ export enum CONTRACT_BUILDER_STEP {
   SUCCESS,
 }
 
-
-
 export enum SPLIT_TYPE {
   SONG_WRITING = 'Song Writing',
   MASTER_RECORDING = 'Master Recording',
   BOTH = 'Both',
 }
-
 
 export enum GOVERNANCE_TYPE {
   VOTE = 'Vote',
@@ -36,6 +33,7 @@ const useContractBuilder = () => {
   const [songName, setSongName] = useState('')
   const collaborators = useCollaborators()
   const unsignedVersion = useDownloadUnsignedVersion()
+  const UnsignedSongWriter = useDownloadUnsignedVersion()
 
   return {
     tab,
@@ -52,6 +50,7 @@ const useContractBuilder = () => {
     setAdminName,
     ...collaborators,
     ...unsignedVersion,
+    ...UnsignedSongWriter,
   }
 }
 

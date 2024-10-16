@@ -11,10 +11,7 @@ const UnsignedVersion = () => {
   } = useContractBuilderProvider()
 
   return (
-    <div
-      className="fixed w-screen h-screen left-0 top-0 z-[-1] p-10 text-black text-lg flex flex-col justify-center pointer-events-none"
-      id="unsigned-version"
-    >
+    <div className="w-full p-10 text-black text-lg flex flex-col justify-center pointer-events-none">
       <p className="font-rubik text-6xl text-center">Unsigned Version</p>
       <p className="font-share pt-6">
         1. What type of splits contract would you like to create?
@@ -35,6 +32,7 @@ const UnsignedVersion = () => {
           Ownership percentage: {collaborator.split} <br />
         </p>
       ))}
+
       <p className="font-share pt-2">
         4. Would you like to vote when making business decisions or designate an
         administrator?
