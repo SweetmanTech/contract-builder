@@ -1,30 +1,14 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
+import PassedQuestions from '../PassedQuestions'
 
 const CreatedResult = () => {
   const { downloadUnsignedVersion } = useContractBuilderProvider()
 
-  const intoClass =
-    'text-grey text-xl tracking-[-0.05rem] font-share leading-[33px] text-[22px]'
-
   return (
     <section className="flex flex-col">
-      <div className="order-3 md:order-1">
-        <div className="md:hidden  block ">
-          <h4 className="font-rubik text-[13px] mb-3 mt-4 ">
-            Tap Question to Return:
-          </h4>
-        </div>
-        <p className={intoClass}>
-          What type of splits contract would you like to create?
-        </p>
-        <p className={intoClass}>What is the name of the master recording?</p>
-        <p className={intoClass}>
-          How many collaborators are on the master recording?
-        </p>
-        <p className={intoClass}>Collaborator 1</p>
-        <p className={intoClass}>Collaborator 2</p>
-        <p className={intoClass}>What percentage of ownership...?</p>
+      <div className="md:block hidden">
+        <PassedQuestions />
       </div>
 
       <div className="order-1 md:order-2 flex flex-col">
