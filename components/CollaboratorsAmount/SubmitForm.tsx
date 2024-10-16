@@ -36,7 +36,6 @@ const SubmitForm = () => {
             id="songName"
             type="text"
             className="  !outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
-            placeholder="2"
             onChange={handleCollaboratorsChange}
             value={collaboratorsAmount}
           />
