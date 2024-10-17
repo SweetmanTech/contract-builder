@@ -3,7 +3,7 @@ import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import CollaboratorValues from './CollaboratorValues'
 import PassedQuestions from '../PassedQuestions'
-import { createClient } from '@/lib/supabase/client'
+import { upsertContract } from '@/lib/supabase/upsertContract'
 
 const SubmitForm = () => {
   const {
@@ -44,20 +44,8 @@ const SubmitForm = () => {
 
     const names = collaborators.map(({ legalName }) => legalName)
     const emails = collaborators.map(({ email }) => email)
-    const supabase = createClient()
 
-    const { error, data } = await supabase
-      .from('contracts')
-      .upsert({ names, emails })
-      .select('id')
-      .single()
-
-    if (error) {
-      alert(error.message)
-      console.error(error)
-
-      return
-    }
+    const data = await upsertContract(names, emails)
 
     if (data) {
       setCollaboratorDbId(data.id)
