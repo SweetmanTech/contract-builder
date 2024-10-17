@@ -13,6 +13,7 @@ const useCollaborators = () => {
     },
   ])
   const [currentCollaborator, setCurrentCollaborator] = useState(0)
+  const [collaboratorDbId, setCollaboratorDbId] = useState<string>('')
 
   const setCollaborator = () => {
     const temp = [...collaborators]
@@ -70,6 +71,8 @@ const useCollaborators = () => {
     setTypeOfSongWritingContribution,
     setSplit,
     setCollaborator,
+    collaboratorDbId,
+    setCollaboratorDbId,
   }
 }
 
