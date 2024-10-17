@@ -3,8 +3,25 @@ import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
 
 const CreatedResult = () => {
-  const { downloadUnsignedVersion } = useContractBuilderProvider()
+  const {
+    collaborators,
+    currentCollaborator,
+    splitType,
+    downloadUnsignedVersion,
+    downloadSongwritingVersion,
+  } = useContractBuilderProvider()
+  const downloadPdf = () => {
+    if (splitType === 'Song Writing') {
+      console.log('SongWriting called')
+      downloadSongwritingVersion()
+    } else if (splitType === 'Master Recording') {
+      console.log('Recording')
+    } else if (splitType === 'Both') {
+      console.log('Both')
 
+      downloadUnsignedVersion()
+    }
+  }
   return (
     <section className="flex flex-col">
       <div className="md:block hidden">
@@ -29,7 +46,7 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={downloadUnsignedVersion}
+          onClick={downloadPdf}
         >
           Download unsigned version
         </Button>
