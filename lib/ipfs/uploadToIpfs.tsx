@@ -14,13 +14,17 @@ const uploadCache = {
       if (cid) {
         return { cid, uri: `ipfs://${cid}` }
       }
-    } catch {}
+    } catch (error) {
+      console.error(error)
+    }
   },
   put(files: File[], cid: string) {
     const digest = hashFiles(files)
     try {
       localStorage.setItem(`${this.prefix}/${digest}`, cid)
-    } catch {}
+    } catch (error) {
+      console.error(error)
+    }
   },
 }
 
