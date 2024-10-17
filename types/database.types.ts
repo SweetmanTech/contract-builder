@@ -12,27 +12,27 @@ export type Database = {
       contracts: {
         Row: {
           created_at: string
-          download_clicked: boolean
-          emails: string[]
+          download_clicked: boolean | null
+          emails: string[] | null
           id: string
-          ipfs_cid: string
-          names: string[]
+          ipfs_cid: string | null
+          names: string[] | null
         }
         Insert: {
           created_at?: string
-          download_clicked: boolean
-          emails: string[]
+          download_clicked?: boolean | null
+          emails?: string[] | null
           id?: string
-          ipfs_cid: string
-          names: string[]
+          ipfs_cid?: string | null
+          names?: string[] | null
         }
         Update: {
           created_at?: string
-          download_clicked?: boolean
-          emails?: string[]
+          download_clicked?: boolean | null
+          emails?: string[] | null
           id?: string
-          ipfs_cid?: string
-          names?: string[]
+          ipfs_cid?: string | null
+          names?: string[] | null
         }
         Relationships: []
       }
