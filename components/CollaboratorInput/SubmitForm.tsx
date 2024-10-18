@@ -3,6 +3,7 @@ import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import CollaboratorValues from './CollaboratorValues'
 import PassedQuestions from '../PassedQuestions'
+import { upsertContract } from '@/lib/supabase/upsertContract'
 
 const SubmitForm = () => {
   const {
@@ -12,6 +13,7 @@ const SubmitForm = () => {
     collaboratorsAmount,
     setCollaborator,
     splitType,
+    setCollaboratorDbId,
   } = useContractBuilderProvider()
   const {
     legalName,
@@ -33,12 +35,22 @@ const SubmitForm = () => {
       Boolean(!typeOfSongWritingContribution)
   }
 
-  const handleSubmit = () => {
-    if (collaborators.length === collaboratorsAmount) {
-      setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)
+  const handleSubmit = async () => {
+    if (collaborators.length !== collaboratorsAmount) {
+      setCollaborator()
+
       return
     }
-    setCollaborator()
+
+    const names = collaborators.map(({ legalName }) => legalName)
+    const emails = collaborators.map(({ email }) => email)
+
+    const data = await upsertContract(names, emails)
+
+    if (data) {
+      setCollaboratorDbId(data.id)
+      setTab(CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE)
+    }
   }
 
   return (
