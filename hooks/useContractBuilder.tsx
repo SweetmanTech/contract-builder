@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import useCollaborators from './useCollaborators'
-import useDownloadUnsignedVersion from './useDownloadUnsignedVersion'
+import useDownloadBothVersion from './useDownloadBothVersion'
 import useDownloadSongwritingVersion from './useDownloadSongwritingVersion'
+import useDownloadMasterVersion from './useDownloadMasterVersion'
 
 export enum CONTRACT_BUILDER_STEP {
   SPLITS_TYPE,
@@ -33,8 +34,9 @@ const useContractBuilder = () => {
   const [votePercentage, setVotePercentage] = useState(51)
   const [songName, setSongName] = useState('')
   const collaborators = useCollaborators()
-  const unsignedVersion = useDownloadUnsignedVersion()
   const songwritingVersion = useDownloadSongwritingVersion()
+  const masterVersion = useDownloadMasterVersion()
+  const bothVersion = useDownloadBothVersion()
 
   return {
     tab,
@@ -50,8 +52,9 @@ const useContractBuilder = () => {
     adminName,
     setAdminName,
     ...collaborators,
-    ...unsignedVersion,
     ...songwritingVersion,
+    ...masterVersion,
+    ...bothVersion,
   }
 }
 

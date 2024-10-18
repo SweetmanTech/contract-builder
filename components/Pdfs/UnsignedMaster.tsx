@@ -1,6 +1,6 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
-const UnsignedSongWriting = () => {
+const UnsignedMaster = () => {
   const {
     splitType,
     governanceType,
@@ -13,7 +13,7 @@ const UnsignedSongWriting = () => {
   return (
     <div
       className="w-full p-10 text-black text-lg flex flex-col justify-center pointer-events-none"
-      id="unsigned-songwriting"
+      id="unsigned-master"
     >
       <p className="font-rubik text-2xl text-center">
         Copyright ownership agreement for music composition, made as a joint
@@ -134,7 +134,7 @@ const UnsignedSongWriting = () => {
       </ul>
 
       {/* subList */}
-      <ul className="list-none pl-32 pt-8 mb-40">
+      <ul className="list-none pl-32 pt-8">
         <li className="flex items-start space-x-2">
           <span className="font-bold">i.</span>
           <p>
@@ -230,7 +230,7 @@ const UnsignedSongWriting = () => {
       </p>
 
       <p className="font-share pt-6 pl-10 font-bold">6. Accounting</p>
-      <p className="font-share pt-8 pl-16 mb-52">
+      <p className="font-share pt-8 pl-16">
         a. Each party has the right to engage a certified public accountant to
         audit the books and records of the other parties solely to verify the
         receipt and payment of monies derived from the musical work. This audit
@@ -355,4 +355,4 @@ const UnsignedSongWriting = () => {
   )
 }
 
-export default UnsignedSongWriting
+export default UnsignedMaster

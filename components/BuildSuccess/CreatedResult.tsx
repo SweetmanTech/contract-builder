@@ -7,19 +7,18 @@ const CreatedResult = () => {
     collaborators,
     currentCollaborator,
     splitType,
-    downloadUnsignedVersion,
+    downloadMasterVersion,
     downloadSongwritingVersion,
+    downloadBothVersion,
   } = useContractBuilderProvider()
   const downloadPdf = () => {
     if (splitType === 'Song Writing') {
       console.log('SongWriting called')
       downloadSongwritingVersion()
     } else if (splitType === 'Master Recording') {
-      console.log('Recording')
+      downloadMasterVersion()
     } else if (splitType === 'Both') {
-      console.log('Both')
-
-      downloadUnsignedVersion()
+      downloadBothVersion()
     }
   }
   return (
