@@ -2,17 +2,17 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import { isPdfDownloaded } from '@/lib/supabase/isPdfDownloaded'
 import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
+import { getPdf } from '@/utils/getPdf'
 
 const CreatedResult = () => {
-  const { downloadUnsignedVersion, collaboratorDbId } =
-    useContractBuilderProvider()
+  const { collaboratorDbId } = useContractBuilderProvider()
 
   const downloadPdf = async () => {
-    await downloadUnsignedVersion()
+    const pdf = await getPdf('unsigned-version')
 
-    console.log(collaboratorDbId)
+    if (!collaboratorDbId || !pdf) return
 
-    if (!collaboratorDbId) return
+    pdf.save('unsigned-version.pdf')
 
     await isPdfDownloaded(collaboratorDbId)
   }
