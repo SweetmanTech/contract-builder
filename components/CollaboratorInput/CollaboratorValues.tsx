@@ -11,6 +11,7 @@ const CollaboratorValues = () => {
     setEmail,
     setSplit,
   } = useContractBuilderProvider()
+
   return (
     <section className="flex mt-6 flex-col gap-4">
       <div className="flex gap-2">
