@@ -3,13 +3,9 @@ import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
 
 const CreatedResult = () => {
-  const {
-    collaborators,
-    currentCollaborator,
-    splitType,
-    downloadUnsignedVersion,
-    downloadSongwritingVersion,
-  } = useContractBuilderProvider()
+  const { splitType, downloadUnsignedVersion, downloadSongwritingVersion } =
+    useContractBuilderProvider()
+
   const downloadPdf = () => {
     if (splitType === 'Song Writing') {
       console.log('SongWriting called')

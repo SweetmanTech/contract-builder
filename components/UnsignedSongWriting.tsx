@@ -1,14 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const UnsignedSongWriting = () => {
-  const {
-    splitType,
-    governanceType,
-    adminName,
-    votePercentage,
-    songName,
-    collaborators,
-  } = useContractBuilderProvider()
+  const { governanceType, collaborators } = useContractBuilderProvider()
 
   return (
     <div
