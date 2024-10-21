@@ -34,7 +34,7 @@ const UnsignedSongWriting = () => {
       </p>
 
       {collaborators.map((collaborator, index) => (
-        <p key={index} className="font-share pt-2 pl-20">
+        <div key={index} className="font-share pt-2 pl-20">
           Collaborator {index + 1}: <br />
           <div className="flex items-center space-x-2">
             <span>Legal Name:</span>
@@ -85,7 +85,7 @@ const UnsignedSongWriting = () => {
               {collaborator.split} %
             </div>
           </div>
-        </p>
+        </div>
       ))}
 
       <p className="font-share pt-6 pl-10 font-bold">
@@ -323,7 +323,7 @@ const UnsignedSongWriting = () => {
       </p>
 
       {collaborators.map((collaborator, index) => (
-        <p key={index} className="font-share pt-2 pl-20">
+        <div key={index} className="font-share pt-2 pl-20">
           Collaborator {index + 1}: <br />
           Legal Name:{' '}
           <span className="underline">{collaborator.legalName}</span> <br />
@@ -342,7 +342,7 @@ const UnsignedSongWriting = () => {
               Date: :___________________________
             </div>
           </div>
-        </p>
+        </div>
       ))}
     </div>
   )

@@ -6,7 +6,7 @@ import GovernanceTypes from '@/components/GovernanceTypes'
 import SongNameForm from '@/components/SongNameForm'
 import SplitsTypes from '@/components/SplitsTypes'
 import UnsignedVersion from '@/components/UnsignedVersion'
-import UnsignedSongWriting from '@/components/UnsignedSongWriting'
+import UnsignedSongWriting from '@/components/pdfs/UnsignedSongWriting'
 
 import Vote from '@/components/Vote'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
@@ -31,7 +31,7 @@ const ContractBuilderPage = () => {
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && <BuildSuccess />}
 
       {splitType === 'Song Writing' && <UnsignedSongWriting />}
-      {splitType === 'Both' && <UnsignedVersion />}
+      <UnsignedVersion />
     </>
   )
 }

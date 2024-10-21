@@ -5,17 +5,28 @@ import PassedQuestions from '../PassedQuestions'
 import { getPdf } from '@/utils/getPdf'
 import { uploadFile } from '@/lib/ipfs/uploadToIpfs'
 import { addCid } from '@/lib/supabase/cid'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Loader2 } from 'lucide-react'
 
 const CreatedResult = () => {
-  const { splitType, downloadUnsignedVersion, downloadSongwritingVersion } =
-    useContractBuilderProvider()
+  const { splitType } = useContractBuilderProvider()
   const { collaboratorDbId } = useContractBuilderProvider()
   const [uploadingPdf, setUploadingPdf] = useState(false)
 
+  const pdfContainerId = useMemo(() => {
+    if (splitType === 'Song Writing') {
+      return 'unsigned-songwriting'
+    } else if (splitType === 'Master Recording') {
+      return 'unsigned-version'
+    } else if (splitType === 'Both') {
+      return 'unsigned-version'
+    }
+
+    return 'unsigned-version'
+  }, [splitType])
+
   const downloadPdf = async () => {
-    const pdf = await getPdf('unsigned-version')
+    const pdf = await getPdf(pdfContainerId)
 
     if (!collaboratorDbId || !pdf) return
 
@@ -39,19 +50,6 @@ const CreatedResult = () => {
 
     setUploadingPdf(false)
   }
-
-  // const downloadPdf = () => {
-  //   if (splitType === 'Song Writing') {
-  //     console.log('SongWriting called')
-  //     downloadSongwritingVersion()
-  //   } else if (splitType === 'Master Recording') {
-  //     console.log('Recording')
-  //   } else if (splitType === 'Both') {
-  //     console.log('Both')
-
-  //     downloadUnsignedVersion()
-  //   }
-  // }
 
   return (
     <section className="flex flex-col">
