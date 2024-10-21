@@ -29,7 +29,7 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={() => downloadUnsignedVersion()}
+          onClick={downloadUnsignedVersion}
         >
           Download unsigned version
         </Button>
