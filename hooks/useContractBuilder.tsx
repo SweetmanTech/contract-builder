@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import useCollaborators from './useCollaborators'
-import useDownloadUnsignedVersion from './useDownloadUnsignedVersion'
 
 export enum CONTRACT_BUILDER_STEP {
   SPLITS_TYPE,
@@ -33,7 +32,6 @@ const useContractBuilder = () => {
   const [songName, setSongName] = useState('')
   const [collaboratorDbId, setCollaboratorDbId] = useState<string>()
   const collaborators = useCollaborators()
-  const unsignedVersion = useDownloadUnsignedVersion()
 
   return {
     tab,
@@ -51,7 +49,6 @@ const useContractBuilder = () => {
     collaboratorDbId,
     setCollaboratorDbId,
     ...collaborators,
-    ...unsignedVersion,
   }
 }
 
