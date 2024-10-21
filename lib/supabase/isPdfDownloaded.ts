@@ -1,6 +1,6 @@
 import { createClient } from './client'
 
-export const isPdfDownloaded = async (id: string) => {
+export const setPdfDownloaded = async (id: string) => {
   const supabase = createClient()
 
   const { error } = await supabase
