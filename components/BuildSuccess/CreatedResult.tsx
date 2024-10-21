@@ -1,21 +1,10 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import { isPdfDownloaded } from '@/lib/supabase/isPdfDownloaded'
 import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
-import { getPdf } from '@/utils/getPdf'
+import { downloadPdf } from '@/lib/pdf/downloadPdf'
 
 const CreatedResult = () => {
   const { collaboratorDbId } = useContractBuilderProvider()
-
-  const downloadPdf = async () => {
-    const pdf = await getPdf('unsigned-version')
-
-    if (!collaboratorDbId || !pdf) return
-
-    pdf.save('unsigned-version.pdf')
-
-    await isPdfDownloaded(collaboratorDbId)
-  }
 
   return (
     <section className="flex flex-col">
@@ -41,7 +30,7 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={downloadPdf}
+          onClick={() => downloadPdf(collaboratorDbId)}
         >
           Download unsigned version
         </Button>
