@@ -1,7 +1,7 @@
 import html2canvas from 'html2canvas'
 import jsPdf from 'jspdf'
 
-export const getPdf = async (containerId: string) => {
+export const createPdf = async (containerId: string) => {
   const domElement = document.getElementById(containerId)
 
   if (!domElement) return

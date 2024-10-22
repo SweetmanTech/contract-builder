@@ -1,23 +1,22 @@
-import html2canvas from 'html2canvas'
-import jsPdf from 'jspdf'
+import { createPdf } from '@/lib/pdf/createPdf'
+import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import { useState } from 'react'
 
 const useDownloadUnsignedVersion = () => {
+  const { collaboratorDbId } = useContractBuilderProvider()
   const [downloading, setDownloading] = useState(false)
 
   const downloadUnsignedVersion = async () => {
     setDownloading(true)
 
-    const domElement = document.getElementById('unsigned-version')
+    const pdf = await createPdf('unsigned-version')
 
-    if (!domElement) return
+    if (!pdf || !collaboratorDbId) return
 
-    const canvas = await html2canvas(domElement)
-    const img = canvas.toDataURL('image/png')
-    const pdf = new jsPdf()
-
-    pdf.addImage(img, 'JPEG', 0, 0, 200, 150)
     pdf.save('unsigned-version.pdf')
+
+    await setPdfDownloaded(collaboratorDbId)
 
     setDownloading(false)
   }
