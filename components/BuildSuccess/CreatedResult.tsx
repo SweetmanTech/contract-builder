@@ -1,9 +1,9 @@
-import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
+import useDownloadUnsignedVersion from '@/hooks/useDownloadUnsignedVersion'
 
 const CreatedResult = () => {
-  const { downloadUnsignedVersion } = useContractBuilderProvider()
+  const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
 
   return (
     <section className="flex flex-col">
