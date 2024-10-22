@@ -30,8 +30,8 @@ const uploadCache = {
 
 export const uploadFile = async (file: File): Promise<IPFSUploadResponse> => {
   try {
-    const data = new FormData()
-    data.set('file', file)
+    const formData = new FormData()
+    formData.append('file', file)
 
     const cached = uploadCache.get([file])
 
@@ -39,7 +39,7 @@ export const uploadFile = async (file: File): Promise<IPFSUploadResponse> => {
 
     const res = await fetch('/api/ipfs', {
       method: 'POST',
-      body: data,
+      body: formData,
     })
 
     const json = await res.json()
