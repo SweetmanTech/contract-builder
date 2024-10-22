@@ -40,6 +40,9 @@ export const uploadFile = async (file: File): Promise<IPFSUploadResponse> => {
     const res = await fetch('/api/ipfs', {
       method: 'POST',
       body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     })
 
     const json = await res.json()
