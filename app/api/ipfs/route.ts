@@ -1,11 +1,5 @@
 import saveFile from '@/lib/ipfs/saveFile'
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
-
 export async function POST(request: Request) {
   const formData = await request.formData()
 
