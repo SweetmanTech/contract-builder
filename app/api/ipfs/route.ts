@@ -1,11 +1,38 @@
 import saveFile from '@/lib/ipfs/saveFile'
 
-export async function POST(request: Request) {
-  const data = await request.formData()
-  const file: File | null = data.get('file') as unknown as File
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+}
 
-  data.append('file', file)
-  data.append('pinataMetadata', JSON.stringify({ name: 'File to upload' }))
+export async function POST(request: Request) {
+  const formData = await request.formData()
+
+  const file = formData.get('file') as File
+
+  if (!file) {
+    return Response.json({ error: 'No file uploaded' }, { status: 400 })
+  }
+
+  const chunks = []
+  const reader = file.stream().getReader()
+
+  let done = false
+
+  while (!done) {
+    const { done: isDone, value } = await reader.read()
+
+    done = isDone
+
+    chunks.push(value)
+  }
+
+  const buffer = Buffer.concat(chunks.filter(Boolean) as Uint8Array[])
+
+  const data = new FormData()
+
+  data.append('file', new Blob([buffer]), file.name)
 
   const cid = await saveFile(data)
 
