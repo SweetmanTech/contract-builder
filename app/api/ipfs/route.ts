@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
   const data = new FormData()
 
   data.append('file', new Blob([buffer]), file.name)
+  data.append('pinataMetadata', JSON.stringify({ name: 'File to upload' }))
 
   const cid = await saveFile(data)
 
