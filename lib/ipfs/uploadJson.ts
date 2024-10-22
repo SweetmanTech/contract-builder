@@ -1,4 +1,4 @@
-import { IPFSUploadResponse, uploadFile } from './uploadToIpfs'
+import { IPFSUploadResponse, uploadFile } from './uploadFile'
 
 export async function uploadJson(json: object): Promise<IPFSUploadResponse> {
   const jsonString = JSON.stringify(json)
