@@ -1,4 +1,4 @@
-import { uploadFile } from '@/lib/ipfs/uploadToIpfs'
+import { uploadFile } from '@/lib/ipfs/uploadFile'
 import { createPdf } from '@/lib/pdf/createPdf'
 import { addCid } from '@/lib/supabase/cid'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
