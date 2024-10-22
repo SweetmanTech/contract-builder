@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const file = formData.get('file') as File
 
   if (!file) {
-    return Response.json({ error: 'No file uploaded' }, { status: 400 })
+    return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
   }
 
   const chunks = []
