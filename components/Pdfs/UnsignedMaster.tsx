@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const UnsignedMaster = () => {
@@ -8,12 +9,73 @@ const UnsignedMaster = () => {
     votePercentage,
     songName,
     collaborators,
+    collaboratorsAmount,
   } = useContractBuilderProvider()
+
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const [divHeight, setDivHeight] = useState(0)
+
+  useEffect(() => {
+    if (containerRef.current) {
+      // Get the height of the div once it's mounted
+      setDivHeight(containerRef.current.offsetHeight)
+    }
+  }, [collaborators, collaboratorsAmount, governanceType, splitType])
+
+  const totalHeight = divHeight // The total height of your content
+  const fixedHeight = 1123 // The height interval after which you want to add space
+
+  useEffect(() => {
+    const container = containerRef.current
+
+    if (container) {
+      const interval = fixedHeight
+      let currentHeight = 0 // Track current height covered by content
+
+      // Loop through the container children elements
+      for (let i = 0; i < container.children.length; i++) {
+        const childElement = container.children[i] as HTMLElement
+
+        // Skip spacer divs from previous iterations to avoid affecting the calculation
+        if (childElement.classList.contains('spacer')) {
+          continue
+        }
+
+        // Add the height of the current content element
+        currentHeight += childElement.offsetHeight
+
+        // Insert spacer after every fixedHeight interval is exceeded
+        if (currentHeight >= interval) {
+          const spacer = document.createElement('div')
+
+          // Set styles for the spacer div
+          spacer.style.height = '50px' // Set height for the spacer div
+          spacer.style.backgroundColor = 'green' // For visibility
+          spacer.classList.add('spacer') // Add a class to identify spacer divs
+
+          // Insert the spacer div after the current content
+          container.insertBefore(spacer, childElement.nextSibling)
+
+          // Adjust the current height for the next iteration
+          currentHeight -= interval // Adjust the current height for next iteration
+        }
+      }
+    }
+  }, [
+    totalHeight,
+    fixedHeight,
+    collaborators,
+    collaboratorsAmount,
+    governanceType,
+    splitType,
+  ])
 
   return (
     <div
       className="w-full p-10 text-black text-lg flex flex-col justify-center pointer-events-none"
       id="unsigned-master"
+      ref={containerRef}
+      style={{ backgroundColor: 'white', overflow: 'auto', height: 'auto' }}
     >
       <p className="font-rubik text-2xl text-center">
         Copyright ownership agreement for Master Recording, made as a joint
@@ -52,7 +114,13 @@ const UnsignedMaster = () => {
       </p>
 
       {collaborators.map((collaborator, index) => (
-        <p key={index} className="font-share pt-2 pl-20">
+        <p
+          key={index}
+          className="font-share pt-2 pl-20"
+          style={{
+            height: `${collaboratorsAmount && collaboratorsAmount * 152} px`,
+          }}
+        >
           Collaborator {index + 1}: <br />
           <div className="flex items-center space-x-2">
             <span>Legal Name:</span>
@@ -374,7 +442,13 @@ const UnsignedMaster = () => {
       </p>
 
       {collaborators.map((collaborator, index) => (
-        <p key={index} className="font-share pt-2 pl-20">
+        <p
+          key={index}
+          className="font-share pt-2 pl-20"
+          style={{
+            height: `${collaboratorsAmount && collaboratorsAmount * 152} px`,
+          }}
+        >
           Collaborator {index + 1}: <br />
           Legal Name: Home address: <span className="underline">XYZ</span>
           <br />

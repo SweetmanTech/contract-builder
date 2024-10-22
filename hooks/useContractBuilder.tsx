@@ -34,7 +34,15 @@ const useContractBuilder = () => {
   const [votePercentage, setVotePercentage] = useState(51)
   const [songName, setSongName] = useState('')
   const collaborators = useCollaborators()
-  const songwritingVersion = useDownloadSongwritingVersion()
+  const songwritingVersion = useDownloadSongwritingVersion(
+    splitType,
+    governanceType,
+    adminName,
+    votePercentage,
+    songName,
+    collaborators.collaborators,
+    collaborators.collaboratorsAmount,
+  )
   const masterVersion = useDownloadMasterVersion()
   const bothVersion = useDownloadBothVersion()
 
