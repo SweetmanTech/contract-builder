@@ -1,9 +1,12 @@
 import Button from '../Button'
 import PassedQuestions from '../PassedQuestions'
+import { Loader2 } from 'lucide-react'
 import useDownloadUnsignedVersion from '@/hooks/useDownloadUnsignedVersion'
+import useUploadContractIpfs from '@/hooks/useUploadContractIpfs'
 
 const CreatedResult = () => {
   const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
+  const { uploadContractIpfs, uploading } = useUploadContractIpfs()
 
   return (
     <section className="flex flex-col">
@@ -35,9 +38,17 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={() => {}}
+          onClick={uploadContractIpfs}
+          disabled={uploading}
         >
-          Send DocuSign to collaborators
+          {uploading ? (
+            <div className="flex justify-center">
+              <Loader2 className="mr-2 size-4 animate-spin" />
+              Loading...
+            </div>
+          ) : (
+            ' Send DocuSign to collaborators'
+          )}
         </Button>
       </div>
     </section>
