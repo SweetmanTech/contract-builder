@@ -1,3 +1,4 @@
+import { createPdf } from '@/lib/pdf/createPdf'
 import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import html2pdf from 'html2pdf.js'

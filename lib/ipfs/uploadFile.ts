@@ -1,4 +1,6 @@
+import getIpfsJwt from './getIpfsJwt'
 import { hashFiles } from './hash'
+import saveFile from './saveFile'
 
 export type IPFSUploadResponse = {
   cid: string
@@ -7,6 +9,7 @@ export type IPFSUploadResponse = {
 
 const uploadCache = {
   prefix: 'Pinata/IPFSUploadCache',
+
   get(files: File[]): IPFSUploadResponse | undefined {
     const digest = hashFiles(files)
     try {
@@ -18,6 +21,7 @@ const uploadCache = {
       console.error(error)
     }
   },
+
   put(files: File[], cid: string) {
     const digest = hashFiles(files)
     try {
@@ -30,20 +34,28 @@ const uploadCache = {
 
 export const uploadFile = async (file: File): Promise<IPFSUploadResponse> => {
   try {
-    const data = new FormData()
-    data.set('file', file)
-
     const cached = uploadCache.get([file])
 
     if (cached) return cached
 
-    const res = await fetch('/api/ipfs', {
-      method: 'POST',
-      body: data,
-    })
+    const data = new FormData()
+    data.set('file', file)
 
-    const json = await res.json()
-    const { cid } = json
+    let cid
+    let jwt
+
+    if (file.size >= 4 * 1024 * 1024) {
+      jwt = await getIpfsJwt()
+    }
+
+    if (jwt) {
+      cid = await saveFile(data, jwt)
+    } else {
+      const res = await fetch('/api/ipfs', { method: 'POST', body: data })
+      const json = await res.json()
+
+      cid = json.cid
+    }
 
     uploadCache.put([file], cid)
 
