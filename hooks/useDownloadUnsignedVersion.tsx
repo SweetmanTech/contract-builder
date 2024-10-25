@@ -1,7 +1,6 @@
 import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import html2canvas from 'html2canvas'
-import jsPdf from 'jspdf'
+import html2pdf from 'html2pdf.js'
 import { useState } from 'react'
 
 const useDownloadUnsignedVersion = () => {
@@ -11,20 +10,30 @@ const useDownloadUnsignedVersion = () => {
   const downloadUnsignedVersion = async () => {
     setDownloading(true)
 
-    const domElement = document.getElementById('unsigned-version')
+    try {
+      const element = document.getElementById('unsigned-version')
+      if (!element || !collaboratorDbId) return
 
-    if (!domElement || !collaboratorDbId) return
+      const options = {
+        margin: [1, 0.5],
+        filename: 'contract-agreement.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+        },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+      }
 
-    const canvas = await html2canvas(domElement)
-    const img = canvas.toDataURL('image/png')
-    const pdf = new jsPdf()
+      await html2pdf().from(element).set(options).save()
 
-    pdf.addImage(img, 'JPEG', 0, 0, 200, 150)
-    pdf.save('unsigned-version.pdf')
-
-    await setPdfDownloaded(collaboratorDbId)
-
-    setDownloading(false)
+      await setPdfDownloaded(collaboratorDbId)
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return {
