@@ -22,12 +22,12 @@ const UnsignedVersion = () => {
         className="text-black max-w-[9.5in] w-full bg-white p-[0.3in] text-[11pt] leading-normal  relative box-border min-h-[11in]"
       >
         <div className="flex flex-col gap-10">
-          <div className="text-center flex flex-col gap-6 page-break-inside-avoid">
+          <div className="text-center flex flex-col gap-10 page-break-inside-avoid">
             <p className="text-2xl font-bold">
               Copyright ownership agreement for {splitType}, made as a joint
               work.
             </p>
-            <p className="text-xl">
+            <p className="text-md">
               This agreement is entered into on {currentDate} between the
               following parties
             </p>
