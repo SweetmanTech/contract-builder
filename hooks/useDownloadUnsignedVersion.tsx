@@ -1,4 +1,4 @@
-import { createPdf } from '@/lib/pdf/createPdf'
+'use client'
 import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import { useState } from 'react'
@@ -10,15 +10,32 @@ const useDownloadUnsignedVersion = () => {
   const downloadUnsignedVersion = async () => {
     setDownloading(true)
 
-    const pdf = await createPdf('unsigned-version')
+    try {
+      const html2pdf = (await import('html2pdf.js')).default
 
-    if (!pdf || !collaboratorDbId) return
+      const element = document.getElementById('unsigned-version')
+      if (!element || !collaboratorDbId) return
 
-    pdf.save('unsigned-version.pdf')
+      const options = {
+        margin: [0.5, 0.5],
+        filename: 'contract-agreement.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+        },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+      }
 
-    await setPdfDownloaded(collaboratorDbId)
+      await html2pdf().from(element).set(options).save()
 
-    setDownloading(false)
+      await setPdfDownloaded(collaboratorDbId)
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return {
