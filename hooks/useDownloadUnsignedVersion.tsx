@@ -3,7 +3,6 @@ import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import { useState } from 'react'
 
-// Dynamically import html2pdf.js
 const useDownloadUnsignedVersion = () => {
   const { collaboratorDbId } = useContractBuilderProvider()
   const [downloading, setDownloading] = useState(false)
@@ -18,9 +17,9 @@ const useDownloadUnsignedVersion = () => {
       if (!element || !collaboratorDbId) return
 
       const options = {
-        margin: [1, 0.5],
+        margin: [0.5, 0.5],
         filename: 'contract-agreement.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'jpeg', quality: 1 },
         html2canvas: {
           scale: 2,
           useCORS: true,
