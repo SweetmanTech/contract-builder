@@ -1,8 +1,9 @@
+'use client'
 import { setPdfDownloaded } from '@/lib/supabase/setPdfDownloaded'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import html2pdf from 'html2pdf.js'
 import { useState } from 'react'
 
+// Dynamically import html2pdf.js
 const useDownloadUnsignedVersion = () => {
   const { collaboratorDbId } = useContractBuilderProvider()
   const [downloading, setDownloading] = useState(false)
@@ -11,6 +12,8 @@ const useDownloadUnsignedVersion = () => {
     setDownloading(true)
 
     try {
+      const html2pdf = (await import('html2pdf.js')).default
+
       const element = document.getElementById('unsigned-version')
       if (!element || !collaboratorDbId) return
 
