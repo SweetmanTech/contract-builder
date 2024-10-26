@@ -23,6 +23,8 @@ const UnsignedVersion = () => {
       })
     : []
 
+  const mainHeadingText = splitTypeObject?.pdfText?.headingText
+
   return (
     <div className="bg-white w-full min-h-screen fixed top-[99999999px] left-0 flex justify-center">
       <div
@@ -32,8 +34,8 @@ const UnsignedVersion = () => {
         <div className="flex flex-col gap-10">
           <div className="text-center flex flex-col gap-10 page-break-inside-avoid">
             <p className="text-2xl font-bold">
-              Copyright ownership agreement for {splitType}, made as a joint
-              work.
+              Copyright ownership agreement for {mainHeadingText}, made as a
+              joint work.
             </p>
             <p className="text-md">
               This agreement is entered into on {currentDate} between the
