@@ -3,6 +3,7 @@ import SongWritingIdentification from '@/components/UnsignedVersion/SongWritingI
 import { SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import { getSongwritingPDFHeadings } from './songwritingPDF'
 import { PDFHeadingProps } from '@/types/pdfHeadingsProps'
+import { getMasterPDFHeadings } from './masterPDF'
 
 export const splitTypes = [
   {
@@ -28,7 +29,7 @@ export const splitTypes = [
     },
     IdentificationComponent: MasterRecordingIdentification,
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
-      getSongwritingPDFHeadings({ type, adminName, votePercentage }),
+      getMasterPDFHeadings({ type, adminName, votePercentage }),
   },
   {
     label: 'Both',
