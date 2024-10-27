@@ -3,7 +3,9 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import React from 'react'
 
 const MasterRecordingIdentification = () => {
-  const { splitType, collaborators, songName } = useContractBuilderProvider()
+  const { splitType, collaborators, recordedVersion } =
+    useContractBuilderProvider()
+
   return (
     <div className="flex flex-col gap-3 text-md">
       {' '}
@@ -13,8 +15,9 @@ const MasterRecordingIdentification = () => {
       <p>
         The contracting parties have collaborated in the recording and
         production of the Master Recording titled{' '}
-        <span className="underline">{songName}</span>, which fixes a performance
-        of the Musical Work identified in clause 1 of this agreement.
+        <span className="underline">{recordedVersion}</span>, which fixes a
+        performance of the Musical Work identified in clause 1 of this
+        agreement.
       </p>
       <p>
         The parties acknowledge and accept their contribution to the recording

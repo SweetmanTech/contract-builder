@@ -1,12 +1,22 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
-import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
+import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
 import ReadHereLink from '../ReadHereLink'
+import { splitTypes } from '@/lib/constants/splitTypes'
 
 const SubmitForm = () => {
-  const { setTab, songName, setSongName } = useContractBuilderProvider()
+  const {
+    setTab,
+    songName,
+    setSongName,
+    recordedVersion,
+    setRecordedVersion,
+    splitType,
+  } = useContractBuilderProvider()
 
+  const formText = splitTypes.find((item) => item.type === splitType)?.formText
+  const showRecordedVersion = splitType === SPLIT_TYPE.MASTER_RECORDING
   return (
     <>
       <div className=" md:size-full flex flex-col md:justify-center justify-start ">
@@ -15,7 +25,7 @@ const SubmitForm = () => {
           <PassedQuestions />
         </div>
         <p className="text-white md:text-3xl tracking-[-0.05rem] font-share pt-6 text-[20px]">
-          What is the name of the song?
+          {formText}
         </p>
         <label
           htmlFor="#songName"
@@ -30,6 +40,21 @@ const SubmitForm = () => {
             value={songName}
           />
         </label>
+        {showRecordedVersion && (
+          <label
+            htmlFor="#recodedVersion"
+            className="mt-6 flex flex-col gap-2 text-[#696969] text-[15px]"
+          >
+            <p>Recorded Version</p>
+            <input
+              id="recodedVersion"
+              type="text"
+              className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[350px]"
+              onChange={(e) => setRecordedVersion(e.target.value)}
+              value={recordedVersion}
+            />
+          </label>
+        )}
         <ReadHereLink link="/" className="text-[15px] md:text-[24px]  " />
       </div>
 
