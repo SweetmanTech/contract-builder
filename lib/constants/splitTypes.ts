@@ -19,6 +19,7 @@ export const splitTypes = [
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getSongwritingPDFHeadings({ type, adminName, votePercentage }),
     serialNumber: 2,
+    formText: `What is the name of the song?`,
   },
   {
     label: 'Master Recording',
@@ -32,10 +33,12 @@ export const splitTypes = [
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getMasterPDFHeadings({ type, adminName, votePercentage }),
     serialNumber: 3,
+    formText: `What is the name of the song and its recorded version?`,
   },
   {
     label: 'Both',
     type: SPLIT_TYPE.BOTH,
     text: 'Song Writing and Master Recording',
+    formText: `What is the name of the song and its recorded version?`,
   },
 ]
