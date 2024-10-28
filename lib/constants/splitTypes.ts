@@ -17,6 +17,6 @@ export const splitTypes = [
     label: 'Both',
     type: SPLIT_TYPE.BOTH,
     text: 'Song Writing and Master Recording',
-    formText: `What is the name of the song?`,
+    formText: `What is the name of the song and its recorded version?`,
   },
 ]

@@ -4,6 +4,7 @@ import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
 import ReadHereLink from '../ReadHereLink'
 import { splitTypes } from '@/lib/constants/splitTypes'
+import FormInput from '../FormInput'
 
 const SubmitForm = () => {
   const {
@@ -15,8 +16,15 @@ const SubmitForm = () => {
     splitType,
   } = useContractBuilderProvider()
 
+  const handleRecordedVersionChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setRecordedVersion(e.target.value)
+  }
+
   const formText = splitTypes.find((item) => item.type === splitType)?.formText
-  const showRecordedVersion = splitType === SPLIT_TYPE.MASTER_RECORDING
+  const showRecordedVersion =
+    splitType === SPLIT_TYPE.MASTER_RECORDING || splitType === SPLIT_TYPE.BOTH
   return (
     <>
       <div className=" md:size-full flex flex-col md:justify-center justify-start ">
@@ -27,33 +35,19 @@ const SubmitForm = () => {
         <p className="text-white md:text-3xl tracking-[-0.05rem] font-share pt-6 text-[20px]">
           {formText}
         </p>
-        <label
-          htmlFor="#songName"
-          className="mt-6 flex flex-col gap-2 text-[#696969] text-[15px]"
-        >
-          <p>Song composition</p>
-          <input
-            id="songName"
-            type="text"
-            className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[350px]"
-            onChange={(e) => setSongName(e.target.value)}
-            value={songName}
-          />
-        </label>
+        <FormInput
+          value={songName}
+          label="Song Composition"
+          handleChange={(e) => setSongName(e.target.value)}
+          labelProps={{ htmlFor: 'songName' }}
+        />
         {showRecordedVersion && (
-          <label
-            htmlFor="#recodedVersion"
-            className="mt-6 flex flex-col gap-2 text-[#696969] text-[15px]"
-          >
-            <p>Recorded Version</p>
-            <input
-              id="recodedVersion"
-              type="text"
-              className="!outline-none font-rubik rounded-md border-white border !bg-transparent p-2 max-w-[350px]"
-              onChange={(e) => setRecordedVersion(e.target.value)}
-              value={recordedVersion}
-            />
-          </label>
+          <FormInput
+            value={recordedVersion}
+            label="Recorded Version"
+            handleChange={handleRecordedVersionChange}
+            labelProps={{ htmlFor: 'recordedVersion' }}
+          />
         )}
         <ReadHereLink link="/" className="text-[15px] md:text-[24px]  " />
       </div>
