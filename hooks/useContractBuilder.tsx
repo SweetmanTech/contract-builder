@@ -30,6 +30,7 @@ const useContractBuilder = () => {
   const [adminName, setAdminName] = useState('')
   const [votePercentage, setVotePercentage] = useState(51)
   const [songName, setSongName] = useState('')
+  const [recordedVersion, setRecordedVersion] = useState('')
   const [collaboratorDbId, setCollaboratorDbId] = useState<string>()
   const collaborators = useCollaborators()
 
@@ -48,6 +49,8 @@ const useContractBuilder = () => {
     setAdminName,
     collaboratorDbId,
     setCollaboratorDbId,
+    recordedVersion,
+    setRecordedVersion,
     ...collaborators,
   }
 }
