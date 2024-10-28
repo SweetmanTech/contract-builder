@@ -24,6 +24,7 @@ const UnsignedVersion = () => {
     : []
 
   const mainHeadingText = splitTypeObject?.pdfText?.headingText
+  const serialNumber = splitTypeObject?.serialNumber || 3
 
   return (
     <div className="bg-white w-full min-h-screen fixed top-[99999999px] left-0 flex justify-center">
@@ -55,7 +56,7 @@ const UnsignedVersion = () => {
             {headings.map((heading, index) => (
               <div key={index}>
                 <LabeledParagraphs
-                  serialNumber={index + 3}
+                  serialNumber={index + serialNumber}
                   heading={heading.heading}
                   paragraphs={heading.paragraphs}
                 />

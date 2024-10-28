@@ -18,6 +18,7 @@ export const splitTypes = [
     IdentificationComponent: SongWritingIdentification,
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getSongwritingPDFHeadings({ type, adminName, votePercentage }),
+    serialNumber: 2,
   },
   {
     label: 'Master Recording',
@@ -30,6 +31,7 @@ export const splitTypes = [
     IdentificationComponent: MasterRecordingIdentification,
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getMasterPDFHeadings({ type, adminName, votePercentage }),
+    serialNumber: 3,
   },
   {
     label: 'Both',
