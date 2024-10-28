@@ -15,5 +15,8 @@ export const splitTypes = [
     label: 'Both',
     type: SPLIT_TYPE.BOTH,
     text: 'Song Writing and Master Recording',
+    pdfText: {
+      headingText: `Musical Work and Master Recording`,
+    },
   },
 ]
