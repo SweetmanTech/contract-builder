@@ -1,6 +1,7 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 import React from 'react'
+import PageBreakInside from '../PageBreakInside/PageBreakInside'
 
 const MasterRecordingIdentification = () => {
   const { splitType, collaborators, recordedVersion } =
@@ -27,29 +28,29 @@ const MasterRecordingIdentification = () => {
       <div className="flex flex-col gap-3">
         {collaborators.map((collaborator, index) => (
           <div key={index} className="pl-7 flex flex-col gap-2">
-            <p>
+            <PageBreakInside>
               <span className="text-md font-semibold">
                 Collaborator {index + 1}:
               </span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Legal Name:{' '}
               <span className="underline">{collaborator.legalName}</span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Email address:{' '}
               <span className="underline">{collaborator.email}</span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Master Contribution:{' '}
               <span className="underline">
                 {collaborator.typeOfMasterContribution}
               </span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Ownership percentage:{' '}
               <span className="underline">{collaborator.split}</span>
-            </p>
+            </PageBreakInside>
           </div>
         ))}
       </div>

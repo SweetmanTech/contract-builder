@@ -28,7 +28,19 @@ const useDownloadUnsignedVersion = () => {
         jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
       }
 
-      await html2pdf().from(element).set(options).save()
+      const pdf = html2pdf().from(element).set(options).toPdf().get('pdf')
+
+      pdf.then((doc: any) => {
+        const pageCount = doc?.internal?.getNumberOfPages()
+        for (let i = pageCount; i > 0; i--) {
+          const pageContent = doc?.internal?.pages[i]
+          if (+pageContent[3]?.split(' ')?.[3] < 10) {
+            doc?.deletePage(i)
+          }
+        }
+
+        doc?.save(options.filename)
+      })
 
       await setPdfDownloaded(collaboratorDbId)
     } catch (error) {
