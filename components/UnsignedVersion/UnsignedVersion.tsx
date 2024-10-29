@@ -25,6 +25,7 @@ const UnsignedVersion = () => {
 
   const mainHeadingText = splitTypeObject?.pdfText?.headingText
   const serialNumber = splitTypeObject?.serialNumber || 3
+  const showCollaboratorsInfo = splitTypeObject?.showCollaboratorsInfo || false
 
   return (
     <div className="bg-white w-full min-h-screen fixed top-[99999999px] left-0 flex justify-center">
@@ -46,7 +47,9 @@ const UnsignedVersion = () => {
 
           <div className="flex flex-col gap-8">
             <div>
-              <MusicalWorkIdentification />
+              <MusicalWorkIdentification
+                showCollaboratorsInfo={showCollaboratorsInfo}
+              />
             </div>
 
             <div>

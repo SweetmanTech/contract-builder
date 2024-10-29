@@ -1,3 +1,5 @@
+import { PDFHeadingProps } from '@/types/pdfHeadingsProps'
+
 const getRightsAndDuties = (adminName: string) => {
   const rightsAndDuties = {
     heading: 'Rights and duties of the parties.',
@@ -172,11 +174,7 @@ export const getBothPDFHeadings = ({
   type,
   adminName,
   votePercentage,
-}: {
-  type: string
-  adminName: string
-  votePercentage: number
-}) => {
+}: PDFHeadingProps) => {
   return [
     type.toLowerCase() === 'vote'
       ? getRightsAndDutiesVote(votePercentage)

@@ -4,6 +4,7 @@ import { SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import { getSongwritingPDFHeadings } from './songwritingPDF'
 import { PDFHeadingProps } from '@/types/pdfHeadingsProps'
 import { getMasterPDFHeadings } from './masterPDF'
+import { getBothPDFHeadings } from './bothPDF'
 
 export const splitTypes = [
   {
@@ -18,6 +19,7 @@ export const splitTypes = [
     IdentificationComponent: SongWritingIdentification,
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getSongwritingPDFHeadings({ type, adminName, votePercentage }),
+    showCollaboratorsInfo: false,
     serialNumber: 2,
     formText: `What is the name of the song?`,
   },
@@ -32,6 +34,7 @@ export const splitTypes = [
     IdentificationComponent: MasterRecordingIdentification,
     headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
       getMasterPDFHeadings({ type, adminName, votePercentage }),
+    showCollaboratorsInfo: false,
     serialNumber: 3,
     formText: `What is the name of the song and its recorded version?`,
   },
@@ -39,9 +42,16 @@ export const splitTypes = [
     label: 'Both',
     type: SPLIT_TYPE.BOTH,
     text: 'Song Writing and Master Recording',
+    IdentificationComponent: MasterRecordingIdentification,
+    headings: ({ type, adminName, votePercentage }: PDFHeadingProps) =>
+      getBothPDFHeadings({ type, adminName, votePercentage }),
     pdfText: {
       headingText: `Musical Work and Master Recording`,
+      musicalIdentification:
+        'The contracting parties have collaborated in the authorship and composition of the musical work titled',
     },
+    showCollaboratorsInfo: true,
+    serialNumber: 3,
     formText: `What is the name of the song and its recorded version?`,
   },
 ]
