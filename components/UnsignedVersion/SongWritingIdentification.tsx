@@ -1,5 +1,6 @@
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import React from 'react'
+import PageBreakInside from '../PageBreakInside/PageBreakInside'
 
 const SongWritingIdentification = () => {
   const { collaborators } = useContractBuilderProvider()
@@ -13,27 +14,27 @@ const SongWritingIdentification = () => {
       <div className="flex flex-col gap-4">
         {collaborators.map((item, index) => (
           <div key={index} className="pl-7 flex flex-col gap-2">
-            <p>
+            <PageBreakInside>
               <span className="text-md font-semibold">
                 Collaborator {index + 1}:
               </span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Legal Name: <span className="underline">{item.legalName}</span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Email address: <span className="underline">{item.email}</span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Contribution (Lyrics, music, or both):{' '}
               <span className="underline">
                 {item.typeOfSongWritingContribution}
               </span>
-            </p>
-            <p>
+            </PageBreakInside>
+            <PageBreakInside>
               Ownership percentage:{' '}
               <span className="underline">{item.split}%</span>
-            </p>
+            </PageBreakInside>
           </div>
         ))}
       </div>
