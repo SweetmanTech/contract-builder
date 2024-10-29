@@ -4,13 +4,13 @@ import React from 'react'
 import CollaboratorsInfo from './CollaboratorsInfo'
 
 const MasterRecordingIdentification = () => {
-  const { splitType, recordedVersion } = useContractBuilderProvider()
+  const { recordedVersion } = useContractBuilderProvider()
 
   return (
     <div className="flex flex-col gap-3 text-md">
       {' '}
       <h2 className="pl-7 text-lg font-bold">
-        2. Identification of the {splitType}
+        2. Identification of the Master Recording
       </h2>
       <p>
         The contracting parties have collaborated in the recording and
