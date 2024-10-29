@@ -2,6 +2,7 @@ import BuildSuccess from '@/components/BuildSuccess'
 import CollaboratorInput from '@/components/CollaboratorInput'
 import CollaboratorsAmount from '@/components/CollaboratorsAmount'
 import DesignatedAdmin from '@/components/DesignatedAdmin'
+import DocuSign from '@/components/DocuSign'
 import GovernanceTypes from '@/components/GovernanceTypes'
 import SongNameForm from '@/components/SongNameForm'
 import SplitsTypes from '@/components/SplitsTypes'
@@ -28,6 +29,7 @@ const ContractBuilderPage = () => {
       {tab === CONTRACT_BUILDER_STEP.VOTE && <Vote />}
       {tab === CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN && <DesignatedAdmin />}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && <BuildSuccess />}
+      {tab === CONTRACT_BUILDER_STEP.DOCU_SIGN && <DocuSign />}
       <UnsignedVersion />
     </>
   )

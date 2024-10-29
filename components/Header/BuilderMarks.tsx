@@ -103,9 +103,10 @@ const BuilderMarks = () => {
           </div>
         </>
       )}
-      {tab === CONTRACT_BUILDER_STEP.SUCCESS && (
+      {(tab === CONTRACT_BUILDER_STEP.SUCCESS ||
+        tab === CONTRACT_BUILDER_STEP.DOCU_SIGN) && (
         <>
-          <div className="relative">
+          <div className="relative ">
             <Image src="/images/success.svg" alt="" width={310} height={77} />
 
             <div

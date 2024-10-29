@@ -10,6 +10,7 @@ export enum CONTRACT_BUILDER_STEP {
   VOTE,
   DESIGNATE_ADMIN,
   SUCCESS,
+  DOCU_SIGN,
 }
 
 export enum SPLIT_TYPE {

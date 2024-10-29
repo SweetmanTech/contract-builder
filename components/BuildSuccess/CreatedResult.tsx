@@ -3,11 +3,18 @@ import PassedQuestions from '../PassedQuestions'
 import { Loader2 } from 'lucide-react'
 import useDownloadUnsignedVersion from '@/hooks/useDownloadUnsignedVersion'
 import useUploadContractIpfs from '@/hooks/useUploadContractIpfs'
+import ReadHereLink from '../ReadHereLink'
+import InfoDialog from '../InfoDialog'
+import Disclaimer from './Disclaimer'
+import { useState } from 'react'
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
+import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 
 const CreatedResult = () => {
+  const { setTab } = useContractBuilderProvider()
   const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
   const { uploadContractIpfs, uploading } = useUploadContractIpfs()
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <section className="flex flex-col">
       <div className="md:block hidden">
@@ -26,7 +33,9 @@ const CreatedResult = () => {
       <div className="md:pt-16 pt-8 flex flex-col gap-8 order-2 md:order-3 md:justify-start justify-center md:items-start items-center mb-5">
         <Button
           className="py-1 md:px-[16px] px-[10px] md:text-md text-[11px] md:min-w-[540px]  min-w-[312px] min-h-[41px]"
-          onClick={() => {}}
+          onClick={() => {
+            setTab(CONTRACT_BUILDER_STEP.DOCU_SIGN)
+          }}
         >
           View Contract
         </Button>
@@ -50,6 +59,14 @@ const CreatedResult = () => {
             ' Send DocuSign to collaborators'
           )}
         </Button>
+        <ReadHereLink
+          open={() => setIsOpen(true)}
+          label="disclaimer"
+          className="pt-0 text-[15px]"
+        />
+        <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
+          <Disclaimer />
+        </InfoDialog>
       </div>
     </section>
   )
