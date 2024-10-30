@@ -12,7 +12,7 @@ const Footer = () => {
     path.includes('/contract-builder') || path.includes('/docusign')
   const showFooterLogo = path.includes('/docusign')
   return (
-    <div className="w-11/12  justify-center items-center flex flex-col gap-12 md:hidden ">
+    <div className="w-11/12  justify-center items-center flex flex-col gap-4 md:hidden ">
       {showBuilderMarks && <BuilderMarks />}
       {showFooterLogo && (
         <div className=" md:hidden">

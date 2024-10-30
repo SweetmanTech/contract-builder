@@ -12,22 +12,24 @@ const CartTotal = () => {
     return (
       <div className="flex gap-1 ml-auto">
         <span>$</span>
-        <p className="font-rubik font-semibold text-lg ml-auto">{children}</p>
+        <p className="font-rubik font-semibold text-[14px] ml-auto">
+          {children}
+        </p>
       </div>
     )
   }
 
   return (
-    <div className="w-full flex flex-col gap-12 mb-10">
+    <div className="w-full flex flex-col gap-6 mb-4">
       <div className="w-full self-start grid grid-cols-[2.5fr_1.5fr] place-content-between place-items-end gap-4 font-rubik">
         <div className="w-full flex flex-col gap-2">
-          <h2 className="capitalize font-bold text-md md:text-2xl">
+          <h2 className="capitalize font-bold text-sm md:text-2xl">
             Your Selection
           </h2>
           <hr className="border border-grey -mt-1" />
         </div>
         <div className="w-full flex flex-col gap-2">
-          <h2 className="capitalize font-bold text-md place-self-end md:text-2xl">
+          <h2 className="capitalize font-bold text-sm place-self-end md:text-2xl">
             Summary
           </h2>
           <hr className="border border-grey -mt-1" />
@@ -39,12 +41,12 @@ const CartTotal = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 font-share text-[11px]">
-          <div className="w-full flex items-center gap-2 ">
+        <div className="flex flex-col gap-2 font-share text-[10px]">
+          <div className="w-full flex items-center gap-1 ">
             <p className="md:text-[18px]">Sub-Total</p>
             <MoneyPara>2.00</MoneyPara>
           </div>
-          <div className="w-full items-center flex gap-2">
+          <div className="w-full items-center flex gap-1">
             <p className="md:text-[18px]">Taxes</p>
             <MoneyPara>0.34</MoneyPara>
           </div>
@@ -59,9 +61,9 @@ const CartTotal = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-4 items-center md:items-start text-center">
+      <div className="flex flex-col gap-2 items-center md:items-start text-center">
         <Button
-          className="w-[95%] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
+          className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
           onClick={() => null}
         >
           Automatically Send

@@ -11,7 +11,15 @@ const Header = () => {
   return (
     <header className="fixed w-full px-6 min-h-[87px] pt-8 md:pt-0 flex flex-col md:flex-row md:justify-between items-center top-0 left-0 border-b border-white-light bg-black z-50">
       <Link href="/" className="md:order-1 order-3">
-        <Image src="/images/logo-dark.svg" alt="Logo" width={190} height={63} />
+        <div className="w-32 h-auto md:w-64 md:h-auto lg:w-72 lg:h-auto">
+          <Image
+            src="/images/logo-dark.svg"
+            alt="Logo"
+            layout="responsive"
+            width={190}
+            height={63}
+          />
+        </div>
       </Link>
 
       <div className="order-1 md:order-3 text-center mb-1 md:mb-0">

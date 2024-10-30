@@ -7,7 +7,7 @@ const Description = () => {
 
   return (
     <div className="font-share w-full md:w-4/5 self-start flex flex-col gap-10">
-      <p className="md:text-[32px] md:leading-[48px] text-center md:text-left">
+      <p className="md:text-[32px] md:leading-[48px] text-left">
         With this option, contracts will be automatically sent out through
         DocuSign to all collaborators on the project with 72 hours. Once all the
         collaborators have completed signing, you will have the ability to
