@@ -13,7 +13,7 @@ const CollaboratorsInfo = ({
   return (
     <div className="flex flex-col gap-3">
       {collaborators.map((collaborator, index) => (
-        <div key={index} className="pl-7 flex flex-col gap-2">
+        <PageBreakInside key={index} className="pl-7 flex flex-col gap-2">
           <PageBreakInside>
             <span className="text-md font-semibold">
               Collaborator {index + 1}:
@@ -39,7 +39,7 @@ const CollaboratorsInfo = ({
             Ownership percentage:{' '}
             <span className="underline">{collaborator.split}</span>
           </PageBreakInside>
-        </div>
+        </PageBreakInside>
       ))}
     </div>
   )

@@ -1,8 +1,15 @@
 import React from 'react'
 
-const PageBreakInside = ({ children }: { children: React.ReactNode }) => {
+const PageBreakInside = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) => {
   return (
     <div
+      className={className}
       style={{
         pageBreakInside: 'avoid',
       }}
