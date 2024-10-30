@@ -1,9 +1,24 @@
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 const BuilderMarks = () => {
   const { tab } = useContractBuilderProvider()
   const { setTab } = useContractBuilderProvider()
+  const path = usePathname()
+  const LastMark = (
+    <div className="relative ">
+      <Image src="/images/success.svg" alt="" width={310} height={77} />
+
+      <div
+        className="absolute top-1/2  -translate-y-1/2 size-6 bg-transparent cursor-pointer"
+        onClick={() => setTab(CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN)}
+        style={{ left: '240px', top: '10px' }}
+      />
+    </div>
+  )
+
+  if (path.includes('/docusign')) return LastMark
 
   return (
     <>
@@ -103,20 +118,7 @@ const BuilderMarks = () => {
           </div>
         </>
       )}
-      {(tab === CONTRACT_BUILDER_STEP.SUCCESS ||
-        tab === CONTRACT_BUILDER_STEP.DOCU_SIGN) && (
-        <>
-          <div className="relative ">
-            <Image src="/images/success.svg" alt="" width={310} height={77} />
-
-            <div
-              className="absolute top-1/2  -translate-y-1/2 size-6 bg-transparent cursor-pointer"
-              onClick={() => setTab(CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN)}
-              style={{ left: '240px', top: '10px' }}
-            />
-          </div>
-        </>
-      )}
+      {tab === CONTRACT_BUILDER_STEP.SUCCESS && <>{LastMark}</>}
     </>
   )
 }

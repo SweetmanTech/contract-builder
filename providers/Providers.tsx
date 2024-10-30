@@ -5,6 +5,7 @@ import { SplitsProvider } from '@0xsplits/splits-sdk-react'
 import { ReactNode } from 'react'
 import wagmiConfig from '@/lib/wagmi/config'
 import ContractBuilderProvider from './ContractBuilderProvider'
+import ModalProvider from './ModalProvider'
 
 const queryClient = new QueryClient()
 
@@ -17,7 +18,9 @@ const Providers = ({ children }: { children: ReactNode }) => (
   <WagmiProvider config={wagmiConfig}>
     <QueryClientProvider client={queryClient}>
       <ContractBuilderProvider>
-        <SplitsProvider config={splitsConfig}>{children}</SplitsProvider>
+        <ModalProvider>
+          <SplitsProvider config={splitsConfig}>{children}</SplitsProvider>
+        </ModalProvider>
       </ContractBuilderProvider>
     </QueryClientProvider>
   </WagmiProvider>

@@ -7,14 +7,19 @@ import ReadHereLink from '../ReadHereLink'
 import InfoDialog from '../InfoDialog'
 import Disclaimer from './Disclaimer'
 import { useState } from 'react'
-import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
+import { useRouter } from 'next/navigation'
 
 const CreatedResult = () => {
-  const { setTab } = useContractBuilderProvider()
   const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
   const { uploadContractIpfs, uploading } = useUploadContractIpfs()
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+
+  const handleClickDocuSign = async () => {
+    await uploadContractIpfs()
+    router.push('/docusign')
+  }
+
   return (
     <section className="flex flex-col">
       <div className="md:block hidden">
@@ -33,9 +38,7 @@ const CreatedResult = () => {
       <div className="md:pt-16 pt-8 flex flex-col gap-8 order-2 md:order-3 md:justify-start justify-center md:items-start items-center mb-5">
         <Button
           className="py-1 md:px-[16px] px-[10px] md:text-md text-[11px] md:min-w-[540px]  min-w-[312px] min-h-[41px]"
-          onClick={() => {
-            setTab(CONTRACT_BUILDER_STEP.DOCU_SIGN)
-          }}
+          onClick={() => {}}
         >
           View Contract
         </Button>
@@ -47,7 +50,7 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={uploadContractIpfs}
+          onClick={handleClickDocuSign}
           disabled={uploading}
         >
           {uploading ? (
@@ -61,8 +64,8 @@ const CreatedResult = () => {
         </Button>
         <ReadHereLink
           open={() => setIsOpen(true)}
-          label="disclaimer"
-          className="pt-0 text-[15px]"
+          label="Disclaimer"
+          className="pt-0 text-[15px] text-left md:text-center md:text-[24px]"
         />
         <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
           <Disclaimer />
