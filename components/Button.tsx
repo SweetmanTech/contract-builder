@@ -8,7 +8,7 @@ const Button = ({
 }: {
   className: string
   disabled?: boolean
-  onClick: () => void
+  onClick?: () => void
   children: any
 }) => {
   return (

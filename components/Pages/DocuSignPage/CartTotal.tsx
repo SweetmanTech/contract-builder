@@ -54,10 +54,7 @@ const CartTotal = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2 items-center md:items-start text-center">
-        <Button
-          className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
-          onClick={() => null}
-        >
+        <Button className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]">
           Automatically Send
         </Button>
         <ReadHereLink
