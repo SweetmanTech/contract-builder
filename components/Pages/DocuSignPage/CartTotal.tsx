@@ -5,10 +5,35 @@ import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
 import { useRouter } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
+import useBaseUrl from '@/hooks/useBaseUrl'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
+  const { baseUrl } = useBaseUrl()
   const router = useRouter()
+
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: (pricePerContract + taxPerContract) * 100,
+          baseUrl,
+        }),
+      })
+
+      const data = await response.json()
+      if (data.url) {
+        window.location.href = data.url
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error)
+    }
+  }
+
   const MoneyPara = ({ children }: { children: React.ReactNode }) => {
     return (
       <div className="flex gap-1 ml-auto">
@@ -65,7 +90,7 @@ const CartTotal = () => {
       <div className="flex flex-col gap-2 items-center md:items-start text-center">
         <Button
           className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
-          onClick={() => null}
+          onClick={handleCheckout}
         >
           Automatically Send
         </Button>
