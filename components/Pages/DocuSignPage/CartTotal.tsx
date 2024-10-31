@@ -7,32 +7,18 @@ import { useRouter } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
 import useBaseUrl from '@/hooks/useBaseUrl'
 import MoneyPara from './MoneyPara'
+import { handleStripeCheckout } from '@/lib/stripe/handleStripeCheckout'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
   const { baseUrl } = useBaseUrl()
   const router = useRouter()
 
-  const handleCheckout = async () => {
-    try {
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: (pricePerContract + taxPerContract) * 100,
-          baseUrl,
-        }),
-      })
-
-      const data = await response.json()
-      if (data.url) {
-        window.location.href = data.url
-      }
-    } catch (error) {
-      console.error('Error creating checkout session:', error)
-    }
+  const handleCheckout = () => {
+    handleStripeCheckout({
+      baseUrl,
+      amount: (pricePerContract + taxPerContract) * 100,
+    })
   }
 
   return (
