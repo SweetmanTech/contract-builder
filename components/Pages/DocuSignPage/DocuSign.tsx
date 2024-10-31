@@ -8,7 +8,7 @@ import InfoDialog from '@/components/InfoDialog'
 const DocuSign = () => {
   const { isDocuSignModalOpen, setIsDocuSignModalOpen } = useModalProvider()
   return (
-    <div className="md:mt-12 relative flex flex-col md:flex-col-reverse items-center gap-6 md:gap-32 no-scrollbar">
+    <div className="md:mt-12 relative flex flex-col md:flex-col-reverse items-center gap-6 md:gap-24 no-scrollbar">
       <div className="flex flex-col text-center">
         <span className="text-[13px]">Powered By</span>
         <p className="text-3xl font-medium">DocuSign</p>
