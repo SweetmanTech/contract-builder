@@ -1,4 +1,4 @@
-const MoneyPara = ({ children }: { children: React.ReactNode }) => {
+const MoneyParagraph = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex gap-1 ml-auto">
       <span>$</span>
@@ -8,4 +8,4 @@ const MoneyPara = ({ children }: { children: React.ReactNode }) => {
     </div>
   )
 }
-export default MoneyPara
+export default MoneyParagraph
