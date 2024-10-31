@@ -6,10 +6,20 @@ import ReadHereLink from '@/components/ReadHereLink'
 import { useRouter } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
 import MoneyParagraph from './MoneyParagraph'
+import { handleStripeCheckout } from '@/lib/stripe/handleStripeCheckout'
+import useBaseUrl from '@/hooks/useBaseUrl'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
+  const { baseUrl } = useBaseUrl()
   const router = useRouter()
+
+  const handleCheckout = () => {
+    handleStripeCheckout({
+      baseUrl,
+      amount: (pricePerContract + taxPerContract) * 100,
+    })
+  }
 
   return (
     <div className="w-full flex flex-col gap-6 mb-4">
@@ -54,7 +64,10 @@ const CartTotal = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2 items-center md:items-start text-center">
-        <Button className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]">
+        <Button
+          className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
+          onClick={handleCheckout}
+        >
           Automatically Send
         </Button>
         <ReadHereLink
