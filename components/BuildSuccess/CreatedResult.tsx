@@ -3,10 +3,22 @@ import PassedQuestions from '../PassedQuestions'
 import { Loader2 } from 'lucide-react'
 import useDownloadUnsignedVersion from '@/hooks/useDownloadUnsignedVersion'
 import useUploadContractIpfs from '@/hooks/useUploadContractIpfs'
+import ReadHereLink from '../ReadHereLink'
+import InfoDialog from '../InfoDialog'
+import Disclaimer from './Disclaimer'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const CreatedResult = () => {
   const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
   const { uploadContractIpfs, uploading } = useUploadContractIpfs()
+  const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+
+  const handleClickDocuSign = async () => {
+    await uploadContractIpfs()
+    router.push('/docusign')
+  }
 
   return (
     <section className="flex flex-col">
@@ -38,7 +50,7 @@ const CreatedResult = () => {
         </Button>
         <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
-          onClick={uploadContractIpfs}
+          onClick={handleClickDocuSign}
           disabled={uploading}
         >
           {uploading ? (
@@ -50,6 +62,14 @@ const CreatedResult = () => {
             ' Send DocuSign to collaborators'
           )}
         </Button>
+        <ReadHereLink
+          open={() => setIsOpen(true)}
+          label="Disclaimer"
+          className="pt-0 text-[15px] text-left md:text-center md:text-[24px]"
+        />
+        <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
+          <Disclaimer />
+        </InfoDialog>
       </div>
     </section>
   )

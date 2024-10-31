@@ -13,11 +13,8 @@ const ReadHereLink = ({
   open,
 }: Props) => {
   return (
-    <button
-      onClick={open}
-      className="font-share text-2xl text-link underline max-w-fit"
-    >
-      <p className={twMerge(`pt-10`, className)}>{label}</p>
+    <button onClick={open} className="font-share text-2xl text-link  max-w-fit">
+      <p className={twMerge(`pt-10 underline`, className)}>{label}</p>
     </button>
   )
 }

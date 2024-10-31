@@ -28,6 +28,7 @@ const ContractBuilderPage = () => {
       {tab === CONTRACT_BUILDER_STEP.VOTE && <Vote />}
       {tab === CONTRACT_BUILDER_STEP.DESIGNATE_ADMIN && <DesignatedAdmin />}
       {tab === CONTRACT_BUILDER_STEP.SUCCESS && <BuildSuccess />}
+
       <UnsignedVersion />
     </>
   )
