@@ -5,20 +5,11 @@ import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
 import { useRouter } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
+import MoneyPara from './MoneyPara'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
   const router = useRouter()
-  const MoneyPara = ({ children }: { children: React.ReactNode }) => {
-    return (
-      <div className="flex gap-1 ml-auto">
-        <span>$</span>
-        <p className="font-rubik font-semibold text-[14px] md:text-[20px] ml-auto">
-          {children}
-        </p>
-      </div>
-    )
-  }
 
   return (
     <div className="w-full flex flex-col gap-6 mb-4">
