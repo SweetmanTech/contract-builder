@@ -6,6 +6,7 @@ import ReadHereLink from '@/components/ReadHereLink'
 import { useRouter } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
 import useBaseUrl from '@/hooks/useBaseUrl'
+import MoneyPara from './MoneyPara'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
@@ -32,17 +33,6 @@ const CartTotal = () => {
     } catch (error) {
       console.error('Error creating checkout session:', error)
     }
-  }
-
-  const MoneyPara = ({ children }: { children: React.ReactNode }) => {
-    return (
-      <div className="flex gap-1 ml-auto">
-        <span>$</span>
-        <p className="font-rubik font-semibold text-[14px] md:text-[20px] ml-auto">
-          {children}
-        </p>
-      </div>
-    )
   }
 
   return (
