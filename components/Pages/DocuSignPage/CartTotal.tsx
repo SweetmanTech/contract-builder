@@ -4,6 +4,7 @@ import { useModalProvider } from '@/providers/ModalProvider'
 import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
 import { useRouter } from 'next/navigation'
+import { pricePerContract, taxPerContract } from '@/lib/consts'
 
 const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
@@ -12,7 +13,7 @@ const CartTotal = () => {
     return (
       <div className="flex gap-1 ml-auto">
         <span>$</span>
-        <p className="font-rubik font-semibold text-[14px] ml-auto">
+        <p className="font-rubik font-semibold text-[14px] md:text-[20px] ml-auto">
           {children}
         </p>
       </div>
@@ -44,15 +45,15 @@ const CartTotal = () => {
         <div className="flex flex-col gap-2 font-share text-[10px]">
           <div className="w-full flex items-center gap-1 ">
             <p className="md:text-[18px]">Sub-Total</p>
-            <MoneyPara>2.00</MoneyPara>
+            <MoneyPara>{pricePerContract.toFixed(2)}</MoneyPara>
           </div>
           <div className="w-full items-center flex gap-1">
             <p className="md:text-[18px]">Taxes</p>
-            <MoneyPara>0.34</MoneyPara>
+            <MoneyPara>{taxPerContract}</MoneyPara>
           </div>
           <hr className="border border-grey w-full" />
           <div className="ml-auto">
-            <MoneyPara>2.14</MoneyPara>
+            <MoneyPara>{pricePerContract + taxPerContract}</MoneyPara>
           </div>
           <ReadHereLink
             label="Go back to download for free"

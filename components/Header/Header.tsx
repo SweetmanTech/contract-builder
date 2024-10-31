@@ -9,9 +9,9 @@ const Header = () => {
   const isBuilder = usePathname().includes('/contract-builder')
 
   return (
-    <header className="fixed w-full px-6 min-h-[87px] pt-8 md:pt-0 flex flex-col md:flex-row md:justify-between items-center top-0 left-0 border-b border-white-light bg-black z-50">
+    <header className="fixed w-full px-6 min-h-[87px] pt-4 md:pt-0 flex flex-col md:flex-row md:justify-between items-center top-0 left-0 border-b border-white-light bg-black z-50">
       <Link href="/" className="md:order-1 order-3">
-        <div className="w-32 h-auto md:w-64 md:h-auto lg:w-72 lg:h-auto">
+        <div className="w-32 h-auto md:w-48 md:h-auto lg:w-50 lg:h-auto">
           <Image
             src="/images/logo-dark.svg"
             alt="Logo"
