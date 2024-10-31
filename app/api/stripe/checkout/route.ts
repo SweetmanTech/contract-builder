@@ -1,10 +1,20 @@
+import { createStripeClient } from '@/lib/stripe/createStripeClient'
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+const stripe = createStripeClient()
 
 export async function POST(req: NextRequest) {
   if (req.method === 'POST') {
+    if (!stripe) {
+      return NextResponse.json(
+        {
+          error: 'Unable to initialize stripe client',
+        },
+        {
+          status: 500,
+        },
+      )
+    }
     try {
       const { amount, baseUrl } = await req.json()
       const session = await stripe.checkout.sessions.create({
