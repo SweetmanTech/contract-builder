@@ -2,12 +2,15 @@ import { useState } from 'react'
 
 const useModals = () => {
   const [isDocuSignModalOpen, setIsDocuSignModalOpen] = useState(false)
-  const [ifConfusedModalOpen, setIfConfusedModalOpen] = useState(false)
+  const [splitTypeInfoModalOpen, setSplitTypeInfoModalOpen] = useState(false)
+  const [musicWorkInfoModalOpen, setMusicWorkInfoModalOpen] = useState(false)
   return {
     isDocuSignModalOpen,
     setIsDocuSignModalOpen,
-    ifConfusedModalOpen,
-    setIfConfusedModalOpen,
+    splitTypeInfoModalOpen,
+    setSplitTypeInfoModalOpen,
+    musicWorkInfoModalOpen,
+    setMusicWorkInfoModalOpen,
   }
 }
 

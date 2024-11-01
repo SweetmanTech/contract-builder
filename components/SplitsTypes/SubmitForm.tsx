@@ -4,9 +4,14 @@ import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import Button from '../Button'
 import { splitTypes } from '@/lib/constants/splitTypes'
 import IfConfusedPopupLink from '../IfConfusedPopupLink/IfConfusedPopupLink'
+import { useModalProvider } from '@/providers/ModalProvider'
+import InfoDialog from '../InfoDialog'
+import { SplitsTypesInfo } from '../InfoDialogsContent'
 
 const SubmitForm = () => {
   const { splitType, setSplitType, setTab } = useContractBuilderProvider()
+  const { splitTypeInfoModalOpen, setSplitTypeInfoModalOpen } =
+    useModalProvider()
   return (
     <>
       <p className="font-share md:text-3xl tracking-[-0.05rem] text-[20px]">
@@ -23,13 +28,19 @@ const SubmitForm = () => {
           />
         ))}
       </fieldset>
-      <IfConfusedPopupLink />
+      <IfConfusedPopupLink open={() => setSplitTypeInfoModalOpen(true)} />
       <Button
         className="mt-20 mb-0 mx-auto md:mx-[unset] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475]  border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
       >
         Next
       </Button>
+      <InfoDialog
+        isOpen={splitTypeInfoModalOpen}
+        close={() => setSplitTypeInfoModalOpen(false)}
+      >
+        <SplitsTypesInfo />
+      </InfoDialog>
     </>
   )
 }

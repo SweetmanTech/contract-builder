@@ -1,14 +1,7 @@
-import { useModalProvider } from '@/providers/ModalProvider'
 import ReadHereLink from '../ReadHereLink'
 
-const IfConfusedPopupLink = () => {
-  const { setIfConfusedModalOpen } = useModalProvider()
-  return (
-    <ReadHereLink
-      open={() => setIfConfusedModalOpen(true)}
-      className="text-[15px] md:text-[24px]  "
-    />
-  )
+const IfConfusedPopupLink = ({ open }: { open: () => void }) => {
+  return <ReadHereLink open={open} className="text-[15px] md:text-[24px]  " />
 }
 
 export default IfConfusedPopupLink
