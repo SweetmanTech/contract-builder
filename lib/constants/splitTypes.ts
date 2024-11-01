@@ -55,3 +55,6 @@ export const splitTypes = [
     formText: `What is the name of the song and its recorded version?`,
   },
 ]
+
+export const getIdentificationDescription = (type: SPLIT_TYPE) =>
+  splitTypes.find((item) => item.type === type)?.pdfText.musicalIdentification
