@@ -6,6 +6,11 @@ import { PDFHeadingProps } from '@/types/pdfHeadingsProps'
 import { getMasterPDFHeadings } from './masterPDF'
 import { getBothPDFHeadings } from './bothPDF'
 
+const masterAndBothCollaboratorInfoText = {
+  heading: '1.0 Musical Work and Master Recording Identification',
+  text: 'The parties acknowledge and accept their contribution to the authorship or composition of the musical work and the production of the sound recording, and agree to the distribution of both rights as follows:',
+}
+
 export const splitTypes = [
   {
     label: 'Song Writing',
@@ -22,6 +27,10 @@ export const splitTypes = [
     showCollaboratorsInfo: false,
     serialNumber: 2,
     formText: `What is the name of the song?`,
+    collaboratorInfoText: {
+      heading: '1.0 Music Work Identification',
+      text: `The parties acknowledge and accept their contributio to the authorship or composition of the musical work and agree to the distribution of copyright ownership as follows:`,
+    },
   },
   {
     label: 'Master Recording',
@@ -37,6 +46,9 @@ export const splitTypes = [
     showCollaboratorsInfo: false,
     serialNumber: 3,
     formText: `What is the name of the song and its recorded version?`,
+    collaboratorInfoText: {
+      ...masterAndBothCollaboratorInfoText,
+    },
   },
   {
     label: 'Both',
@@ -53,5 +65,8 @@ export const splitTypes = [
     showCollaboratorsInfo: true,
     serialNumber: 3,
     formText: `What is the name of the song and its recorded version?`,
+    collaboratorInfoText: {
+      ...masterAndBothCollaboratorInfoText,
+    },
   },
 ]
