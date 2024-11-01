@@ -70,3 +70,6 @@ export const splitTypes = [
     },
   },
 ]
+
+export const getIdentificationDescription = (type: SPLIT_TYPE) =>
+  splitTypes.find((item) => item.type === type)?.pdfText.musicalIdentification
