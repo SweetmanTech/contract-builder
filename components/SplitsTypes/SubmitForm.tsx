@@ -1,17 +1,12 @@
-import { useState } from 'react'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import CheckboxLabel from '../CheckboxLabel'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
-import ReadHereLink from '../ReadHereLink'
 import Button from '../Button'
-import InfoDialog from '../InfoDialog'
-import { SplitsTypesInfo } from '../InfoDialogsContent'
 import { splitTypes } from '@/lib/constants/splitTypes'
+import IfConfusedLink from '../IfConfusedLink/IfConfusedLink'
 
 const SubmitForm = () => {
   const { splitType, setSplitType, setTab } = useContractBuilderProvider()
-  const [isOpen, setIsOpen] = useState(false)
-
   return (
     <>
       <p className="font-share md:text-3xl tracking-[-0.05rem] text-[20px]">
@@ -29,10 +24,7 @@ const SubmitForm = () => {
         ))}
       </fieldset>
 
-      <ReadHereLink
-        className="text-[15px] md:text-[24px]"
-        open={() => setIsOpen(true)}
-      />
+      <IfConfusedLink />
 
       <Button
         className="mt-20 mb-0 mx-auto md:mx-[unset] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475]  border-[#E18583] text-[12px]"
@@ -40,9 +32,6 @@ const SubmitForm = () => {
       >
         Next
       </Button>
-      <InfoDialog isOpen={isOpen} close={() => setIsOpen(false)}>
-        <SplitsTypesInfo />
-      </InfoDialog>
     </>
   )
 }

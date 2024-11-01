@@ -2,9 +2,9 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
-import ReadHereLink from '../ReadHereLink'
 import { splitTypes } from '@/lib/constants/splitTypes'
 import FormInput from '../FormInput'
+import IfConfusedLink from '../IfConfusedLink/IfConfusedLink'
 
 const SubmitForm = () => {
   const {
@@ -49,7 +49,7 @@ const SubmitForm = () => {
             labelProps={{ htmlFor: 'recordedVersion' }}
           />
         )}
-        <ReadHereLink link="/" className="text-[15px] md:text-[24px]  " />
+        <IfConfusedLink />
       </div>
 
       <Button
