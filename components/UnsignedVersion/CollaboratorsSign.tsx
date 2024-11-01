@@ -17,12 +17,6 @@ const CollaboratorsSign = () => {
                 _______________________________________________________
               </span>
             </p>
-            <p>
-              Home address:
-              <span>
-                _______________________________________________________
-              </span>
-            </p>
             <div className="flex gap-2">
               <p>
                 Signature:
