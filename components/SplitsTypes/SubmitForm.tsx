@@ -3,7 +3,7 @@ import CheckboxLabel from '../CheckboxLabel'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import Button from '../Button'
 import { splitTypes } from '@/lib/constants/splitTypes'
-import IfConfusedLink from '../IfConfusedLink/IfConfusedLink'
+import IfConfusedPopupLink from '../IfConfusedPopupLink/IfConfusedPopupLink'
 
 const SubmitForm = () => {
   const { splitType, setSplitType, setTab } = useContractBuilderProvider()
@@ -23,9 +23,7 @@ const SubmitForm = () => {
           />
         ))}
       </fieldset>
-
-      <IfConfusedLink />
-
+      <IfConfusedPopupLink />
       <Button
         className="mt-20 mb-0 mx-auto md:mx-[unset] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475]  border-[#E18583] text-[12px]"
         onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}

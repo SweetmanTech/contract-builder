@@ -4,8 +4,7 @@ import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
 import { splitTypes } from '@/lib/constants/splitTypes'
 import FormInput from '../FormInput'
-import IfConfusedLink from '../IfConfusedLink/IfConfusedLink'
-
+import IfConfusedPopupLink from '../IfConfusedPopupLink/IfConfusedPopupLink'
 const SubmitForm = () => {
   const {
     setTab,
@@ -49,7 +48,7 @@ const SubmitForm = () => {
             labelProps={{ htmlFor: 'recordedVersion' }}
           />
         )}
-        <IfConfusedLink />
+        <IfConfusedPopupLink />
       </div>
 
       <Button
