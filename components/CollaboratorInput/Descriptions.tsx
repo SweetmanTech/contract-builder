@@ -1,49 +1,37 @@
+import { splitTypes } from '@/lib/constants/splitTypes'
+import { getCollaboratorsFields } from '@/lib/getCollaboratorsFields'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const Descriptions = () => {
-  const { collaborators, currentCollaborator } = useContractBuilderProvider()
-
+  const { collaborators, currentCollaborator, splitType } =
+    useContractBuilderProvider()
+  const collaboratorFields = getCollaboratorsFields({
+    currentCollaborator: collaborators[currentCollaborator],
+    splitType,
+  })
+  const heading = splitTypes.find((item) => item.type === splitType)
+    ?.collaboratorInfoText?.heading
+  const text = splitTypes.find((item) => item.type === splitType)
+    ?.collaboratorInfoText?.text
   return (
     <>
       <p className="font-roboto_thin text-2xl">
         Your contract has yet to be completed. Continue to fill out the decision
         tree.
       </p>
-      <p className="font-roboto_medium text-2xl">
-        1.0 Music Work Identification
-      </p>
-      <p className="font-roboto text-2xl">
-        The parties acknowledge and accept their contribution to the authorship
-        or composition of the musical work and agree to the distribution of
-        copyright ownership as follows:
-      </p>
+      <p className="font-roboto_medium text-2xl">{heading}</p>
+      <p className="font-roboto text-2xl">{text}</p>
       <p className="font-roboto_medium text-2xl mt-4">
         Collaborator {currentCollaborator + 1}:
       </p>
-      <p className="font-roboto text-2xl">
-        Legal Name:
-        <span className="text-danger-dark font-extrabold font-rubik">
-          {collaborators[currentCollaborator].legalName}
-        </span>
-      </p>
-      <p className="font-roboto text-2xl">
-        Email Address:
-        <span className="text-danger-dark font-extrabold font-rubik">
-          {collaborators[currentCollaborator].email}
-        </span>
-      </p>
-      <p className="font-roboto text-2xl">
-        Contribution:
-        <span className="text-danger-dark font-extrabold font-rubik">
-          {collaborators[currentCollaborator].typeOfSongWritingContribution}
-        </span>
-      </p>
-      <p className="font-roboto text-2xl">
-        Ownership percentage:
-        <span className="text-danger-dark font-extrabold font-rubik">
-          {collaborators[currentCollaborator].split}
-        </span>
-      </p>
+      {collaboratorFields.map(([label, value]) => (
+        <p key={label} className="font-roboto text-2xl">
+          {label}:{' '}
+          <span className="text-danger-dark font-extrabold font-rubik">
+            {value}
+          </span>
+        </p>
+      ))}
     </>
   )
 }
