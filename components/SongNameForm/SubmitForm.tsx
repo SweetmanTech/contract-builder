@@ -2,10 +2,11 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 import { CONTRACT_BUILDER_STEP, SPLIT_TYPE } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
-import ReadHereLink from '../ReadHereLink'
 import { splitTypes } from '@/lib/constants/splitTypes'
 import FormInput from '../FormInput'
-
+import IfConfusedPopupLink from '../IfConfusedPopupLink/IfConfusedPopupLink'
+import { useModalProvider } from '@/providers/ModalProvider'
+import MusicWorkInfo from '../InfoDialogsContent/MusicWorkInfo'
 const SubmitForm = () => {
   const {
     setTab,
@@ -15,6 +16,8 @@ const SubmitForm = () => {
     setRecordedVersion,
     splitType,
   } = useContractBuilderProvider()
+
+  const { setMusicWorkInfoModalOpen } = useModalProvider()
 
   const handleRecordedVersionChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -49,7 +52,7 @@ const SubmitForm = () => {
             labelProps={{ htmlFor: 'recordedVersion' }}
           />
         )}
-        <ReadHereLink link="/" className="text-[15px] md:text-[24px]  " />
+        <IfConfusedPopupLink open={() => setMusicWorkInfoModalOpen(true)} />
       </div>
 
       <Button
@@ -59,6 +62,7 @@ const SubmitForm = () => {
       >
         SUBMIT
       </Button>
+      <MusicWorkInfo />
     </>
   )
 }
