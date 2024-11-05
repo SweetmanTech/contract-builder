@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM!,
-      to: [process.env.RESEND_TO!],
+      to: process.env.RESEND_TO?.split(',') || [''],
       subject: 'Contract Payment Confirmation',
       react: EmailTemplate({
         paymentReceiptLink,
