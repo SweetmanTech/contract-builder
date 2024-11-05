@@ -1,4 +1,6 @@
+import { handleSendEmail } from '@/lib/resend/handleSendEmail'
 import { createStripeClient } from '@/lib/stripe/createStripeClient'
+import { getContractInfo } from '@/lib/supabase/getContractInfo'
 import { NextRequest, NextResponse } from 'next/server'
 
 const stripe = createStripeClient()
@@ -32,12 +34,22 @@ export const POST = async (req: NextRequest) => {
   if (eventsToListen.includes(event.type)) {
     const sessionObject = event.data.object as any
     const id = sessionObject?.id
-    const customer_details = sessionObject?.customer_details
+    const metadata = sessionObject?.metadata
+    const baseUrl = metadata?.baseUrl
+    const paymentIntentId = sessionObject?.payment_intent
+    const paymentLink = `https://dashboard.stripe.com/payments/${paymentIntentId}`
+    const contractInfo = await getContractInfo(metadata?.cid)
+
+    handleSendEmail({
+      baseUrl,
+      paymentReceiptLink: paymentLink || '',
+      contractIpfsLink: 'ipfs://' + contractInfo?.ipfs_cid || '',
+      collaborators: contractInfo?.emails || [''],
+    })
 
     return NextResponse.json(
       {
         id,
-        customer_details,
       },
       { status: 200 },
     )

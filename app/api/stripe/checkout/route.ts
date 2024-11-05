@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       )
     }
     try {
-      const { amount, baseUrl } = await req.json()
+      const { amount, baseUrl, metadata } = await req.json()
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -34,6 +34,10 @@ export async function POST(req: NextRequest) {
         mode: 'payment',
         success_url: `${baseUrl}/docusign`,
         cancel_url: `${baseUrl}/docusign`,
+        metadata: {
+          ...metadata,
+          baseUrl,
+        },
       })
 
       return NextResponse.json({ url: session.url }, { status: 200 })

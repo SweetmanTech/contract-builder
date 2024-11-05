@@ -3,7 +3,7 @@ import React from 'react'
 import { useModalProvider } from '@/providers/ModalProvider'
 import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
 import MoneyParagraph from './MoneyParagraph'
 import { handleStripeCheckout } from '@/lib/stripe/handleStripeCheckout'
@@ -13,11 +13,15 @@ const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
   const { baseUrl } = useBaseUrl()
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const handleCheckout = () => {
     handleStripeCheckout({
       baseUrl,
       amount: (pricePerContract + taxPerContract) * 100,
+      metadata: {
+        cid: searchParams.get('cid'),
+      },
     })
   }
 
