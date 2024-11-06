@@ -18,13 +18,14 @@ export const sendEmail = async ({
     return null
   }
   try {
+    const toEmails = [
+      'sweetmantech@gmail.com',
+      'thomas@mesawallet.io',
+      'andres@mesawallet.io',
+    ]
     const { data, error } = await resend.emails.send({
       from: `Mesa <contracts@mesawallet.io>`,
-      to: [
-        'sweetmantech@gmail.com',
-        'thomas@mesawallet.io,',
-        'andres@mesawallet.io',
-      ],
+      to: toEmails,
       subject: 'Contract Payment Confirmation',
       react: EmailTemplate({
         firstName,
