@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 export const createResendClient = () => {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY!)
+    const resend = new Resend('re_Uk3efTNu_96UGE8WdiuUJYqZKHiregtRE')
     return resend
   } catch (error) {
     console.error(error)

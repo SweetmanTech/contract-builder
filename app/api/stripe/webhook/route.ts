@@ -39,17 +39,25 @@ export const POST = async (req: NextRequest) => {
 
     const paymentIntentId = sessionObject?.payment_intent
     const paymentLink = `https://dashboard.stripe.com/payments/${paymentIntentId}`
-    const contractInfo = await getContractInfo(metadata?.cid)
-    const customerDetails = sessionObject?.customer_details
-    const customerName = customerDetails?.name
-    const res = sendEmail({
-      firstName: customerName,
-      paymentReceiptLink: paymentLink,
-      contractIpfsLink: 'ipfs://' + contractInfo?.ipfs_cid || '',
-      collaborators: contractInfo?.emails || [],
-    })
+    try {
+      const contractInfo = await getContractInfo(metadata?.cid)
+      const customerDetails = sessionObject?.customer_details
+      const customerName = customerDetails?.name
+      const res = sendEmail({
+        firstName: customerName,
+        paymentReceiptLink: paymentLink,
+        contractIpfsLink: 'ipfs://' + contractInfo?.ipfs_cid || '',
+        collaborators: contractInfo?.emails || [],
+      })
 
-    if (!res) {
+      if (!res) {
+        return NextResponse.json(
+          { error: 'Error sending email' },
+          { status: 500 },
+        )
+      }
+    } catch (error) {
+      console.error('Error sending email:', error)
       return NextResponse.json(
         { error: 'Error sending email' },
         { status: 500 },
