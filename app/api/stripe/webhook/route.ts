@@ -1,51 +1,10 @@
-import { EmailTemplate } from '@/components/EmailTemplate/EmailTemplate'
-import { createResendClient } from '@/lib/resend/createResendClient'
+import { sendEmail } from '@/lib/resend/sendEmail'
 import { createStripeClient } from '@/lib/stripe/createStripeClient'
 import { getContractInfo } from '@/lib/supabase/getContractInfo'
 import { NextRequest, NextResponse } from 'next/server'
 
 const stripe = createStripeClient()
 
-const resend = createResendClient()
-
-const sendEmail = async ({
-  firstName = 'Mesa',
-  paymentReceiptLink,
-  contractIpfsLink,
-  collaborators,
-}: {
-  firstName?: string
-  paymentReceiptLink: string
-  contractIpfsLink: string
-  collaborators: string[]
-}) => {
-  if (!resend) {
-    return null
-  }
-  try {
-    const { data, error } = await resend.emails.send({
-      from: `Mesa <${process.env.RESEND_FROM_EMAIL}>`,
-      to: process.env.RESEND_TO?.split(',') || [''],
-      subject: 'Contract Payment Confirmation',
-      react: EmailTemplate({
-        firstName,
-        paymentReceiptLink,
-        contractIpfsLink,
-        collaborators,
-      }),
-    })
-
-    if (error) {
-      console.error('Error sending email:', error)
-      return null
-    }
-
-    return data
-  } catch (error) {
-    console.error('Error sending email:', error)
-    return null
-  }
-}
 export const POST = async (req: NextRequest) => {
   const eventsToListen = ['checkout.session.completed']
   if (!stripe) {
