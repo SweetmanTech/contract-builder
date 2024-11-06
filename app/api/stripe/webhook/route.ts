@@ -46,7 +46,9 @@ export const POST = async (req: NextRequest) => {
       const res = await sendEmail({
         firstName: customerName,
         paymentReceiptLink: paymentLink,
-        contractIpfsLink: 'ipfs://' + contractInfo?.ipfs_cid || '',
+        contractIpfsLink:
+          'https://ipfs.decentralized-content.com/ipfs/' +
+            contractInfo?.ipfs_cid || '',
         collaborators: contractInfo?.emails || [],
       })
 
