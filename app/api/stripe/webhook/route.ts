@@ -43,7 +43,7 @@ export const POST = async (req: NextRequest) => {
       const contractInfo = await getContractInfo(metadata?.cid)
       const customerDetails = sessionObject?.customer_details
       const customerName = customerDetails?.name
-      const res = sendEmail({
+      const res = await sendEmail({
         firstName: customerName,
         paymentReceiptLink: paymentLink,
         contractIpfsLink: 'ipfs://' + contractInfo?.ipfs_cid || '',
