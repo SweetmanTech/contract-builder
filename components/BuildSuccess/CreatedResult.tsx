@@ -19,7 +19,7 @@ const CreatedResult = () => {
 
   const handleClickDocuSign = async () => {
     await uploadContractIpfs()
-    router.push(`/docusign?cid=${collaboratorDbId}`)
+    router.push(`/docusign?contractId=${collaboratorDbId}`)
   }
 
   return (

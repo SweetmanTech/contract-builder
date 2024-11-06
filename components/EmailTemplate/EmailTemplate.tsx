@@ -1,12 +1,12 @@
 interface EmailTemplateProps {
-  firstName?: string
+  firstName: string
   paymentReceiptLink: string
   contractIpfsLink: string
   collaborators: string[]
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
-  firstName = 'Mesa',
+  firstName,
   paymentReceiptLink,
   contractIpfsLink,
   collaborators,
