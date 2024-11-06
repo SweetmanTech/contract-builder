@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import CartTotal from './CartTotal'
 import Description from './Description'
 import { useModalProvider } from '@/providers/ModalProvider'
 import InfoDialog from '@/components/InfoDialog'
+import CartTotalSupense from './CartTotalSupense'
 
 const DocuSign = () => {
   const { isDocuSignModalOpen, setIsDocuSignModalOpen } = useModalProvider()
@@ -16,7 +16,7 @@ const DocuSign = () => {
       <div className="flex flex-col items-center md:items-start md:flex-row justify-between md:gap-[10%]">
         <Description />
 
-        <CartTotal />
+        <CartTotalSupense />
       </div>
       <InfoDialog
         isOpen={isDocuSignModalOpen}

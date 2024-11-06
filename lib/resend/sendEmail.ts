@@ -20,7 +20,7 @@ export const sendEmail = async ({
   try {
     const { data, error } = await resend.emails.send({
       from: `Mesa <contracts@mesawallet.io>`,
-      to: ['sweetmantech@gmail.com'],
+      to: ['faisalmd25121999@gmail.com'],
       subject: 'Contract Payment Confirmation',
       react: EmailTemplate({
         firstName,

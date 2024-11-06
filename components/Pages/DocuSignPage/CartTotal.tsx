@@ -1,10 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import { useModalProvider } from '@/providers/ModalProvider'
 import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter, useSearchParams } from 'next/navigation'
 import { pricePerContract, taxPerContract } from '@/lib/consts'
 import MoneyParagraph from './MoneyParagraph'
 import { handleStripeCheckout } from '@/lib/stripe/handleStripeCheckout'
@@ -14,27 +13,21 @@ const CartTotal = () => {
   const { setIsDocuSignModalOpen } = useModalProvider()
   const { baseUrl } = useBaseUrl()
   const router = useRouter()
-  const [contractId, setContractId] = useState<string>('')
+  const searchParam = useSearchParams()
+
   const handleCheckout = () => {
     handleStripeCheckout({
       baseUrl,
       amount: (pricePerContract + taxPerContract) * 100,
       metadata: {
-        cid: contractId,
+        cid: searchParam.get('contractId'),
       },
     })
   }
+  if (!searchParam.get('contractId')) {
+    redirect('/')
+  }
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search)
-    const contractIdParamValue = searchParams.get('contractId') || ''
-    if (contractIdParamValue) {
-      setContractId(contractIdParamValue)
-    } else {
-      router.push('/')
-    }
-  }, [router])
-  if (!contractId) return null
   return (
     <div className="w-full flex flex-col gap-6 mb-4">
       <div className="w-full self-start grid grid-cols-[2.5fr_1.5fr] place-content-between place-items-end gap-4 font-rubik">
