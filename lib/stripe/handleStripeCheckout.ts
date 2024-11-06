@@ -1,9 +1,11 @@
 export const handleStripeCheckout = async ({
   amount,
   baseUrl,
+  metadata,
 }: {
   amount: number
   baseUrl: string
+  metadata: { cid: string } | any
 }) => {
   try {
     const response = await fetch('/api/stripe/checkout', {
@@ -14,6 +16,7 @@ export const handleStripeCheckout = async ({
       body: JSON.stringify({
         amount,
         baseUrl,
+        metadata,
       }),
     })
 

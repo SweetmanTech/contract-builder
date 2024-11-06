@@ -8,8 +8,10 @@ import InfoDialog from '../InfoDialog'
 import Disclaimer from './Disclaimer'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 
 const CreatedResult = () => {
+  const { collaboratorDbId } = useContractBuilderProvider()
   const { downloadUnsignedVersion } = useDownloadUnsignedVersion()
   const { uploadContractIpfs, uploading } = useUploadContractIpfs()
   const [isOpen, setIsOpen] = useState(false)
@@ -17,7 +19,7 @@ const CreatedResult = () => {
 
   const handleClickDocuSign = async () => {
     await uploadContractIpfs()
-    router.push('/docusign')
+    router.push(`/docusign?contractId=${collaboratorDbId}`)
   }
 
   return (

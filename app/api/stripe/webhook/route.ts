@@ -1,7 +1,10 @@
+import { sendEmail } from '@/lib/resend/sendEmail'
 import { createStripeClient } from '@/lib/stripe/createStripeClient'
+import { getContractInfo } from '@/lib/supabase/getContractInfo'
 import { NextRequest, NextResponse } from 'next/server'
 
 const stripe = createStripeClient()
+
 export const POST = async (req: NextRequest) => {
   const eventsToListen = ['checkout.session.completed']
   if (!stripe) {
@@ -32,12 +35,40 @@ export const POST = async (req: NextRequest) => {
   if (eventsToListen.includes(event.type)) {
     const sessionObject = event.data.object as any
     const id = sessionObject?.id
-    const customer_details = sessionObject?.customer_details
+    const metadata = sessionObject?.metadata
+
+    const paymentIntentId = sessionObject?.payment_intent
+    const paymentLink = `https://dashboard.stripe.com/payments/${paymentIntentId}`
+    try {
+      const contractInfo = await getContractInfo(metadata?.cid)
+      const customerDetails = sessionObject?.customer_details
+      const customerName = customerDetails?.name
+      const res = await sendEmail({
+        firstName: customerName,
+        paymentReceiptLink: paymentLink,
+        contractIpfsLink:
+          'https://ipfs.decentralized-content.com/ipfs/' +
+            contractInfo?.ipfs_cid || '',
+        collaborators: contractInfo?.emails || [],
+      })
+
+      if (!res) {
+        return NextResponse.json(
+          { error: 'Error sending email' },
+          { status: 500 },
+        )
+      }
+    } catch (error) {
+      console.error('Error sending email:', error)
+      return NextResponse.json(
+        { error: 'Error sending email' },
+        { status: 500 },
+      )
+    }
 
     return NextResponse.json(
       {
         id,
-        customer_details,
       },
       { status: 200 },
     )
