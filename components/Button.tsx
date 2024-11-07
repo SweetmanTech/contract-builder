@@ -1,16 +1,18 @@
 import { twMerge } from 'tailwind-merge'
 
-const Button = ({
-  className,
-  onClick,
-  disabled = false,
-  children,
-}: {
-  className: string
+type ButtonProps = {
+  className?: string
   disabled?: boolean
   onClick?: () => void
   children: any
-}) => {
+}
+
+const Button = ({
+  className = '',
+  onClick,
+  disabled = false,
+  children,
+}: ButtonProps) => {
   return (
     <button
       className={twMerge(

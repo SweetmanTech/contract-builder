@@ -56,10 +56,10 @@ export const uploadFile = async (file: File): Promise<IPFSUploadResponse> => {
 
       cid = json.cid
     }
-
+    const uri = `https://ipfs.decentralized-content.com/ipfs/${cid}`
     uploadCache.put([file], cid)
 
-    return { cid, uri: `ipfs://${cid}` }
+    return { cid, uri }
   } catch (error) {
     console.error(error)
     return { cid: '', uri: '' }

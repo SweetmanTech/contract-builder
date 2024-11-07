@@ -9,8 +9,14 @@ interface PassedQuestionsProps {
 }
 
 const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
-  const { tab, collaborators, governanceType, setTab, setCurrentCollaborator } =
-    useContractBuilderProvider()
+  const {
+    tab,
+    collaborators,
+    governanceType,
+    setTab,
+    setCurrentCollaborator,
+    collaboratorsAmount,
+  } = useContractBuilderProvider()
   const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px] cursor-pointer`
 
   return (
@@ -41,7 +47,7 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       )}
       {tab >= CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE && (
         <>
-          {collaborators.map((_, i) => (
+          {collaborators.slice(0, collaboratorsAmount).map((_, i) => (
             <p
               className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px] cursor-pointer"
               key={i}
