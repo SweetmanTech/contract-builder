@@ -11,6 +11,7 @@ const SubmitForm = () => {
     collaborators,
     currentCollaborator,
     collaboratorsAmount,
+    setCurrentCollaborator,
     setCollaborator,
     splitType,
     setCollaboratorDbId,
@@ -36,9 +37,15 @@ const SubmitForm = () => {
   }
 
   const handleSubmit = async () => {
-    if (collaborators.length !== collaboratorsAmount) {
-      setCollaborator()
-
+    if (
+      collaborators.length < collaboratorsAmount ||
+      currentCollaborator < collaboratorsAmount - 1
+    ) {
+      if (collaborators.length < collaboratorsAmount) {
+        setCollaborator()
+        return
+      }
+      setCurrentCollaborator(currentCollaborator + 1)
       return
     }
 
@@ -60,18 +67,28 @@ const SubmitForm = () => {
         Collaborator {currentCollaborator + 1}:
       </p>
       <CollaboratorValues />
-      <Button
-        className="mt-10 mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
-        onClick={handleSubmit}
-        disabled={
-          Boolean(!legalName) ||
-          Boolean(!email) ||
-          Boolean(!split) ||
-          isContributor
-        }
-      >
-        SUBMIT
-      </Button>
+      <div className="mt-10 flex items-center gap-4">
+        {currentCollaborator > 0 && (
+          <Button
+            className="mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
+            onClick={() => setCurrentCollaborator(currentCollaborator - 1)}
+          >
+            BACK
+          </Button>
+        )}
+        <Button
+          className="mb-0 mx-auto md:mx-[unset] relative z-[2] md:w-52 md:h-12 w-36 h-12 font-normal md:bg-transparent bg-[#AC444475] border-[#E18583] text-[12px]"
+          onClick={handleSubmit}
+          disabled={
+            Boolean(!legalName) ||
+            Boolean(!email) ||
+            Boolean(!split) ||
+            isContributor
+          }
+        >
+          SUBMIT
+        </Button>
+      </div>
     </>
   )
 }
