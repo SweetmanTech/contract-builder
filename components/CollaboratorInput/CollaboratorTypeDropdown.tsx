@@ -16,26 +16,36 @@ export default function CollaboratorTypeDropdown() {
   const { typeOfMasterContribution, typeOfSongWritingContribution } =
     collaborators[currentCollaborator]
 
+  const ContributionParagraph = ({ text }: { text: string }) => {
+    return (
+      <p className="font-share text-base/4 pb-1 text-[15px] text-[#696969]">
+        {`${text} contribution`}
+      </p>
+    )
+  }
   return (
     <fieldset className="w-full">
-      <p className="font-share text-base/4 pb-1 text-[15px] text-[#696969]">
-        {`${splitType === 'Both' ? 'Both' : 'Type of'} contribution`}
-      </p>
       <div className="flex gap-2">
         {(splitType === 'Master Recording' || splitType === 'Both') && (
-          <CollaboratorDropdown
-            contributionType={typeOfMasterContribution}
-            options={masterOptions}
-            setContributionType={setTypeOfMasterContribution}
-          />
+          <div className="w-full">
+            <ContributionParagraph text="Master recording" />
+            <CollaboratorDropdown
+              contributionType={typeOfMasterContribution}
+              options={masterOptions}
+              setContributionType={setTypeOfMasterContribution}
+            />
+          </div>
         )}
 
         {(splitType === 'Song Writing' || splitType === 'Both') && (
-          <CollaboratorDropdown
-            contributionType={typeOfSongWritingContribution}
-            options={songWritingOptions}
-            setContributionType={setTypeOfSongWritingContribution}
-          />
+          <div className="w-full">
+            <ContributionParagraph text="Song writing" />
+            <CollaboratorDropdown
+              contributionType={typeOfSongWritingContribution}
+              options={songWritingOptions}
+              setContributionType={setTypeOfSongWritingContribution}
+            />
+          </div>
         )}
       </div>
     </fieldset>
