@@ -11,17 +11,14 @@ const useUploadContractIpfs = () => {
   const uploadContractIpfs = async () => {
     setUploading(true)
     const pdfDomElementId = 'unsigned-version'
-    const pdf = await createPdf(pdfDomElementId)
-
+    const pdf = await createPdf({ pdfDomElementId })
     if (!collaboratorDbId || !pdf) return
 
     const file = new File([pdf.output('blob')], pdfDomElementId)
-
     const { cid, uri } = await uploadFile(file)
-
     await addCid(collaboratorDbId, cid)
-
     setUploading(false)
+
     return uri
   }
 
