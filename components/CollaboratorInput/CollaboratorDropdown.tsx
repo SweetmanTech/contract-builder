@@ -19,7 +19,7 @@ export default function CollaboratorDropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex justify-between w-1/2 items-center text-left bg-black text-[#9ca3af] font-rubik rounded-md border-white border p-2 cursor-pointer">
+        <button className="flex justify-between w-full items-center text-left bg-black text-[#9ca3af] font-rubik rounded-md border-white border p-2 cursor-pointer">
           {contributionType ? contributionType : 'Select options'}
           <ChevronDownIcon className="size-5 text-white" />
         </button>
