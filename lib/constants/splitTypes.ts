@@ -31,6 +31,10 @@ export const splitTypes = [
       heading: '1.0 Music Work Identification',
       text: `The parties acknowledge and accept their contributio to the authorship or composition of the musical work and agree to the distribution of copyright ownership as follows:`,
     },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to writing the song?',
+    },
   },
   {
     label: 'Master Recording',
@@ -48,6 +52,10 @@ export const splitTypes = [
     formText: `What is the name of the song and its recorded version?`,
     collaboratorInfoText: {
       ...masterAndBothCollaboratorInfoText,
+    },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to the recording of the song?',
     },
   },
   {
@@ -67,6 +75,10 @@ export const splitTypes = [
     formText: `What is the name of the song and its recorded version?`,
     collaboratorInfoText: {
       ...masterAndBothCollaboratorInfoText,
+    },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to writing the song and its recorded version.',
     },
   },
 ]

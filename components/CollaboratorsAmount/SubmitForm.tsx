@@ -3,9 +3,10 @@ import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
 import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
+import { splitTypes } from '@/lib/constants/splitTypes'
 
 const SubmitForm = () => {
-  const { setTab, collaboratorsAmount, setCollaboratorsAmount } =
+  const { setTab, collaboratorsAmount, setCollaboratorsAmount, splitType } =
     useContractBuilderProvider()
 
   const handleCollaboratorsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,8 @@ const SubmitForm = () => {
 
     setCollaboratorsAmount(intValue)
   }
+  const formLabel = splitTypes.find((item) => item.type === splitType)
+    ?.formLabels?.collaboratorsAmount
 
   return (
     <>
@@ -28,7 +31,7 @@ const SubmitForm = () => {
           <PassedQuestions />
         </div>
         <p className="text-white md:text-3xl tracking-[-0.05rem] font-share pt-6 text-[20px]">
-          How many collaborators contributed to writing the song?
+          {formLabel}
         </p>
 
         <label htmlFor="#songName" className="mt-6 text-[#696969] text-[15px] ">
