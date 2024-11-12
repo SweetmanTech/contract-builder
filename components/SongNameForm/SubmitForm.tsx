@@ -7,6 +7,9 @@ import FormInput from '../FormInput'
 import IfConfusedPopupLink from '../IfConfusedPopupLink/IfConfusedPopupLink'
 import { useModalProvider } from '@/providers/ModalProvider'
 import MusicWorkInfo from '../InfoDialogsContent/MusicWorkInfo'
+
+const songLabelClass =
+  'mt-6 flex flex-col font-rubik gap-2 text-[#696969] text-[15px]'
 const SubmitForm = () => {
   const {
     setTab,
@@ -42,14 +45,20 @@ const SubmitForm = () => {
           value={songName}
           label="Song Composition"
           handleChange={(e) => setSongName(e.target.value)}
-          labelProps={{ htmlFor: 'songName' }}
+          labelProps={{
+            htmlFor: 'songName',
+            className: songLabelClass,
+          }}
         />
         {showRecordedVersion && (
           <FormInput
             value={recordedVersion}
             label="Recorded Version"
             handleChange={handleRecordedVersionChange}
-            labelProps={{ htmlFor: 'recordedVersion' }}
+            labelProps={{
+              htmlFor: 'recordedVersion',
+              className: songLabelClass,
+            }}
           />
         )}
         <IfConfusedPopupLink open={() => setMusicWorkInfoModalOpen(true)} />

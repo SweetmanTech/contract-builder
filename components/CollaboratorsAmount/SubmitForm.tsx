@@ -4,6 +4,7 @@ import Button from '../Button'
 import { CONTRACT_BUILDER_STEP } from '@/hooks/useContractBuilder'
 import PassedQuestions from '../PassedQuestions'
 import { splitTypes } from '@/lib/constants/splitTypes'
+import FormInput from '../FormInput'
 
 const SubmitForm = () => {
   const { setTab, collaboratorsAmount, setCollaboratorsAmount, splitType } =
@@ -34,15 +35,15 @@ const SubmitForm = () => {
           {formLabel}
         </p>
 
-        <label htmlFor="#songName" className="mt-6 text-[#696969] text-[15px] ">
-          <input
-            id="songName"
-            type="text"
-            className="  !outline-none font-rubik rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
-            onChange={handleCollaboratorsChange}
-            value={collaboratorsAmount}
-          />
-        </label>
+        <FormInput
+          value={collaboratorsAmount}
+          className="  !outline-none font-roboto_bold rounded-md border-white border !bg-transparent mt-6 p-2 max-w-[90px]"
+          type="text"
+          handleChange={handleCollaboratorsChange}
+          labelProps={{
+            htmlFor: 'collaboratorsAmount',
+          }}
+        />
       </div>
 
       <Button
