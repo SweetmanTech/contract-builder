@@ -3,6 +3,12 @@ import { useState } from 'react'
 
 const useCollaborators = () => {
   const [collaboratorsAmount, setCollaboratorsAmount] = useState(0)
+  const [songWritingCollaboratorsAmount, setSongWritingCollaboratorsAmount] =
+    useState(0)
+  const [
+    masterRecordingCollaboratorsAmount,
+    setMasterRecordingCollaboratorsAmount,
+  ] = useState(0)
   const [collaborators, setCollaborators] = useState<COLLABORATOR[]>([
     {
       legalName: '',
@@ -60,6 +66,10 @@ const useCollaborators = () => {
   return {
     collaboratorsAmount,
     setCollaboratorsAmount,
+    songWritingCollaboratorsAmount,
+    setSongWritingCollaboratorsAmount,
+    masterRecordingCollaboratorsAmount,
+    setMasterRecordingCollaboratorsAmount,
     collaborators,
     setCollaborators,
     currentCollaborator,
