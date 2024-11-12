@@ -13,7 +13,7 @@ const DocuSign = () => {
         <span className="text-[13px]">Powered By</span>
         <p className="text-3xl font-medium">DocuSign</p>
       </div>
-      <div className="flex flex-col items-center md:items-start md:flex-row justify-between md:gap-[10%]">
+      <div className="flex flex-col items-center md:items-start md:flex-row justify-between gap-8 md:gap-[10%]">
         <Description />
 
         <CartTotalSupense />
