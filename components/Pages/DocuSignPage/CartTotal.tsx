@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import { useModalProvider } from '@/providers/ModalProvider'
 import Button from '@/components/Button'
 import ReadHereLink from '@/components/ReadHereLink'
 import { redirect, useRouter, useSearchParams } from 'next/navigation'
@@ -10,7 +9,6 @@ import { handleStripeCheckout } from '@/lib/stripe/handleStripeCheckout'
 import useBaseUrl from '@/hooks/useBaseUrl'
 
 const CartTotal = () => {
-  const { setIsDocuSignModalOpen } = useModalProvider()
   const { baseUrl } = useBaseUrl()
   const router = useRouter()
   const searchParam = useSearchParams()
@@ -70,18 +68,13 @@ const CartTotal = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-2 items-center md:items-start text-center">
+      <div className="flex flex-col gap-2 items-center md:items-start text-center mb-5">
         <Button
           className="w-[95%] text-[12px] md:w-fit self-center p-4 md:px-14 md:py-6 md:text-[20px]"
           onClick={handleCheckout}
         >
           Automatically Send
         </Button>
-        <ReadHereLink
-          open={() => setIsDocuSignModalOpen(true)}
-          label="Why does this cost money?"
-          className="pt-0 md:hidden text-[15px]"
-        />
         <ReadHereLink
           label="Go back to download for free"
           className="text-grey pt-0 md:hidden text-[15px]"
