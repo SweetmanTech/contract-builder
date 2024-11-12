@@ -39,12 +39,6 @@ const CreatedResult = () => {
 
       <div className="md:pt-16 pt-8 flex flex-col gap-8 order-2 md:order-3 md:justify-start justify-center md:items-start items-center mb-5">
         <Button
-          className="py-1 md:px-[16px] px-[10px] md:text-md text-[11px] md:min-w-[540px]  min-w-[312px] min-h-[41px]"
-          onClick={() => {}}
-        >
-          View Contract
-        </Button>
-        <Button
           className="py-1 md:text-md text-[11px] md:min-w-[540px] min-w-[312px] min-h-[41px]"
           onClick={downloadUnsignedVersion}
         >
