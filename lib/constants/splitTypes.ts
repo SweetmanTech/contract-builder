@@ -29,7 +29,11 @@ export const splitTypes = [
     formText: `What is the name of the song?`,
     collaboratorInfoText: {
       heading: '1.0 Music Work Identification',
-      text: `The parties acknowledge and accept their contributio to the authorship or composition of the musical work and agree to the distribution of copyright ownership as follows:`,
+      text: `The parties acknowledge and accept their contribution to the authorship or composition of the musical work and agree to the distribution of copyright ownership as follows:`,
+    },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to writing the song?',
     },
   },
   {
@@ -49,6 +53,10 @@ export const splitTypes = [
     collaboratorInfoText: {
       ...masterAndBothCollaboratorInfoText,
     },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to the recording of the song?',
+    },
   },
   {
     label: 'Both',
@@ -67,6 +75,10 @@ export const splitTypes = [
     formText: `What is the name of the song and its recorded version?`,
     collaboratorInfoText: {
       ...masterAndBothCollaboratorInfoText,
+    },
+    formLabels: {
+      collaboratorsAmount:
+        'How many collaborators contributed to writing the song and its recorded version.',
     },
   },
 ]
