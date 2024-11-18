@@ -3,7 +3,7 @@ import SubmitForm from './SubmitForm'
 
 const SplitsTypes = () => {
   return (
-    <div className="size-full  grid md:grid-cols-12">
+    <div className="size-full  grid md:grid-cols-12 gap-6 mb-20 md:mb-0">
       <div className="col-span-6 flex flex-col md:justify-end justify-start mt-4">
         <SubmitForm />
       </div>
