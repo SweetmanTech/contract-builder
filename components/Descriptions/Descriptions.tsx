@@ -17,6 +17,14 @@ const Descriptions = () => {
   const masterRecordingIdentificationDescription = getIdentificationDescription(
     SPLIT_TYPE.MASTER_RECORDING,
   )
+
+  const songPlaceholder = '_______'
+
+  const songNameDisplay =
+    songName?.length > 0 ? songName + '.' : songPlaceholder
+
+  const recordedVersionDisplay =
+    recordedVersion?.length > 0 ? recordedVersion + '.' : songPlaceholder
   return (
     <>
       <p className="font-roboto_thin text-2xl">
@@ -30,7 +38,7 @@ const Descriptions = () => {
             <>
               {musicalIdentificationDescription}{' '}
               <span className="text-danger-dark font-roboto_bold">
-                {songName || 'The One'}.
+                {songNameDisplay}
               </span>
             </>
           }
@@ -42,7 +50,7 @@ const Descriptions = () => {
               <>
                 {masterRecordingIdentificationDescription}{' '}
                 <span className="text-danger-dark font-roboto_bold">
-                  {recordedVersion || 'The One'}.
+                  {recordedVersionDisplay}
                 </span>
               </>
             }
