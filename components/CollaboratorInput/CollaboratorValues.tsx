@@ -33,9 +33,10 @@ const CollaboratorValues = () => {
         <fieldset className="w-4/12">
           <FormInput
             className={inputClass}
-            value={collaborators[currentCollaborator].split}
+            value={collaborators[currentCollaborator].split.toString()}
             label="Split %"
-            handleChange={(e) => setSplit(parseInt(e.target.value, 10))}
+            type="number"
+            handleChange={(e) => setSplit(parseInt(e.target.value, 10) || 0)}
             labelProps={{
               htmlFor: 'split',
               className: intoClass,
