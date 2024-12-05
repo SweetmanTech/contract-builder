@@ -25,9 +25,16 @@ const useCollaboratorsAmount = () => {
     switch (type) {
       case SPLIT_TYPE.SONG_WRITING:
         setSongWritingCollaboratorsAmount(intValue)
+        setMasterRecordingCollaboratorsAmount(0)
         break
 
       case SPLIT_TYPE.MASTER_RECORDING:
+        setSongWritingCollaboratorsAmount(0)
+        setMasterRecordingCollaboratorsAmount(intValue)
+        break
+
+      case SPLIT_TYPE.BOTH:
+        setSongWritingCollaboratorsAmount(intValue)
         setMasterRecordingCollaboratorsAmount(intValue)
         break
     }
