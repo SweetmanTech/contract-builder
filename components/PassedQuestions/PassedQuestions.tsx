@@ -26,7 +26,7 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
           className={intoClass}
           onClick={() => {
             setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
-            console.log('refresh')
+            // @refresh reset
           }}
         >
           What type of splits contract would you like to create?
@@ -35,7 +35,10 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
         <p
           className={intoClass}
-          onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
+          onClick={() => {
+            setTab(CONTRACT_BUILDER_STEP.SONG_NAME)
+            // @refresh reset
+          }}
         >
           What is the name of the song?
         </p>
@@ -43,7 +46,10 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
         <p
           className={intoClass}
-          onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)}
+          onClick={() => {
+            setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)
+            // @refresh reset
+          }}
         >
           How many collaborators contributed to writing the song?
         </p>

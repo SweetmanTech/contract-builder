@@ -30,11 +30,6 @@ const useCollaboratorsAmount = () => {
       case SPLIT_TYPE.MASTER_RECORDING:
         setMasterRecordingCollaboratorsAmount(intValue)
         break
-
-      case SPLIT_TYPE.BOTH:
-        setSongWritingCollaboratorsAmount(intValue)
-        setMasterRecordingCollaboratorsAmount(intValue)
-        break
     }
   }
 
