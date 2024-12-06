@@ -24,7 +24,10 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.SONG_NAME && (
         <p
           className={intoClass}
-          onClick={() => setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)}
+          onClick={() => {
+            setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
+            console.log('refresh')
+          }}
         >
           What type of splits contract would you like to create?
         </p>
