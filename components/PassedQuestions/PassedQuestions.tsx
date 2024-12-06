@@ -3,7 +3,6 @@ import {
   GOVERNANCE_TYPE,
 } from '@/hooks/useContractBuilder'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
-import { useEffect } from 'react'
 
 interface PassedQuestionsProps {
   textSize?: string
@@ -20,21 +19,12 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
   } = useContractBuilderProvider()
   const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px] cursor-pointer`
 
-  useEffect(() => {
-    if (tab === CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE) {
-      setCurrentCollaborator(0) // Reset to "Collaborator 1"
-    }
-  }, [tab])
-
   return (
     <>
       {tab >= CONTRACT_BUILDER_STEP.SONG_NAME && (
         <p
           className={intoClass}
-          onClick={() => {
-            setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)
-            // @refresh reset
-          }}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.SPLITS_TYPE)}
         >
           What type of splits contract would you like to create?
         </p>
@@ -42,10 +32,7 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT && (
         <p
           className={intoClass}
-          onClick={() => {
-            setTab(CONTRACT_BUILDER_STEP.SONG_NAME)
-            // @refresh reset
-          }}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.SONG_NAME)}
         >
           What is the name of the song?
         </p>
@@ -53,10 +40,7 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
       {tab >= CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT && (
         <p
           className={intoClass}
-          onClick={() => {
-            setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)
-            // @refresh reset
-          }}
+          onClick={() => setTab(CONTRACT_BUILDER_STEP.COLLABORATORS_AMOUNT)}
         >
           How many collaborators contributed to writing the song?
         </p>
@@ -68,7 +52,6 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
               className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px] cursor-pointer"
               key={i}
               onClick={() => {
-                // @refresh reset
                 setCurrentCollaborator(i)
                 setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)
               }}
