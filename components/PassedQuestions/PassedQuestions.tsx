@@ -55,7 +55,7 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
               className="text-grey text-xl tracking-[-0.05rem] font-share leading-[33px] cursor-pointer"
               key={i}
               onClick={() => {
-                setCurrentCollaborator(i)
+                setCurrentCollaborator(1)
                 setTab(CONTRACT_BUILDER_STEP.COLLABORATOR_INPUT)
               }}
             >
