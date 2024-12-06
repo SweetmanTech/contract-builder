@@ -3,6 +3,7 @@ import {
   GOVERNANCE_TYPE,
 } from '@/hooks/useContractBuilder'
 import { useContractBuilderProvider } from '@/providers/ContractBuilderProvider'
+import { useEffect } from 'react'
 
 interface PassedQuestionsProps {
   textSize?: string
@@ -18,6 +19,12 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
     collaboratorsAmount,
   } = useContractBuilderProvider()
   const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px] cursor-pointer`
+
+  useEffect(() => {
+    if (tab === CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE) {
+      setCurrentCollaborator(0) // Reset to "Collaborator 1"
+    }
+  }, [tab])
 
   return (
     <>

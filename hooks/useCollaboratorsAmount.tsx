@@ -11,6 +11,11 @@ const useCollaboratorsAmount = () => {
     setSongWritingCollaboratorsAmount,
   } = useContractBuilderProvider()
 
+  useEffect(() => {
+    setSongWritingCollaboratorsAmount(0)
+    setMasterRecordingCollaboratorsAmount(0)
+  }, [])
+
   const handleCollaboratorsChange = (
     e: ChangeEvent<HTMLInputElement>,
     type: SPLIT_TYPE,
