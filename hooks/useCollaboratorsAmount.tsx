@@ -22,29 +22,36 @@ const useCollaboratorsAmount = () => {
       intValue = 0
     }
 
-    setSongWritingCollaboratorsAmount(0)
-    setMasterRecordingCollaboratorsAmount(0)
+    // setSongWritingCollaboratorsAmount(0)
+    // setMasterRecordingCollaboratorsAmount(0)
 
     switch (type) {
       case SPLIT_TYPE.SONG_WRITING:
         setSongWritingCollaboratorsAmount(intValue)
+        setCollaboratorsAmount(songWritingCollaboratorsAmount)
         break
 
       case SPLIT_TYPE.MASTER_RECORDING:
         setMasterRecordingCollaboratorsAmount(intValue)
+        setCollaboratorsAmount(masterRecordingCollaboratorsAmount)
         break
+
+      case SPLIT_TYPE.BOTH:
+        setCollaboratorsAmount(
+          songWritingCollaboratorsAmount + masterRecordingCollaboratorsAmount,
+        )
     }
   }
 
-  useEffect(() => {
-    setCollaboratorsAmount(
-      songWritingCollaboratorsAmount + masterRecordingCollaboratorsAmount,
-    )
-  }, [
-    songWritingCollaboratorsAmount,
-    masterRecordingCollaboratorsAmount,
-    setCollaboratorsAmount,
-  ])
+  // useEffect(() => {
+  //   setCollaboratorsAmount(
+  //     songWritingCollaboratorsAmount + masterRecordingCollaboratorsAmount,
+  //   )
+  // }, [
+  //   songWritingCollaboratorsAmount,
+  //   masterRecordingCollaboratorsAmount,
+  //   setCollaboratorsAmount,
+  // ])
   return {
     handleCollaboratorsChange,
   }
