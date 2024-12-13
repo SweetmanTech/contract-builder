@@ -21,10 +21,8 @@ const PassedQuestions: React.FC<PassedQuestionsProps> = ({ textSize }) => {
   const intoClass = `text-grey md:text-xl text-[${textSize ? textSize : '20px'}] tracking-[-0.05rem] font-share leading-[33px] cursor-pointer`
 
   useEffect(() => {
-    if (tab === CONTRACT_BUILDER_STEP.GOVERNANCE_TYPE) {
-      setCurrentCollaborator(0) // Reset to "Collaborator 1"
-    }
-  }, [tab])
+    setCurrentCollaborator(0) // Reset to "Collaborator 1"
+  }, [tab, setCurrentCollaborator])
 
   return (
     <>

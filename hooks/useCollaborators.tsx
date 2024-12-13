@@ -9,6 +9,7 @@ const useCollaborators = () => {
     masterRecordingCollaboratorsAmount,
     setMasterRecordingCollaboratorsAmount,
   ] = useState(0)
+  const [bothCollaboratorsAmount, setBothCollaboratorsAmount] = useState(0)
   const [collaborators, setCollaborators] = useState<COLLABORATOR[]>([
     {
       legalName: '',
@@ -70,6 +71,8 @@ const useCollaborators = () => {
     setSongWritingCollaboratorsAmount,
     masterRecordingCollaboratorsAmount,
     setMasterRecordingCollaboratorsAmount,
+    bothCollaboratorsAmount,
+    setBothCollaboratorsAmount,
     collaborators,
     setCollaborators,
     currentCollaborator,
