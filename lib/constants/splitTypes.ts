@@ -78,7 +78,7 @@ export const splitTypes = [
     },
     formLabels: {
       collaboratorsAmount:
-        'How many collaborators contributed to writing the song and its recorded version.',
+        'How many collaborators contributed to writing the song and its recorded version?',
     },
   },
 ]

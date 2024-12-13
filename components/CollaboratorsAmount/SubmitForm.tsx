@@ -15,6 +15,7 @@ const SubmitForm = () => {
     splitType,
     songWritingCollaboratorsAmount,
     masterRecordingCollaboratorsAmount,
+    bothCollaboratorsAmount,
   } = useContractBuilderProvider()
 
   const { handleCollaboratorsChange } = useCollaboratorsAmount()
@@ -27,11 +28,18 @@ const SubmitForm = () => {
     (item) => item.type === SPLIT_TYPE.MASTER_RECORDING,
   )?.formLabels?.collaboratorsAmount
 
+  const bothRecordingFormLabel = splitTypes.find(
+    (item) => item.type === SPLIT_TYPE.BOTH,
+  )?.formLabels?.collaboratorsAmount
+
   const showSongWritingCollaboratorsAmount =
-    splitType === SPLIT_TYPE.SONG_WRITING || splitType === SPLIT_TYPE.BOTH
+    splitType === SPLIT_TYPE.SONG_WRITING
 
   const showMasterRecordingCollaboratorsAmount =
-    splitType === SPLIT_TYPE.MASTER_RECORDING || splitType === SPLIT_TYPE.BOTH
+    splitType === SPLIT_TYPE.MASTER_RECORDING
+
+  const showBothRecordingCollaboratorsAmount = splitType === SPLIT_TYPE.BOTH
+
   return (
     <>
       <div className=" size-full flex flex-col md:justify-center justify-start z-[1]">
@@ -69,6 +77,24 @@ const SubmitForm = () => {
                 type="text"
                 handleChange={(e) =>
                   handleCollaboratorsChange(e, SPLIT_TYPE.MASTER_RECORDING)
+                }
+                labelProps={{
+                  htmlFor: 'collaboratorsAmount',
+                }}
+              />
+            </div>
+          )}
+          {showBothRecordingCollaboratorsAmount && (
+            <div>
+              <p className="text-white md:text-3xl tracking-[-0.05rem] font-share pt-6 text-[20px]">
+                {bothRecordingFormLabel}
+              </p>
+              <FormInput
+                value={bothCollaboratorsAmount}
+                className={collaboratorAmountInputClass}
+                type="text"
+                handleChange={(e) =>
+                  handleCollaboratorsChange(e, SPLIT_TYPE.BOTH)
                 }
                 labelProps={{
                   htmlFor: 'collaboratorsAmount',
